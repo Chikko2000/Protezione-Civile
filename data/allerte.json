@@ -1,0 +1,26 @@
+[
+  {
+    "titolo": "Allerta Meteo Alto",
+    "livello": "alto",
+    "inizio": "2025-12-05 10:00",
+    "fine": "2025-12-05 20:00",
+    "messaggio": "Temporali e rischio criticità idrauliche.",
+    "file": "allerte/allerta-alto.pdf"
+  },
+  {
+    "titolo": "Allerta Meteo Medio",
+    "livello": "medio",
+    "inizio": "2025-12-04 08:00",
+    "fine": "2025-12-04 18:00",
+    "messaggio": "Venti forti e rischio allagamenti.",
+    "file": "allerte/allerta-medio.pdf"
+  },
+  {
+    "titolo": "Allerta Meteo Basso",
+    "livello": "basso",
+    "inizio": "2025-12-03 06:00",
+    "fine": "2025-12-03 14:00",
+    "messaggio": "",
+    "file": "allerte/allerta-basso.pdf"
+  }
+]
