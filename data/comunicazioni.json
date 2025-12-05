@@ -1,12 +1,17 @@
 [
   {
-    "titolo": "Chiusura strada",
+    "titolo": "Riunione volontari",
     "data": "2025-12-05",
-    "messaggio": "Per lavori urgenti, la strada X sar\u00e0 chiusa dalle 14 alle 18."
+    "messaggio": "Riunione settimanale del gruppo presso sede centrale alle ore 18:00."
   },
   {
-    "titolo": "Evento formazione volontari",
-    "data": "2025-12-04",
-    "messaggio": "Formazione teorica e pratica per nuovi volontari."
+    "titolo": "Corso Primo Soccorso",
+    "data": "2025-12-03",
+    "messaggio": "Corso base di primo soccorso aperto a tutti i volontari."
+  },
+  {
+    "titolo": "Pulizia spiaggia",
+    "data": "2025-11-30",
+    "messaggio": "Pulizia straordinaria della spiaggia con ritrovo alle ore 09:00."
   }
 ]
