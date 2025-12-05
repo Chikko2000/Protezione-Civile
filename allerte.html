@@ -12,83 +12,32 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
-  body {
-    background: #f5f6fa;
-    font-family: 'Poppins', sans-serif;
-  }
+body { background: #f5f6fa; font-family: 'Poppins', sans-serif; }
+header.navbar { background: #004a99 !important; padding: 1rem; }
+.navbar-brand img { height: 60px; transition: .3s; }
+.navbar-brand img:hover { transform: scale(1.1); }
+.nav-link { font-size: 1.2rem; margin: 0 10px; color: #fff !important; font-weight: 500; transition: 0.3s; position: relative; }
+.nav-link:hover { color: #ffea00 !important; transform: translateY(-3px); }
+.nav-link::after { content: ""; position: absolute; width: 0; height: 3px; background: #ffea00; bottom: -4px; left: 50%; transform: translateX(-50%); transition: 0.3s; }
+.nav-link:hover::after { width: 50%; }
+h2 { color: #004a99; font-weight: 800; text-align: center; margin: 30px 0; }
 
-  header.navbar {
-    background: #004a99 !important;
-    padding: 1rem;
-  }
-  .navbar-brand img {
-    height: 60px;
-    transition: .3s;
-  }
-  .navbar-brand img:hover { transform: scale(1.1); }
-  .nav-link {
-    font-size: 1.2rem;
-    margin: 0 10px;
-    color: #fff !important;
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
-  }
-  .nav-link:hover { color: #ffea00 !important; transform: translateY(-3px); }
-  .nav-link::after { content: ""; position: absolute; width: 0; height: 3px; background: #ffea00; bottom: -4px; left: 50%; transform: translateX(-50%); transition: 0.3s; }
-  .nav-link:hover::after { width: 50%; }
+/* ULTIMA ALLERTA */
+.latest-alert { border-radius: 12px; padding: 30px; text-align: center; margin-bottom: 40px; box-shadow: 0 6px 20px rgba(0,0,0,0.15); color:#fff; }
+.latest-alert h3 { font-size: 2rem; font-weight: 900; margin-bottom: 15px; }
+.latest-alert p { font-size: 1.1rem; }
+.latest-alert .dates { font-size: 0.9rem; }
 
-  h2 {
-    color: #004a99;
-    font-weight: 800;
-    text-align: center;
-    margin: 30px 0;
-  }
+/* ALLERTE PASSATE */
+.past-alert-card { border-radius: 10px; padding: 15px; text-align: center; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; background:#fff; }
+.past-alert-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.2); }
+.past-alert-card h5 { font-weight: 700; margin-bottom: 5px; color: #004a99; }
+.past-alert-card p { font-size: 0.9rem; color: #555; }
+.past-alert-card img { width: 100%; border-radius: 8px; margin-bottom:10px; }
 
-  /* ULTIMA ALLERTA */
-  .latest-alert {
-    background: #e74c3c;
-    color: #fff;
-    border-radius: 12px;
-    padding: 30px;
-    text-align: center;
-    margin-bottom: 40px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-  }
-  .latest-alert h3 { font-size: 2rem; font-weight: 900; margin-bottom: 15px; }
-  .latest-alert p { font-size: 1.1rem; }
-
-  /* ALLERTE PASSATE */
-  .past-alert-card {
-    background: #fff;
-    border-radius: 10px;
-    padding: 15px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-  .past-alert-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  }
-  .past-alert-card h5 {
-    font-weight: 700;
-    margin-bottom: 5px;
-    color: #004a99;
-  }
-  .past-alert-card p {
-    font-size: 0.9rem;
-    color: #555;
-  }
-
-  /* Animazione fade-in */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.8s forwards;
-  }
-  @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+/* Animazione fade-in */
+.fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
+@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
 </style>
 </head>
@@ -96,12 +45,8 @@
 
 <header class="navbar navbar-expand-lg navbar-dark sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <img src="img/logo.png" alt="Logo Protezione Civile Grottammare">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Logo Protezione Civile Grottammare"></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav align-items-center">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -115,43 +60,11 @@
 </header>
 
 <main class="container mt-4">
-
   <h2>Allerte</h2>
-
-  <!-- ULTIMA ALLERTA -->
-  <div class="latest-alert fade-in" style="animation-delay:0s">
-    <h3>Allerta Meteo Alto</h3>
-    <p>Temporali e rischio criticità idrauliche. <a href="allerte/allerta-alto.pdf" target="_blank" style="color: #fff; text-decoration: underline;">Leggi il comunicato</a></p>
-  </div>
-
-  <!-- ALLERTE PASSATE -->
-  <div class="row g-3">
-    <div class="col-md-3 fade-in" style="animation-delay:0.1s">
-      <div class="past-alert-card">
-        <h5>Allerta Meteo Medio</h5>
-        <p>Venti forti e piogge previste. <br><a href="allerte/allerta-medio.pdf" target="_blank">Apri comunicato</a></p>
-      </div>
-    </div>
-    <div class="col-md-3 fade-in" style="animation-delay:0.2s">
-      <div class="past-alert-card">
-        <h5>Allerta Meteo Basso</h5>
-        <p>Piogge leggere previste. <br><a href="allerte/allerta-basso.pdf" target="_blank">Apri comunicato</a></p>
-      </div>
-    </div>
-    <div class="col-md-3 fade-in" style="animation-delay:0.3s">
-      <div class="past-alert-card">
-        <h5>Allerta Neve</h5>
-        <p>Previste nevicate leggere. <br><a href="allerte/allerta-neve.pdf" target="_blank">Apri comunicato</a></p>
-      </div>
-    </div>
-    <div class="col-md-3 fade-in" style="animation-delay:0.4s">
-      <div class="past-alert-card">
-        <h5>Allerta Vento Forte</h5>
-        <p>Raffiche previste in zona. <br><a href="allerte/allerta-vento.pdf" target="_blank">Apri comunicato</a></p>
-      </div>
-    </div>
-  </div>
-
+  <!-- Ultima allerta -->
+  <div id="latest-alert" class="latest-alert fade-in"></div>
+  <!-- Allerte passate -->
+  <div class="row g-3" id="past-alerts"></div>
 </main>
 
 <footer class="bg-dark text-white text-center p-3 mt-4">
@@ -159,6 +72,6 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="js/allerte.js"></script>
 </body>
 </html>
