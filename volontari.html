@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diventa Volontario - Protezione Civile Grottammare</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Custom Style -->
+  <style>
+    body {
+      background: #f5f6fa;
+    }
+
+    .page-title {
+      font-size: 2.7rem;
+      font-weight: 900;
+      color: #004a99;
+      text-align: center;
+      margin-top: 30px;
+      text-transform: uppercase;
+    }
+
+    .card-custom {
+      border-radius: 14px;
+      border: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 25px;
+      background: #fff;
+      margin-bottom: 20px;
+    }
+
+    .btn-custom {
+      background: #004a99;
+      color: #fff;
+      font-size: 1.2rem;
+      padding: 10px 18px;
+      border-radius: 8px;
+      transition: 0.3s;
+    }
+    .btn-custom:hover {
+      background: #003976;
+      transform: translateY(-3px);
+    }
+
+    a.download-link {
+      font-size: 1.1rem;
+      color: #004a99;
+      font-weight: 600;
+      display: block;
+      margin-bottom: 10px;
+      transition: 0.3s;
+    }
+    a.download-link:hover {
+      color: #002d5c;
+      text-decoration: underline;
+    }
+
+  </style>
+</head>
+<body>
+
+<header class="navbar navbar-expand-lg navbar-dark bg-primary sticky-top" style="background:#004a99 !important;">
+  <div class="container-fluid">
+
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png" alt="Logo" height="60">
+    </a>
+
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+      <ul class="navbar-nav align-items-center">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
+        <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
+        <li class="nav-item"><a class="nav-link active" href="volontari.html">Volontari</a></li>
+        <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
+
+  </div>
+</header>
+
+<h1 class="page-title">Diventa volontario</h1>
+
+<div class="container mt-4">
+
+  <!-- Informazioni Generali -->
+  <div class="card-custom">
+    <h3><i class="fas fa-users me-2"></i>Chi può diventare volontario?</h3>
+    <p>
+      Chiunque abbia compiuto i 18 anni e abbia la volontà di aiutare la comunità può entrare a far parte del 
+      <strong>Gruppo Comunale di Protezione Civile di Grottammare</strong>.  
+      Non è richiesta esperienza: la formazione viene fornita gratuitamente.
+    </p>
+  </div>
+
+  <!-- Cosa Fa un Volontario -->
+  <div class="card-custom">
+    <h3><i class="fas fa-handshake-angle me-2"></i>Cosa fanno i volontari?</h3>
+    <ul>
+      <li>Supporto in caso di emergenze o calamità</li>
+      <li>Attività di prevenzione sul territorio</li>
+      <li>Assistenza durante eventi e manifestazioni</li>
+      <li>Monitoraggi ambientali e meteo</li>
+      <li>Formazione continua e esercitazioni</li>
+    </ul>
+  </div>
+
+  <!-- Documenti da Scaricare -->
+  <div class="card-custom">
+    <h3><i class="fas fa-file-arrow-down me-2"></i>Documenti da scaricare</h3>
+    <p>Compila questi moduli e consegnali presso la sede della Protezione Civile:</p>
+
+    <!-- Qui metti i tuoi file nella cartella /img o preferita -->
+    <a href="doc/domanda_iscrizione.pdf" class="download-link" download>
+      📄 Domanda di iscrizione volontario
+    </a>
+
+    <a href="doc/informativa_privacy.pdf" class="download-link" download>
+      🔒 Informativa privacy
+    </a>
+
+    <a href="doc/regolamento_gruppo.pdf" class="download-link" download>
+      📘 Regolamento del gruppo comunale
+    </a>
+
+    <p class="mt-3"><strong>Assicurati di inserire tutti i documenti richiesti.</strong></p>
+  </div>
+
+  <!-- Pulsante Contatti -->
+  <div class="text-center mt-4">
+    <a href="contatti.html" class="btn btn-custom">
+      <i class="fas fa-envelope me-2"></i>Contattaci per informazioni
+    </a>
+  </div>
+
+</div>
+
+<footer class="bg-dark text-white text-center p-3 mt-4">
+  © 2025 Protezione Civile Grottammare
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
