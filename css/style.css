@@ -1,7 +1,7 @@
 /* ===== BODY ===== */
 body {
   font-family: 'Poppins', sans-serif;
-  background: #f5f6fa;
+  background: #fdf6e3; /* sfondo chiaro giallo panna */
   color: #333;
   margin: 0;
   padding: 0;
@@ -10,13 +10,13 @@ body {
 
 /* ===== NAVBAR ===== */
 .navbar {
-  background: rgba(0, 74, 153, 0.95);
+  background: rgba(243, 196, 15, 0.95); /* giallo chiaro */
   padding: 1rem 2rem;
   transition: 0.4s;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 .navbar.scrolled {
-  background: #004a99;
+  background: #f1c40f; /* giallo più intenso */
   box-shadow: 0 6px 30px rgba(0,0,0,0.2);
 }
 
@@ -32,12 +32,12 @@ body {
   font-size: 1.2rem;
   margin: 0 15px;
   font-weight: 600;
-  color: #fff !important;
+  color: #004a99 !important; /* blu moderato */
   position: relative;
   transition: all 0.3s ease;
 }
 .nav-link:hover {
-  color: #f1c40f !important; /* Giallo Protezione Civile */
+  color: #d35400 !important; /* arancio caldo */
   transform: translateY(-3px);
 }
 .nav-link::after {
@@ -45,7 +45,7 @@ body {
   position: absolute;
   width: 0;
   height: 3px;
-  background: #f1c40f;
+  background: #004a99;
   left: 50%;
   bottom: -5px;
   transform: translateX(-50%);
@@ -61,7 +61,7 @@ body {
   font-weight: 900;
   text-align: center;
   margin: 40px 0 20px;
-  color: #004a99; /* Blu Protezione Civile */
+  color: #004a99; /* blu per titoli */
   text-transform: uppercase;
   letter-spacing: 2px;
   animation: fadeInDown 1s ease-out forwards;
@@ -126,7 +126,7 @@ body {
   border-left: 6px solid #c0392b;
 }
 
-/* Fade-in già definita, integrata */
+/* Fade-in */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -150,7 +150,7 @@ body {
   background-color: #fff;
   padding: 20px;
   margin-bottom: 20px;
-  border-left: 5px solid #004a99; /* blu Protezione Civile */
+  border-left: 5px solid #004a99; /* blu moderato */
   border-radius: 12px;
   box-shadow: 0 3px 15px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
@@ -188,7 +188,7 @@ body {
 }
 .mezzo-card-body h5 {
   font-weight: 700;
-  color: #004a99; /* blu Protezione Civile */
+  color: #004a99; /* blu moderato */
 }
 .mezzo-card-body p {
   font-size: 0.95rem;
@@ -203,11 +203,11 @@ body {
 
 /* ===== FOOTER ===== */
 footer {
-  background: #004a99; /* blu Protezione Civile */
-  color: #fff;
+  background: #f1c40f; /* giallo */
+  color: #004a99; /* blu per testo */
   padding: 25px 0;
   text-align: center;
   box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
 }
-footer a { color: #f1c40f; text-decoration: none; }
+footer a { color: #004a99; text-decoration: none; }
 footer a:hover { text-decoration: underline; }
