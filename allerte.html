@@ -5,35 +5,28 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Allerte - Protezione Civile Grottammare</title>
 
-<!-- Favicon -->
 <link rel="icon" href="img/favicon.ico" type="image/x-icon">
-
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<!-- Custom Style -->
 <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
 
-<!-- NAVBAR IDENTICA ALLE ALTRE PAGINE -->
+<!-- NAVBAR PULITA -->
 <header class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="img/logo.png" alt="Logo" class="logo-small me-2">
-      <span class="fw-bold">Protezione Civile</span>
+      <img src="img/logo.png" class="logo-clean me-2" alt="Logo">
+      <span class="fw-semibold">Protezione Civile Grottammare</span>
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
         <li class="nav-item"><a class="nav-link active" href="allerte.html">Allerte</a></li>
@@ -44,32 +37,39 @@
   </div>
 </header>
 
-<!-- CONTENUTO PAGINA -->
-<main class="container mt-5">
+<main class="container py-5">
 
-  <div class="text-center mb-4">
-    <h2><i class="fas fa-triangle-exclamation text-warning me-2"></i>Allerte in corso</h2>
-    <p class="text-muted">Situazione aggiornata e storico delle allerte meteo</p>
+  <!-- TITOLO PAGINA -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold">
+      <i class="fas fa-triangle-exclamation text-warning me-2"></i>
+      Allerte Meteo
+    </h2>
+    <p class="text-muted">Aggiornamenti ufficiali su allerte in corso e archivio dei giorni precedenti</p>
   </div>
 
-  <!-- Ultima allerta -->
-  <div id="latest-alert" class="latest-alert fade-in"></div>
+  <!-- ALLERTA IN CORSO -->
+  <section class="mb-5">
+    <h4 class="fw-bold mb-3">Allerta in corso</h4>
+    <div id="latest-alert" class="alert-box-clean">Caricamento...</div>
+  </section>
 
-  <hr class="my-5">
+  <!-- ALLERTE PASSATE -->
+  <section>
+    <h4 class="fw-bold mb-4">
+      <i class="fas fa-clock-rotate-left me-2 text-primary"></i>
+      Allerte precedenti
+    </h4>
 
-  <h3 class="text-center mb-4">
-    <i class="fas fa-clock-rotate-left text-primary me-2"></i>Allerte passate
-  </h3>
-
-  <div class="row g-4" id="past-alerts"></div>
+    <div class="row g-4" id="past-alerts"></div>
+  </section>
 
 </main>
 
-<footer class="bg-dark text-white text-center p-3 mt-5">
+<footer class="bg-dark text-white text-center p-3">
   © 2025 Protezione Civile Grottammare
 </footer>
 
-<!-- JS -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/allerte.js"></script>
 
