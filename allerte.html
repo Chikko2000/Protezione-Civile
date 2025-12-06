@@ -20,14 +20,18 @@
 </head>
 <body>
 
+<!-- NAVBAR IDENTICA ALLE ALTRE PAGINE -->
 <header class="navbar navbar-expand-lg navbar-dark sticky-top">
   <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <img src="img/logo.png" alt="Logo Protezione Civile Grottammare">
+    <a class="navbar-brand d-flex align-items-center" href="index.html">
+      <img src="img/logo.png" alt="Logo" class="logo-small me-2">
+      <span class="fw-bold">Protezione Civile</span>
     </a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
       <span class="navbar-toggler-icon"></span>
     </button>
+
     <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
       <ul class="navbar-nav align-items-center">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
@@ -40,15 +44,25 @@
   </div>
 </header>
 
+<!-- CONTENUTO PAGINA -->
 <main class="container mt-5">
-  <h2 class="text-center mb-4">Allerte in corso</h2>
+
+  <div class="text-center mb-4">
+    <h2><i class="fas fa-triangle-exclamation text-warning me-2"></i>Allerte in corso</h2>
+    <p class="text-muted">Situazione aggiornata e storico delle allerte meteo</p>
+  </div>
 
   <!-- Ultima allerta -->
   <div id="latest-alert" class="latest-alert fade-in"></div>
 
-  <!-- Allerte passate -->
-  <h3 class="text-center my-4">Allerte passate</h3>
+  <hr class="my-5">
+
+  <h3 class="text-center mb-4">
+    <i class="fas fa-clock-rotate-left text-primary me-2"></i>Allerte passate
+  </h3>
+
   <div class="row g-4" id="past-alerts"></div>
+
 </main>
 
 <footer class="bg-dark text-white text-center p-3 mt-5">
