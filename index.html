@@ -11,75 +11,10 @@
 <!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<style>
-  body {
-    background: #f5f6fa;
-    font-family: 'Poppins', sans-serif;
-  }
+<!-- Custom Style -->
+<link rel="stylesheet" href="css/style.css">
 
-  /* HEADER */
-  .navbar {
-    background: #004a99 !important;
-    padding: 1rem 2rem;
-  }
-  .navbar-brand img { height: 60px; transition: 0.3s; }
-  .navbar-brand img:hover { transform: scale(1.1); }
-
-  .nav-link {
-    font-size: 1.2rem;
-    margin: 0 12px;
-    font-weight: 500;
-    color: #fff !important;
-    position: relative;
-    transition: 0.3s;
-  }
-  .nav-link:hover { color: #ffea00 !important; transform: translateY(-3px); }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 3px;
-    background: #ffea00;
-    left: 50%;
-    bottom: -5px;
-    transition: 0.3s;
-    transform: translateX(-50%);
-  }
-  .nav-link:hover::after { width: 50%; }
-
-  /* TITOLO GRANDE */
-  .big-title {
-    font-size: 3rem;
-    font-weight: 900;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    color: #004a99;
-    text-transform: uppercase;
-  }
-
-  /* CAROUSEL */
-  .carousel-container { max-width: 1200px; margin: 0 auto; }
-  .carousel-item img { height: 500px; object-fit: cover; border-radius: 12px; }
-
-  /* COMUNICAZIONI */
-  #comms .card {
-    background: #fff;
-    border-radius: 12px;
-    padding: 20px;
-    margin-bottom: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 0.6s forwards;
-  }
-  @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
-
-  footer { margin-top: 40px; }
-
-</style>
 </head>
-
 <body>
 
 <header class="navbar navbar-expand-lg navbar-dark sticky-top">
@@ -102,7 +37,8 @@
   </div>
 </header>
 
-<h1 class="big-title">Protezione Civile Grottammare</h1>
+<!-- TITOLO -->
+<h1 class="big-title text-center">Protezione Civile Grottammare</h1>
 
 <main class="container mt-4">
 
@@ -111,13 +47,13 @@
     <div id="carouselHome" class="carousel slide" data-bs-ride="carousel">
       <div class="carousel-inner">
         <div class="carousel-item active">
-          <img src="img/slide1.jpg" class="d-block w-100" alt="Slide 1">
+          <img src="img/slide1.jpg" class="d-block w-100 rounded" alt="Slide 1">
         </div>
         <div class="carousel-item">
-          <img src="img/slide2.jpg" class="d-block w-100" alt="Slide 2">
+          <img src="img/slide2.jpg" class="d-block w-100 rounded" alt="Slide 2">
         </div>
         <div class="carousel-item">
-          <img src="img/slide3.jpg" class="d-block w-100" alt="Slide 3">
+          <img src="img/slide3.jpg" class="d-block w-100 rounded" alt="Slide 3">
         </div>
       </div>
       <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev">
@@ -128,21 +64,27 @@
       </button>
     </div>
   </div>
-
   <!-- COMUNICAZIONI -->
-  <section class="mb-4">
-    <h2>Ultime comunicazioni</h2>
+  <section class="mb-5">
+    <h2 class="text-primary mb-4">Ultime comunicazioni</h2>
     <div id="comms"></div>
+  </section>
+
+  <!-- ALLERTE -->
+  <section class="mb-5">
+    <h2 class="text-primary mb-4">Allerte in corso</h2>
+    <div id="alerts"></div>
   </section>
 
 </main>
 
-<footer class="bg-dark text-white text-center p-3">
+<footer class="bg-primary text-white text-center p-3">
   © 2025 Protezione Civile Grottammare
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="js/comms.js"></script>
+<script src="js/alerts.js"></script>
 
 </body>
 </html>
