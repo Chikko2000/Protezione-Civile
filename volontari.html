@@ -1,157 +1,113 @@
-<!DOCTYPE html>
-<html lang="it">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Diventa Volontario - Protezione Civile Grottammare</title>
-
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/logo.png">
-
-  <!-- Bootstrap -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-  <!-- FontAwesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-  <!-- Custom Style -->
-  <style>
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: #f5f6fa;
-      color: #333;
-    }
-
-    /* Navbar */
-    .navbar { background: rgba(0,74,153,0.95); padding: 1rem; transition: 0.4s; }
-    .navbar-brand img { height: 60px; transition: 0.3s; }
-    .navbar-brand img:hover { transform: scale(1.1); }
-    .nav-link { font-size: 1.2rem; margin: 0 12px; font-weight: 600; color: #fff !important; position: relative; transition: 0.3s; }
-    .nav-link:hover { color: #ffea00 !important; transform: translateY(-3px); }
-    .nav-link::after { content: ""; position: absolute; width: 0; height: 3px; background: #ffea00; bottom: -4px; left: 50%; transform: translateX(-50%); transition: 0.3s; }
-    .nav-link:hover::after { width: 50%; }
-
-    /* Titolo Pagina */
-    .page-title {
-      font-size: 2.7rem;
-      font-weight: 900;
-      color: #004a99;
-      text-align: center;
-      margin-top: 30px;
-      text-transform: uppercase;
-    }
-
-    /* Card */
-    .card-custom {
-      border-radius: 14px;
-      border: none;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-      padding: 25px;
-      background: #fff;
-      margin-bottom: 20px;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .card-custom:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    }
-
-    /* Pulsante */
-    .btn-custom {
-      background: #004a99;
-      color: #fff;
-      font-size: 1.2rem;
-      padding: 10px 18px;
-      border-radius: 8px;
-      transition: 0.3s;
-    }
-    .btn-custom:hover {
-      background: #003976;
-      transform: translateY(-3px);
-    }
-
-    /* Link download */
-    a.download-link {
-      font-size: 1.1rem;
-      color: #004a99;
-      font-weight: 600;
-      display: block;
-      margin-bottom: 10px;
-      transition: 0.3s;
-    }
-    a.download-link:hover {
-      color: #002d5c;
-      text-decoration: underline;
-    }
-
-  </style>
-</head>
-<body>
-
-<header class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Logo Protezione Civile Grottammare"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
-        <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
-        <li class="nav-item"><a class="nav-link active" href="volontari.html">Volontari</a></li>
-        <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
-
-<h1 class="page-title">Diventa volontario</h1>
-
-<div class="container mt-4">
-
-  <!-- Informazioni Generali -->
-  <div class="card-custom">
-    <h3><i class="fas fa-users me-2"></i>Chi può diventare volontario?</h3>
-    <p>
-      Chiunque abbia compiuto i 18 anni e abbia la volontà di aiutare la comunità può entrare a far parte del 
-      <strong>Gruppo Comunale di Protezione Civile di Grottammare</strong>.  
-      Non è richiesta esperienza: la formazione viene fornita gratuitamente.
-    </p>
-  </div>
-
-  <!-- Cosa Fa un Volontario -->
-  <div class="card-custom">
-    <h3><i class="fas fa-handshake-angle me-2"></i>Cosa fanno i volontari?</h3>
-    <ul>
-      <li>Supporto in caso di emergenze o calamità</li>
-      <li>Attività di prevenzione sul territorio</li>
-      <li>Assistenza durante eventi e manifestazioni</li>
-      <li>Monitoraggi ambientali e meteo</li>
-      <li>Formazione continua e esercitazioni</li>
-    </ul>
-  </div>
-
-  <!-- Documenti da Scaricare -->
-  <div class="card-custom">
-    <h3><i class="fas fa-file-arrow-down me-2"></i>Documenti da scaricare</h3>
-    <p>Compila questi moduli e consegnali presso la sede della Protezione Civile:</p>
-    <a href="doc/domanda_iscrizione.pdf" class="download-link" download>📄 Domanda di iscrizione volontario</a>
-    <a href="doc/informativa_privacy.pdf" class="download-link" download>🔒 Informativa privacy</a>
-    <a href="doc/regolamento_gruppo.pdf" class="download-link" download>📘 Regolamento del gruppo comunale</a>
-    <p class="mt-3"><strong>Assicurati di inserire tutti i documenti richiesti.</strong></p>
-  </div>
-
-  <!-- Pulsante Contatti -->
-  <div class="text-center mt-4">
-    <a href="contatti.html" class="btn btn-custom"><i class="fas fa-envelope me-2"></i>Contattaci per informazioni</a>
-  </div>
-
+<!-- A chi è rivolto -->
+<div class="card-custom">
+  <h3><i class="fas fa-user-check me-2"></i>A chi è rivolto</h3>
+  <p>
+    Possono fare richiesta di adesione al <strong>Gruppo Comunale di Volontariato di Protezione Civile</strong>
+    i cittadini di età non inferiore ai 18 anni, residenti o domiciliati nel Comune di Grottammare
+    o nei comuni limitrofi.
+  </p>
 </div>
 
-<footer class="bg-dark text-white text-center p-3 mt-4">
-  © 2025 Protezione Civile Grottammare
-</footer>
+<!-- Descrizione -->
+<div class="card-custom">
+  <h3><i class="fas fa-info-circle me-2"></i>Descrizione</h3>
+  <p>
+    La Protezione Civile è supportata da un gruppo comunale di volontari che opera a livello
+    territoriale e nazionale. Il gruppo svolge attività di <strong>previsione, prevenzione, soccorso</strong>
+    e aiuto nel superamento delle emergenze che possono derivare da eventi naturali, domestici,
+    industriali o commerciali.
+  </p>
+  <p>
+    Il gruppo dei volontari:
+  </p>
+  <ul>
+    <li>dispone di automezzi e attrezzature ad uso esclusivo;</li>
+    <li>ha come specializzazione primaria quella logistica e gestionale;</li>
+    <li>opera su richiesta degli organi istituzionali competenti.</li>
+  </ul>
+</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Come fare -->
+<div class="card-custom">
+  <h3><i class="fas fa-list-check me-2"></i>Come fare per aderire</h3>
+  <p>Per poter aderire ed essere operativo all’interno del gruppo occorre rispettare i seguenti requisiti:</p>
+  <ul>
+    <li>Essere maggiorenne;</li>
+    <li>Essere residente o domiciliato nel Comune di Grottammare o in un comune limitrofo;</li>
+    <li>Essere in possesso di idoneità psico-fisica, certificata dal medico curante;</li>
+    <li>Non avere condanne o procedimenti penali che pregiudichino il rapporto con la Pubblica Amministrazione;</li>
+    <li>Essere disposto a frequentare corsi di formazione e aggiornamento;</li>
+    <li>Sottoporsi alle verifiche periodiche previste dal D.Lgs. 81/2008.</li>
+  </ul>
+</div>
 
-</body>
-</html>
+<!-- Astensione o ritiro -->
+<div class="card-custom">
+  <h3><i class="fas fa-person-walking-arrow-right me-2"></i>Astensione temporanea o ritiro dal gruppo</h3>
+  <p>
+    I volontari possono uscire dal gruppo in qualsiasi momento restituendo tesserino,
+    uniforme ed equipaggiamento.  
+    In caso di esigenze lavorative o personali, è possibile astenersi temporaneamente dalle attività,
+    comunicandolo preventivamente al coordinatore.
+  </p>
+</div>
+
+<!-- Quando e come presentare la richiesta -->
+<div class="card-custom">
+  <h3><i class="fas fa-file-signature me-2"></i>Quando e come presentare la richiesta</h3>
+  <p>
+    La domanda di iscrizione può essere presentata al Comune di Grottammare:
+  </p>
+  <ul>
+    <li><strong>Di persona</strong> presso l’Ufficio Protocollo;</li>
+    <li><strong>PEC:</strong> comune.grottammare.protocollo@emarche.it;</li>
+    <li><strong>Email:</strong> protocollo@comune.grottammare.ap.it.</li>
+  </ul>
+</div>
+
+<!-- Cosa si ottiene -->
+<div class="card-custom">
+  <h3><i class="fas fa-id-card me-2"></i>Cosa si ottiene</h3>
+  <p>
+    L’adesione al gruppo comunale di Protezione Civile come volontario operativo.
+  </p>
+</div>
+
+<!-- Tempi e scadenze -->
+<div class="card-custom">
+  <h3><i class="fas fa-clock me-2"></i>Tempi e scadenze</h3>
+  <p>
+    Il procedimento si conclude entro <strong>30 giorni</strong> dall’invio della richiesta.
+  </p>
+</div>
+
+<!-- Procedure collegate all'esito -->
+<div class="card-custom">
+  <h3><i class="fas fa-clipboard-check me-2"></i>Procedure collegate all’esito</h3>
+  <p>
+    Ogni domanda viene valutata dal coordinamento del gruppo comunale.
+  </p>
+</div>
+
+<!-- Condizioni di servizio -->
+<div class="card-custom">
+  <h3><i class="fas fa-scale-balanced me-2"></i>Condizioni di servizio</h3>
+  <p>
+    Per conoscere nel dettaglio scadenze, requisiti e altre informazioni, consulta i 
+    <a href="doc/condizioni_servizio.pdf" class="download-link" download>
+      📄 Termini e condizioni di servizio
+    </a>.
+  </p>
+</div>
+
+<!-- Riepilogo documenti necessari -->
+<div class="card-custom">
+  <h3><i class="fas fa-folder-open me-2"></i>Cosa serve (documenti richiesti)</h3>
+  <ul>
+    <li>Domanda di iscrizione</li>
+    <li>Copia del documento d’identità</li>
+    <li>Copia del permesso di soggiorno (se richiesto)</li>
+    <li>Scheda dei dati personali (allegata alla domanda)</li>
+    <li>Informativa GDPR (Regolamento 2016/679)</li>
+  </ul>
+</div>
