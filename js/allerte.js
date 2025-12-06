@@ -1,5 +1,5 @@
 // JS per pagina allerte
-fetch('js/allerte.json')
+fetch('data/allerte.json')
   .then(res => res.json())
   .then(data => {
     if (!data || data.length === 0) return;
