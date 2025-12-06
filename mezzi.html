@@ -19,15 +19,15 @@
 
 <!-- Custom Style -->
 <style>
-body { font-family: 'Poppins', sans-serif; background: #f5f6fa; color: #333; }
+body { font-family: 'Poppins', sans-serif; background: #fff9e6; color: #333; }
 
 /* Navbar */
-.navbar { background: rgba(0,74,153,0.95); padding: 1rem; transition: 0.4s; }
-.navbar-brand img { height: 60px; transition: 0.3s; }
+.navbar { background: #f1c40f; padding: 1rem; transition: 0.4s; }
+.navbar-brand img { height: 60px; transition: transform 0.3s; }
 .navbar-brand img:hover { transform: scale(1.1); }
-.nav-link { font-size: 1.2rem; margin: 0 12px; font-weight: 600; color: #fff !important; position: relative; transition: 0.3s; }
-.nav-link:hover { color: #ffea00 !important; transform: translateY(-3px); }
-.nav-link::after { content: ""; position: absolute; width: 0; height: 3px; background: #ffea00; bottom: -4px; left: 50%; transform: translateX(-50%); transition: 0.3s; }
+.nav-link { font-size: 1.2rem; margin: 0 12px; font-weight: 600; color: #004a99 !important; position: relative; transition: 0.3s; }
+.nav-link:hover { color: #d35400 !important; transform: translateY(-3px); }
+.nav-link::after { content: ""; position: absolute; width: 0; height: 3px; background: #004a99; bottom: -4px; left: 50%; transform: translateX(-50%); transition: 0.3s; }
 .nav-link:hover::after { width: 50%; }
 
 /* Hero Image */
@@ -37,11 +37,12 @@ body { font-family: 'Poppins', sans-serif; background: #f5f6fa; color: #333; }
   display: flex; justify-content: center; align-items: center; color: white; margin-bottom: 40px;
 }
 .hero-img::after {
-  content: ""; position: absolute; inset: 0; background: rgba(0,0,0,0.45);
+  content: ""; position: absolute; inset: 0; background: rgba(241,196,15,0.45);
 }
 .hero-img h1 {
   position: relative; z-index: 2;
   font-size: 3rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 900;
+  color: #004a99;
 }
 
 /* Card Mezzi */
@@ -49,12 +50,12 @@ body { font-family: 'Poppins', sans-serif; background: #f5f6fa; color: #333; }
   background: #fff; border-radius: 15px; overflow: hidden;
   box-shadow: 0 4px 14px rgba(0,0,0,0.1);
   transition: transform 0.3s, box-shadow 0.3s, border 0.3s;
-  cursor: pointer; border-top: 4px solid #f1c40f; /* bordo giallo */
+  cursor: pointer; border-top: 4px solid #f1c40f;
 }
 .mezzo-card:hover {
   transform: translateY(-8px) scale(1.05);
   box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  border-top-color: #004a99; /* bordo blu al hover */
+  border-top-color: #004a99;
 }
 .mezzo-card img { width: 100%; height: 200px; object-fit: cover; }
 .mezzo-card-body { padding: 15px; }
@@ -65,12 +66,20 @@ body { font-family: 'Poppins', sans-serif; background: #f5f6fa; color: #333; }
 .fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
+/* Footer */
+footer {
+  background: #f1c40f; color: #004a99;
+  padding: 25px 0; text-align: center;
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+}
+footer a { color: #004a99; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
 </style>
 </head>
 
 <body>
 
-<header class="navbar navbar-expand-lg navbar-dark sticky-top">
+<header class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Logo Protezione Civile Grottammare"></a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
@@ -93,46 +102,124 @@ body { font-family: 'Poppins', sans-serif; background: #f5f6fa; color: #333; }
 
 <main class="container mb-5">
   <div class="row g-4">
-    <!-- CARD MEZZO 1 -->
+
+    <!-- Funzione per generare le card -->
+    <!-- Mezzo 1: Fiat 16 -->
     <div class="col-md-4 fade-in" style="animation-delay:0s">
-      <a href="img/mezzo1.jpg" data-lightbox="mezzi" data-title="Pick-up 4x4">
+      <a href="img/mezzo1_1.jpg" data-lightbox="mezzo1" data-title="Fiat 16">
         <div class="mezzo-card">
-          <img src="img/mezzo1.jpg" alt="Pick-up 4x4">
+          <img src="img/mezzo1_1.jpg" alt="Fiat 16">
           <div class="mezzo-card-body">
-            <h5>Pick-up 4x4</h5>
-            <p>Interventi rapidi e fuoristrada</p>
+            <h5>Fiat 16</h5>
+            <p>Interventi rapidi e versatili</p>
           </div>
         </div>
       </a>
+      <a href="img/mezzo1_2.jpg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
+      <a href="img/mezzo1_3.jpg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
+      <a href="img/mezzo1_4.jpg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
     </div>
-    <!-- CARD MEZZO 2 -->
+
+    <!-- Mezzo 2: Land Rover Defender -->
+    <div class="col-md-4 fade-in" style="animation-delay:0.1s">
+      <a href="img/mezzo2_1.jpg" data-lightbox="mezzo2" data-title="Land Rover Defender">
+        <div class="mezzo-card">
+          <img src="img/mezzo2_1.jpg" alt="Land Rover Defender">
+          <div class="mezzo-card-body">
+            <h5>Land Rover Defender</h5>
+            <p>Fuoristrada e sicurezza</p>
+          </div>
+        </div>
+      </a>
+      <a href="img/mezzo2_2.jpg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+      <a href="img/mezzo2_3.jpg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+      <a href="img/mezzo2_4.jpg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+    </div>
+
+    <!-- Mezzo 3: Ducato -->
     <div class="col-md-4 fade-in" style="animation-delay:0.2s">
-      <a href="img/mezzo2.jpg" data-lightbox="mezzi" data-title="Modulo AIB">
+      <a href="img/mezzo3_1.jpg" data-lightbox="mezzo3" data-title="Ducato (Sala Operativa Mobile)">
         <div class="mezzo-card">
-          <img src="img/mezzo2.jpg" alt="Modulo AIB">
+          <img src="img/mezzo3_1.jpg" alt="Ducato">
           <div class="mezzo-card-body">
-            <h5>Modulo AIB</h5>
-            <p>Equipaggiato antincendio boschivo</p>
+            <h5>Ducato</h5>
+            <p>Sala operativa mobile</p>
           </div>
         </div>
       </a>
+      <a href="img/mezzo3_2.jpg" data-lightbox="mezzo3" data-title="Ducato"></a>
+      <a href="img/mezzo3_3.jpg" data-lightbox="mezzo3" data-title="Ducato"></a>
+      <a href="img/mezzo3_4.jpg" data-lightbox="mezzo3" data-title="Ducato"></a>
     </div>
-    <!-- CARD MEZZO 3 -->
-    <div class="col-md-4 fade-in" style="animation-delay:0.4s">
-      <a href="img/mezzo3.jpg" data-lightbox="mezzi" data-title="Autobotte">
+
+    <!-- Mezzo 4: Bremach -->
+    <div class="col-md-4 fade-in" style="animation-delay:0.3s">
+      <a href="img/mezzo4_1.jpg" data-lightbox="mezzo4" data-title="Bremach">
         <div class="mezzo-card">
-          <img src="img/mezzo3.jpg" alt="Autobotte">
+          <img src="img/mezzo4_1.jpg" alt="Bremach">
+          <div class="mezzo-card-body">
+            <h5>Bremach</h5>
+            <p>Robusto e affidabile</p>
+          </div>
+        </div>
+      </a>
+      <a href="img/mezzo4_2.jpg" data-lightbox="mezzo4" data-title="Bremach"></a>
+      <a href="img/mezzo4_3.jpg" data-lightbox="mezzo4" data-title="Bremach"></a>
+      <a href="img/mezzo4_4.jpg" data-lightbox="mezzo4" data-title="Bremach"></a>
+    </div>
+
+    <!-- Mezzo 5: Scudo -->
+    <div class="col-md-4 fade-in" style="animation-delay:0.4s">
+      <a href="img/mezzo5_1.jpg" data-lightbox="mezzo5" data-title="Scudo">
+        <div class="mezzo-card">
+          <img src="img/mezzo5_1.jpg" alt="Scudo">
+          <div class="mezzo-card-body">
+            <h5>Scudo</h5>
+            <p>Trasporto leggero e veloce</p>
+          </div>
+        </div>
+      </a>
+      <a href="img/mezzo5_2.jpg" data-lightbox="mezzo5" data-title="Scudo"></a>
+      <a href="img/mezzo5_3.jpg" data-lightbox="mezzo5" data-title="Scudo"></a>
+      <a href="img/mezzo5_4.jpg" data-lightbox="mezzo5" data-title="Scudo"></a>
+    </div>
+
+    <!-- Mezzo 6: Panda 4x4 -->
+    <div class="col-md-4 fade-in" style="animation-delay:0.5s">
+      <a href="img/mezzo6_1.jpg" data-lightbox="mezzo6" data-title="Panda 4x4">
+        <div class="mezzo-card">
+          <img src="img/mezzo6_1.jpg" alt="Panda 4x4">
+          <div class="mezzo-card-body">
+            <h5>Panda 4x4</h5>
+            <p>Ideale per terreni impervi</p>
+          </div>
+        </div>
+      </a>
+      <a href="img/mezzo6_2.jpg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+      <a href="img/mezzo6_3.jpg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+      <a href="img/mezzo6_4.jpg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+    </div>
+
+    <!-- Mezzo 7: Autobotte -->
+    <div class="col-md-4 fade-in" style="animation-delay:0.6s">
+      <a href="img/mezzo7_1.jpg" data-lightbox="mezzo7" data-title="Autobotte">
+        <div class="mezzo-card">
+          <img src="img/mezzo7_1.jpg" alt="Autobotte">
           <div class="mezzo-card-body">
             <h5>Autobotte</h5>
             <p>Trasporto acqua per emergenze</p>
           </div>
         </div>
       </a>
+      <a href="img/mezzo7_2.jpg" data-lightbox="mezzo7" data-title="Autobotte"></a>
+      <a href="img/mezzo7_3.jpg" data-lightbox="mezzo7" data-title="Autobotte"></a>
+      <a href="img/mezzo7_4.jpg" data-lightbox="mezzo7" data-title="Autobotte"></a>
     </div>
+
   </div>
 </main>
 
-<footer class="bg-dark text-white text-center p-3 mt-4">
+<footer>
   © 2025 Protezione Civile Grottammare
 </footer>
 
