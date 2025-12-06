@@ -1,4 +1,4 @@
-fetch('js/comms.json')
+fetch('data/comms.json')
   .then(res => res.json())
   .then(data => {
     if(data.length === 0) return;
