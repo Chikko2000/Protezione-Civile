@@ -5,27 +5,131 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Allerte - Protezione Civile Grottammare</title>
 
-<link rel="icon" href="img/favicon.ico" type="image/x-icon">
+<link rel="icon" type="image/png" href="img/logo.png">
+
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<link rel="stylesheet" href="style.css">
+
+<style>
+:root {
+  --primary: #0059b3;
+  --accent: #f4c400;
+  --bg: #f5f7fb;
+  --card: #ffffff;
+  --border: #e5e7eb;
+  --text: #1f2937;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+  margin: 0;
+}
+
+/* NAVBAR */
+.navbar {
+  background: #ffffff;
+  border-bottom: 1px solid var(--border);
+}
+
+.navbar-brand img {
+  height: 60px;
+}
+
+.nav-link {
+  font-weight: 700;
+  color: var(--primary) !important;
+}
+
+.nav-link.active {
+  border-bottom: 3px solid var(--accent);
+}
+
+/* HERO */
+.hero {
+  background:
+    linear-gradient(rgba(0,48,98,0.6), rgba(0,48,98,0.6)),
+    url('img/Mezzi.jpeg') center/cover;
+  color: white;
+  padding: 80px 20px;
+  text-align: center;
+}
+
+.hero h1 {
+  font-weight: 900;
+}
+
+/* MAPPA */
+.map-container {
+  width: 100%;
+  height: 500px;
+  border-radius: 18px;
+  overflow: hidden;
+  border: 2px solid #dbeafe;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+}
+
+.map-container iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* ALLERTA IN CORSO */
+.alert-box-clean {
+  background: white;
+  border-left: 6px solid #f4c400;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+}
+
+/* CARD ALLERTE */
+.alert-card {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  transition: 0.3s;
+  height: 100%;
+}
+
+.alert-card:hover {
+  transform: translateY(-5px);
+}
+
+.alert-date {
+  font-size: 0.9rem;
+  color: gray;
+}
+
+.alert-level {
+  font-weight: bold;
+}
+
+/* FOOTER */
+footer {
+  background: #ffffff;
+  border-top: 1px solid var(--border);
+  padding: 20px;
+  text-align: center;
+}
+</style>
 
 </head>
 <body>
 
-<!-- NAVBAR PULITA -->
-<header class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container">
-    <a class="navbar-brand d-flex align-items-center" href="index.html">
-      <img src="img/logo.png" class="logo-clean me-2" alt="Logo">
-      <span class="fw-semibold">Protezione Civile Grottammare</span>
+<header class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png">
     </a>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
+    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
+      <i class="fas fa-bars"></i>
     </button>
 
-    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div class="collapse navbar-collapse justify-content-center" id="nav">
       <ul class="navbar-nav">
         <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
         <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
@@ -37,27 +141,46 @@
   </div>
 </header>
 
+<!-- HERO -->
+<section class="hero">
+  <h1>Allerte Meteo</h1>
+  <p>Situazione aggiornata e storico allerte</p>
+</section>
+
 <main class="container py-5">
 
-  <!-- TITOLO PAGINA -->
-  <div class="text-center mb-5">
-    <h2 class="fw-bold">
-      <i class="fas fa-triangle-exclamation text-warning me-2"></i>
-      Allerte Meteo
-    </h2>
-    <p class="text-muted">Aggiornamenti ufficiali su allerte in corso e archivio dei giorni precedenti</p>
-  </div>
+  <!-- MAPPA -->
+  <section class="mb-5">
+    <h4 class="fw-bold mb-3">
+      <i class="fas fa-map me-2 text-primary"></i>
+      Situazione in tempo reale
+    </h4>
+
+    <p class="text-muted">
+      Fonte ufficiale Regione Marche - aggiornamento automatico
+    </p>
+
+    <div class="map-container">
+      <iframe src="https://allertameteo.regione.marche.it/" loading="lazy"></iframe>
+    </div>
+  </section>
 
   <!-- ALLERTA IN CORSO -->
   <section class="mb-5">
-    <h4 class="fw-bold mb-3">Allerta in corso</h4>
-    <div id="latest-alert" class="alert-box-clean">Caricamento...</div>
+    <h4 class="fw-bold mb-3">
+      <i class="fas fa-triangle-exclamation text-warning me-2"></i>
+      Allerta in corso
+    </h4>
+
+    <div id="latest-alert" class="alert-box-clean">
+      Caricamento...
+    </div>
   </section>
 
   <!-- ALLERTE PASSATE -->
   <section>
     <h4 class="fw-bold mb-4">
-      <i class="fas fa-clock-rotate-left me-2 text-primary"></i>
+      <i class="fas fa-clock me-2 text-primary"></i>
       Allerte precedenti
     </h4>
 
@@ -66,7 +189,7 @@
 
 </main>
 
-<footer class="bg-dark text-white text-center p-3">
+<footer>
   © 2025 Protezione Civile Grottammare
 </footer>
 
