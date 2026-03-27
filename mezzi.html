@@ -13,7 +13,6 @@
 
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 
   <style>
     :root {
@@ -139,24 +138,8 @@
       max-width: 760px;
     }
 
-    .section-intro {
-      text-align: center;
-      padding: 52px 20px 14px;
-    }
-
-    .section-intro h2 {
-      color: var(--primary);
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 10px;
-    }
-
-    .section-intro p {
-      max-width: 780px;
-      margin: 0 auto;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 1rem;
+    .cards-section {
+      padding: 52px 0 20px;
     }
 
     .mezzo-card {
@@ -297,15 +280,52 @@
       background: #fbfcfe;
     }
 
-    .modal-main-image {
+    .modal-carousel-wrap {
+      margin-bottom: 20px;
+    }
+
+    .carousel,
+    .carousel-inner,
+    .carousel-item {
+      border-radius: 18px;
+      overflow: hidden;
+    }
+
+    .carousel-item img {
       width: 100%;
       height: 340px;
       object-fit: cover;
-      border-radius: 18px;
       display: block;
-      margin-bottom: 20px;
       background: #eef1f5;
       box-shadow: 0 8px 22px rgba(0,0,0,0.08);
+    }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+      width: 52px;
+      opacity: 1;
+    }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+      background-color: rgba(0, 63, 128, 0.82);
+      border-radius: 50%;
+      background-size: 55% 55%;
+      width: 42px;
+      height: 42px;
+      padding: 20px;
+    }
+
+    .carousel-indicators {
+      margin-bottom: 10px;
+    }
+
+    .carousel-indicators [data-bs-target] {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: none;
+      background-color: rgba(255,255,255,0.75);
     }
 
     .detail-box {
@@ -313,7 +333,6 @@
       border: 1px solid var(--border);
       border-radius: 18px;
       padding: 18px;
-      margin-bottom: 20px;
     }
 
     .detail-box h4 {
@@ -338,43 +357,20 @@
       line-height: 1.55;
     }
 
+    .detail-list li:last-child {
+      margin-bottom: 0;
+    }
+
     .detail-list i {
       color: var(--accent);
       margin-top: 4px;
-    }
-
-    .thumb-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-    }
-
-    .thumb-grid a {
-      display: block;
-      border-radius: 14px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-      background: white;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .thumb-grid a:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 18px rgba(0,0,0,0.08);
-    }
-
-    .thumb-grid img {
-      width: 100%;
-      height: 92px;
-      object-fit: cover;
-      display: block;
     }
 
     footer {
       margin-top: 55px;
       background: #ffffff;
       border-top: 1px solid var(--border);
-      padding: 28px 20px;
+      padding: 24px 20px;
     }
 
     .footer-inner {
@@ -383,16 +379,10 @@
       text-align: center;
     }
 
-    .footer-title {
-      color: var(--primary);
-      font-weight: 800;
-      margin-bottom: 8px;
-      font-size: 1.05rem;
-    }
-
     .footer-text {
       color: var(--muted);
-      margin-bottom: 16px;
+      margin-bottom: 14px;
+      font-size: 1rem;
     }
 
     .social-links {
@@ -439,10 +429,6 @@
       .nav-link {
         margin: 8px 0;
       }
-
-      .thumb-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
     }
 
     @media (max-width: 767px) {
@@ -454,16 +440,8 @@
         height: 215px;
       }
 
-      .modal-main-image {
+      .carousel-item img {
         height: 230px;
-      }
-
-      .thumb-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .thumb-grid img {
-        height: 88px;
       }
 
       .nav-link {
@@ -499,22 +477,12 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Mezzi</h1>
-      <p>
-        I veicoli utilizzati nelle attività operative, di supporto logistico, monitoraggio e assistenza sul territorio.
-      </p>
+      <p>I veicoli utilizzati nelle attività operative, di supporto logistico, monitoraggio e assistenza sul territorio.</p>
     </div>
   </section>
 
-  <main class="container mb-5">
-    <div class="section-intro">
-      <h2>Parco mezzi</h2>
-      <p>
-        Una panoramica dei mezzi a disposizione della Protezione Civile di Grottammare,
-        impiegati nelle attività di servizio, emergenza e supporto alla cittadinanza.
-      </p>
-    </div>
-
-    <div class="row g-4 mt-2">
+  <main class="container cards-section">
+    <div class="row g-4">
 
       <!-- Fiat 16 -->
       <div class="col-md-6 col-lg-4 fade-in" style="animation-delay:0s;">
@@ -523,16 +491,12 @@
           data-bs-target="#mezzoModal"
           data-name="Fiat 16"
           data-short="Interventi rapidi e versatili"
-          data-image="img/16_1.jpeg"
           data-detail1="Mezzo agile per sopralluoghi e interventi rapidi sul territorio."
           data-detail2="Adatto a spostamenti veloci su strada e in ambito urbano."
           data-detail3="Ideale per piccole squadre e attrezzatura leggera di supporto."
-          data-g1="img/16_1.jpeg"
-          data-g2=""
-          data-g3=""
-          data-g4="">
+          data-images="img/16_1.jpeg">
           <div class="mezzo-img-wrap">
-            <img src="img/16_1.jpeg" alt="Fiat 16" onerror="this.src='img/io_non_rischio.jpg'">
+            <img src="img/16_1.jpeg" alt="Fiat 16" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Fiat 16</h5>
@@ -551,16 +515,12 @@
           data-bs-target="#mezzoModal"
           data-name="Land Rover Defender"
           data-short="Fuoristrada e sicurezza"
-          data-image="img/io_non_rischio.jpg"
           data-detail1="Mezzo robusto pensato per terreni difficili e contesti operativi complessi."
           data-detail2="Particolarmente utile in condizioni meteo avverse e in aree più impervie."
           data-detail3="Ottimo per monitoraggio del territorio, supporto operativo e sopralluoghi."
-          data-g1=""
-          data-g2=""
-          data-g3=""
-          data-g4="">
+          data-images="img/logo.png">
           <div class="mezzo-img-wrap">
-            <img src="img/io_non_rischio.jpg" alt="Land Rover Defender" onerror="this.src='img/logo.png'">
+            <img src="img/logo.png" alt="Land Rover Defender" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Land Rover Defender</h5>
@@ -579,16 +539,12 @@
           data-bs-target="#mezzoModal"
           data-name="Ducato"
           data-short="Sala operativa mobile"
-          data-image="img/Ducato_1.jpeg"
           data-detail1="Utilizzato come sala operativa mobile durante servizi sul territorio."
           data-detail2="Supporta coordinamento, comunicazioni e organizzazione delle attività."
           data-detail3="Molto utile durante eventi, emergenze e situazioni che richiedono supporto logistico."
-          data-g1="img/Ducato_1.jpeg"
-          data-g2="img/Ducato_2.jpeg"
-          data-g3="img/Ducato_3.jpeg"
-          data-g4="img/Ducato_4.jpeg">
+          data-images="img/Ducato_1.jpeg,img/Ducato_2.jpeg,img/Ducato_3.jpeg,img/Ducato_4.jpeg">
           <div class="mezzo-img-wrap">
-            <img src="img/Ducato_1.jpeg" alt="Ducato" onerror="this.src='img/io_non_rischio.jpg'">
+            <img src="img/Ducato_1.jpeg" alt="Ducato" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Ducato</h5>
@@ -607,16 +563,12 @@
           data-bs-target="#mezzoModal"
           data-name="Bremach"
           data-short="Robusto e affidabile"
-          data-image="img/Bremach_1.jpeg"
           data-detail1="Mezzo pensato per impieghi impegnativi e supporto operativo sul campo."
           data-detail2="Utile in contesti logistici complessi e per attività di assistenza."
           data-detail3="Garantisce affidabilità e resistenza nelle operazioni più articolate."
-          data-g1="img/Bremach_1.jpeg"
-          data-g2="img/Bremach_2.jpeg"
-          data-g3="img/Bremach_3.jpeg"
-          data-g4="img/Bremach_4.jpeg">
+          data-images="img/Bremach_1.jpeg,img/Bremach_2.jpeg,img/Bremach_3.jpeg,img/Bremach_4.jpeg">
           <div class="mezzo-img-wrap">
-            <img src="img/Bremach_1.jpeg" alt="Bremach" onerror="this.src='img/io_non_rischio.jpg'">
+            <img src="img/Bremach_1.jpeg" alt="Bremach" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Bremach</h5>
@@ -635,16 +587,12 @@
           data-bs-target="#mezzoModal"
           data-name="Scudo Multijet"
           data-short="Trasporto leggero e veloce"
-          data-image="img/Scudo_1.jpeg"
           data-detail1="Ideale per trasporto materiali, piccole squadre e supporto logistico rapido."
           data-detail2="Veloce negli spostamenti sul territorio durante servizi ed eventi."
           data-detail3="Perfetto per attività leggere, consegne operative e assistenza di supporto."
-          data-g1="img/Scudo_1.jpeg"
-          data-g2="img/Scudo_2.jpeg"
-          data-g3="img/Scudo_3.jpeg"
-          data-g4="img/Scudo_4.jpeg">
+          data-images="img/Scudo_1.jpeg,img/Scudo_2.jpeg,img/Scudo_3.jpeg,img/Scudo_4.jpeg">
           <div class="mezzo-img-wrap">
-            <img src="img/Scudo_1.jpeg" alt="Scudo Multijet" onerror="this.src='img/io_non_rischio.jpg'">
+            <img src="img/Scudo_1.jpeg" alt="Scudo Multijet" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Scudo Multijet</h5>
@@ -663,16 +611,12 @@
           data-bs-target="#mezzoModal"
           data-name="Panda 4x4"
           data-short="Ideale per terreni impervi"
-          data-image="img/io_non_rischio.jpg"
           data-detail1="Mezzo compatto e versatile per zone difficili e spostamenti rapidi."
           data-detail2="Ottimo su strade strette, fondi sconnessi e percorsi meno agevoli."
           data-detail3="Molto utile per sopralluoghi, controllo del territorio e assistenza rapida."
-          data-g1=""
-          data-g2=""
-          data-g3=""
-          data-g4="">
+          data-images="img/logo.png">
           <div class="mezzo-img-wrap">
-            <img src="img/io_non_rischio.jpg" alt="Panda 4x4" onerror="this.src='img/logo.png'">
+            <img src="img/logo.png" alt="Panda 4x4" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Panda 4x4</h5>
@@ -691,16 +635,12 @@
           data-bs-target="#mezzoModal"
           data-name="Autobotte"
           data-short="Trasporto acqua per emergenze"
-          data-image="img/Autobotte_1.jpeg"
           data-detail1="Utilizzata per trasporto acqua e supporto operativo nelle emergenze."
           data-detail2="Importante nelle situazioni di assistenza alla popolazione e intervento sul territorio."
           data-detail3="Mezzo strategico per servizi di supporto idrico e operazioni dedicate."
-          data-g1="img/Autobotte_1.jpeg"
-          data-g2="img/Autobotte_2.jpeg"
-          data-g3=""
-          data-g4="">
+          data-images="img/Autobotte_1.jpeg,img/Autobotte_2.jpeg">
           <div class="mezzo-img-wrap">
-            <img src="img/Autobotte_1.jpeg" alt="Autobotte" onerror="this.src='img/io_non_rischio.jpg'">
+            <img src="img/Autobotte_1.jpeg" alt="Autobotte" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Autobotte</h5>
@@ -719,16 +659,12 @@
           data-bs-target="#mezzoModal"
           data-name="Moto"
           data-short="Rapidità negli spostamenti"
-          data-image="img/io_non_rischio.jpg"
           data-detail1="Ideale per interventi rapidi e spostamenti veloci durante i servizi."
           data-detail2="Utile per monitoraggio, supporto eventi e collegamenti rapidi sul territorio."
           data-detail3="Perfetta in aree trafficate o facilmente raggiungibili con un mezzo agile."
-          data-g1=""
-          data-g2=""
-          data-g3=""
-          data-g4="">
+          data-images="img/logo.png">
           <div class="mezzo-img-wrap">
-            <img src="img/io_non_rischio.jpg" alt="Moto" onerror="this.src='img/logo.png'">
+            <img src="img/logo.png" alt="Moto" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Moto</h5>
@@ -747,16 +683,12 @@
           data-bs-target="#mezzoModal"
           data-name="Jolly"
           data-short="Supporto versatile"
-          data-image="img/io_non_rischio.jpg"
           data-detail1="Mezzo utilizzato per supporto generale nelle attività operative."
           data-detail2="Adatto a diversi tipi di intervento e situazioni di servizio."
           data-detail3="Flessibile e utile in contesti logistici vari e di assistenza."
-          data-g1=""
-          data-g2=""
-          data-g3=""
-          data-g4="">
+          data-images="img/logo.png">
           <div class="mezzo-img-wrap">
-            <img src="img/io_non_rischio.jpg" alt="Jolly" onerror="this.src='img/logo.png'">
+            <img src="img/logo.png" alt="Jolly" onerror="this.src='img/logo.png'">
           </div>
           <div class="mezzo-card-body">
             <h5>Jolly</h5>
@@ -784,7 +716,22 @@
         </div>
 
         <div class="modal-body-custom">
-          <img id="modalMezzoImage" class="modal-main-image" src="img/io_non_rischio.jpg" alt="Immagine mezzo">
+          <div class="modal-carousel-wrap">
+            <div id="modalCarousel" class="carousel slide" data-bs-ride="false">
+              <div class="carousel-indicators" id="modalCarouselIndicators"></div>
+              <div class="carousel-inner" id="modalCarouselInner"></div>
+
+              <button class="carousel-control-prev" type="button" data-bs-target="#modalCarousel" data-bs-slide="prev" id="carouselPrevBtn">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Precedente</span>
+              </button>
+
+              <button class="carousel-control-next" type="button" data-bs-target="#modalCarousel" data-bs-slide="next" id="carouselNextBtn">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Successiva</span>
+              </button>
+            </div>
+          </div>
 
           <div class="detail-box">
             <h4><i class="fas fa-circle-info me-2"></i>Dettagli del mezzo</h4>
@@ -794,10 +741,6 @@
               <li><i class="fas fa-check-circle"></i><span id="modalDetail3"></span></li>
             </ul>
           </div>
-
-          <div class="detail-box" id="galleryBox">
-            <div class="thumb-grid" id="modalGallery"></div>
-          </div>
         </div>
 
       </div>
@@ -806,7 +749,6 @@
 
   <footer>
     <div class="footer-inner">
-      <div class="footer-title">Protezione Civile Grottammare</div>
       <div class="footer-text">Seguici anche sui nostri canali social</div>
 
       <div class="social-links">
@@ -823,65 +765,67 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
   <script>
-    lightbox.option({
-      resizeDuration: 200,
-      wrapAround: true,
-      fadeDuration: 200,
-      imageFadeDuration: 200,
-      albumLabel: "Immagine %1 di %2"
-    });
-
     const modalTitle = document.getElementById('modalMezzoTitle');
     const modalSubtitle = document.getElementById('modalMezzoSubtitle');
-    const modalImage = document.getElementById('modalMezzoImage');
     const modalDetail1 = document.getElementById('modalDetail1');
     const modalDetail2 = document.getElementById('modalDetail2');
     const modalDetail3 = document.getElementById('modalDetail3');
-    const modalGallery = document.getElementById('modalGallery');
-    const galleryBox = document.getElementById('galleryBox');
 
-    modalImage.onerror = function() {
-      this.src = 'img/io_non_rischio.jpg';
-    };
+    const modalCarouselInner = document.getElementById('modalCarouselInner');
+    const modalCarouselIndicators = document.getElementById('modalCarouselIndicators');
+    const carouselPrevBtn = document.getElementById('carouselPrevBtn');
+    const carouselNextBtn = document.getElementById('carouselNextBtn');
 
     document.querySelectorAll('.mezzo-card').forEach((card, index) => {
       card.addEventListener('click', function () {
         const name = this.dataset.name || '';
         const short = this.dataset.short || '';
-        const image = this.dataset.image || 'img/io_non_rischio.jpg';
         const d1 = this.dataset.detail1 || '';
         const d2 = this.dataset.detail2 || '';
         const d3 = this.dataset.detail3 || '';
-        const galleryName = 'modal-gallery-' + index;
 
-        const imgs = [
-          this.dataset.g1 || '',
-          this.dataset.g2 || '',
-          this.dataset.g3 || '',
-          this.dataset.g4 || ''
-        ].filter(src => src.trim() !== '');
+        const rawImages = this.dataset.images || 'img/logo.png';
+        const images = rawImages
+          .split(',')
+          .map(img => img.trim())
+          .filter(img => img !== '');
 
         modalTitle.textContent = name;
         modalSubtitle.textContent = short;
-        modalImage.src = image;
-        modalImage.alt = name;
         modalDetail1.textContent = d1;
         modalDetail2.textContent = d2;
         modalDetail3.textContent = d3;
 
-        if (imgs.length > 0) {
-          modalGallery.innerHTML = imgs.map((src, i) => `
-            <a href="${src}" data-lightbox="${galleryName}" data-title="${name}">
-              <img src="${src}" alt="${name} foto ${i + 1}" onerror="this.closest('a').style.display='none'">
-            </a>
-          `).join('');
-          galleryBox.style.display = 'block';
+        modalCarouselInner.innerHTML = '';
+        modalCarouselIndicators.innerHTML = '';
+
+        images.forEach((src, i) => {
+          modalCarouselInner.innerHTML += `
+            <div class="carousel-item ${i === 0 ? 'active' : ''}">
+              <img src="${src}" alt="${name} foto ${i + 1}" onerror="this.src='img/logo.png'">
+            </div>
+          `;
+
+          modalCarouselIndicators.innerHTML += `
+            <button type="button"
+                    data-bs-target="#modalCarousel"
+                    data-bs-slide-to="${i}"
+                    class="${i === 0 ? 'active' : ''}"
+                    ${i === 0 ? 'aria-current="true"' : ''}
+                    aria-label="Slide ${i + 1}"></button>
+          `;
+        });
+
+        if (images.length <= 1) {
+          carouselPrevBtn.style.display = 'none';
+          carouselNextBtn.style.display = 'none';
+          modalCarouselIndicators.style.display = 'none';
         } else {
-          modalGallery.innerHTML = '';
-          galleryBox.style.display = 'none';
+          carouselPrevBtn.style.display = 'flex';
+          carouselNextBtn.style.display = 'flex';
+          modalCarouselIndicators.style.display = 'flex';
         }
       });
     });
