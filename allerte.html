@@ -17,19 +17,20 @@
   --bg: #f5f7fb;
   --card: #ffffff;
   --border: #e5e7eb;
-  --text: #1f2937;
 }
 
+/* BASE */
 body {
   font-family: 'Inter', sans-serif;
   background: var(--bg);
   margin: 0;
 }
 
-/* NAVBAR */
+/* NAVBAR (IDENTICA A MEZZI) */
 .navbar {
   background: #ffffff;
   border-bottom: 1px solid var(--border);
+  padding: 1rem;
 }
 
 .navbar-brand img {
@@ -37,8 +38,10 @@ body {
 }
 
 .nav-link {
-  font-weight: 700;
+  font-size: 1.1rem;
+  font-weight: 800;
   color: var(--primary) !important;
+  margin: 0 10px;
 }
 
 .nav-link.active {
@@ -47,78 +50,74 @@ body {
 
 /* HERO */
 .hero {
+  position: relative;
+  height: 350px;
   background:
     linear-gradient(rgba(0,48,98,0.6), rgba(0,48,98,0.6)),
-    url('img/Mezzi.jpeg') center/cover;
+    url('img/Meteo.jpeg') center/cover no-repeat;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
-  padding: 80px 20px;
-  text-align: center;
 }
 
 .hero h1 {
+  font-size: 3rem;
   font-weight: 900;
 }
 
-/* MAPPA */
-.map-container {
-  width: 100%;
-  height: 500px;
-  border-radius: 18px;
-  overflow: hidden;
-  border: 2px solid #dbeafe;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-}
-
-.map-container iframe {
-  width: 100%;
-  height: 100%;
-  border: 0;
-}
-
-/* ALLERTA IN CORSO */
-.alert-box-clean {
+/* BOX ALLERTA */
+.alert-box {
   background: white;
-  border-left: 6px solid #f4c400;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
-}
-
-/* CARD ALLERTE */
-.alert-card {
-  background: var(--card);
-  border-radius: 16px;
-  padding: 18px;
-  box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  border-left: 8px solid #ccc;
   transition: 0.3s;
-  height: 100%;
 }
 
-.alert-card:hover {
-  transform: translateY(-5px);
-}
+/* COLORI DINAMICI */
+.gialla { border-color: #f4c400; }
+.arancione { border-color: orange; }
+.rossa { border-color: red; }
+.verde { border-color: green; }
 
-.alert-date {
-  font-size: 0.9rem;
-  color: gray;
-}
-
-.alert-level {
-  font-weight: bold;
-}
-
-/* FOOTER */
+/* FOOTER IDENTICO A MEZZI */
 footer {
   background: #ffffff;
   border-top: 1px solid var(--border);
-  padding: 20px;
+  padding: 25px;
   text-align: center;
 }
-</style>
 
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 10px;
+}
+
+.social-links a {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+}
+
+.social-facebook { background: #1877f2; }
+.social-instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
+
+</style>
 </head>
+
 <body>
 
+<!-- NAVBAR -->
 <header class="navbar navbar-expand-lg sticky-top">
   <div class="container-fluid">
     <a class="navbar-brand" href="index.html">
@@ -144,57 +143,40 @@ footer {
 <!-- HERO -->
 <section class="hero">
   <h1>Allerte Meteo</h1>
-  <p>Situazione aggiornata e storico allerte</p>
 </section>
 
 <main class="container py-5">
 
-  <!-- MAPPA -->
-  <section class="mb-5">
-    <h4 class="fw-bold mb-3">
-      <i class="fas fa-map me-2 text-primary"></i>
-      Situazione in tempo reale
-    </h4>
+  <h3 class="fw-bold mb-4">
+    <i class="fas fa-triangle-exclamation text-warning me-2"></i>
+    Allerta in corso
+  </h3>
 
-    <p class="text-muted">
-      Fonte ufficiale Regione Marche - aggiornamento automatico
-    </p>
-
-    <div class="map-container">
-      <iframe src="https://allertameteo.regione.marche.it/" loading="lazy"></iframe>
-    </div>
-  </section>
-
-  <!-- ALLERTA IN CORSO -->
-  <section class="mb-5">
-    <h4 class="fw-bold mb-3">
-      <i class="fas fa-triangle-exclamation text-warning me-2"></i>
-      Allerta in corso
-    </h4>
-
-    <div id="latest-alert" class="alert-box-clean">
-      Caricamento...
-    </div>
-  </section>
-
-  <!-- ALLERTE PASSATE -->
-  <section>
-    <h4 class="fw-bold mb-4">
-      <i class="fas fa-clock me-2 text-primary"></i>
-      Allerte precedenti
-    </h4>
-
-    <div class="row g-4" id="past-alerts"></div>
-  </section>
+  <!-- QUI CAMBI SOLO CLASSE -->
+  <div id="alertBox" class="alert-box gialla">
+    <h5>Allerta GIALLA</h5>
+    <p>Rischio temporali e vento. Prestare attenzione negli spostamenti.</p>
+  </div>
 
 </main>
 
+<!-- FOOTER -->
 <footer>
-  © 2025 Protezione Civile Grottammare
+
+  <div class="social-links">
+    <a class="social-facebook" href="https://www.facebook.com/" target="_blank">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a class="social-instagram" href="https://www.instagram.com/" target="_blank">
+      <i class="fab fa-instagram"></i>
+    </a>
+  </div>
+
+  <p>© 2025 Protezione Civile Grottammare</p>
+
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-<script src="js/allerte.js"></script>
 
 </body>
 </html>
