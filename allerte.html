@@ -26,7 +26,7 @@ body {
   margin: 0;
 }
 
-/* NAVBAR (IDENTICA A MEZZI) */
+/* NAVBAR (UGUALE A MEZZI) */
 .navbar {
   background: #ffffff;
   border-bottom: 1px solid var(--border);
@@ -76,13 +76,38 @@ body {
   transition: 0.3s;
 }
 
-/* COLORI DINAMICI */
+/* COLORI ALLERTE */
 .gialla { border-color: #f4c400; }
 .arancione { border-color: orange; }
 .rossa { border-color: red; }
 .verde { border-color: green; }
 
-/* FOOTER IDENTICO A MEZZI */
+/* MAP BOX */
+.map-box {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+  text-align: center;
+}
+
+/* BOTTONE */
+.btn-meteo {
+  background: var(--primary);
+  color: white;
+  padding: 12px 25px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+  font-weight: 600;
+}
+
+.btn-meteo:hover {
+  background: #003f80;
+}
+
+/* FOOTER */
 footer {
   background: #ffffff;
   border-top: 1px solid var(--border);
@@ -147,16 +172,38 @@ footer {
 
 <main class="container py-5">
 
-  <h3 class="fw-bold mb-4">
-    <i class="fas fa-triangle-exclamation text-warning me-2"></i>
-    Allerta in corso
-  </h3>
+  <!-- MAPPA (LINK UFFICIALE) -->
+  <section class="mb-5">
+    <div class="map-box">
+      <h4 class="fw-bold mb-3">
+        <i class="fas fa-map me-2 text-primary"></i>
+        Mappa ufficiale Regione Marche
+      </h4>
 
-  <!-- QUI CAMBI SOLO CLASSE -->
-  <div id="alertBox" class="alert-box gialla">
-    <h5>Allerta GIALLA</h5>
-    <p>Rischio temporali e vento. Prestare attenzione negli spostamenti.</p>
-  </div>
+      <p class="text-muted">
+        Consulta la situazione aggiornata in tempo reale direttamente dal sito ufficiale.
+      </p>
+
+      <a href="https://allertameteo.regione.marche.it/" target="_blank" class="btn-meteo">
+        Apri mappa ufficiale
+      </a>
+    </div>
+  </section>
+
+  <!-- ALLERTA IN CORSO -->
+  <section>
+    <h3 class="fw-bold mb-4">
+      <i class="fas fa-triangle-exclamation text-warning me-2"></i>
+      Allerta in corso
+    </h3>
+
+    <!-- CAMBIA SOLO CLASSE -->
+    <div class="alert-box gialla">
+      <h5>Allerta GIALLA</h5>
+      <p>Rischio temporali e vento. Prestare attenzione negli spostamenti.</p>
+    </div>
+
+  </section>
 
 </main>
 
