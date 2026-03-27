@@ -1,252 +1,836 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Mezzi - Protezione Civile Grottammare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mezzi - Protezione Civile Grottammare</title>
 
-<!-- Favicon -->
-img/logo.png
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/logo.png" />
 
-<!-- Bootstrap -->
-https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css
+  <!-- Google Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
 
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&display=swap" rel="stylesheet">
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<style>
-body { font-family: 'Poppins', sans-serif; background: #f8f9fa; color:#333; }
+  <!-- Lightbox -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css" rel="stylesheet" />
 
-/* NAVBAR */
-.navbar { background:#fdd835; }
-.navbar-brand img { height:60px; }
-.nav-link { color:#004a99 !important; font-weight:600; font-size:1.1rem; }
+  <style>
+    :root {
+      --pc-yellow: #f1c40f;
+      --pc-yellow-dark: #d4ac0d;
+      --pc-blue: #0b4ea2;
+      --pc-blue-dark: #083b7d;
+      --pc-light: #fff9e6;
+      --pc-text: #2f2f2f;
+      --pc-white: #ffffff;
+    }
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 380px;
-  background: url('img/Mezzi.jpeg') center/cover no-repeat;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  top:0; left:0;
-  width:100%; height:100%;
-  background:rgba(0,0,0,0.45);
-}
-.hero h1{
-  position:relative;
-  z-index:2;
-  font-size:4rem;
-  font-family:'Montserrat', sans-serif;
-  text-transform:uppercase;
-  color:white;
-  letter-spacing:3px;
-  text-shadow:0 0 15px rgba(255,255,255,0.8);
-}
+    * {
+      box-sizing: border-box;
+    }
 
-/* CARDS */
-.mezzo-card {
-  background:white;
-  border-radius:15px;
-  overflow:hidden;
-  box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  transition:0.3s;
-  border-top:5px solid #fdd835;
-}
-.mezzo-card:hover{
-  transform:translateY(-5px);
-  box-shadow:0 8px 18px rgba(0,0,0,0.2);
-}
-.mezzo-card img {
-  height:220px;
-  object-fit:cover;
-  width:100%;
-}
-.mezzo-card-body{
-  padding:15px;
-}
-.mezzo-card-body h5{
-  color:#0057b8;
-  font-weight:700;
-}
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to bottom, #fffdf4, #fff8df);
+      color: var(--pc-text);
+      margin: 0;
+      padding: 0;
+    }
 
-/* MODAL */
-.modal-content{
-  border-radius:15px;
-  border:none;
-}
-.carousel-item img{
-  height:420px;
-  object-fit:cover;
-}
+    /* Navbar */
+    .navbar {
+      background: rgba(241, 196, 15, 0.96);
+      backdrop-filter: blur(8px);
+      padding: 0.9rem 1rem;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+    }
 
-/* FOOTER */
-footer{
-  background:#fdd835;
-  color:#004a99;
-  font-weight:600;
-  padding:20px;
-  margin-top:50px;
-  text-align:center;
-}
-</style>
+    .navbar-brand img {
+      height: 60px;
+      transition: transform 0.3s ease;
+    }
+
+    .navbar-brand img:hover {
+      transform: scale(1.06);
+    }
+
+    .nav-link {
+      font-size: 1.08rem;
+      margin: 0 10px;
+      font-weight: 700;
+      color: var(--pc-blue) !important;
+      position: relative;
+      transition: 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #d35400 !important;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -5px;
+      width: 0;
+      height: 3px;
+      background: var(--pc-blue);
+      border-radius: 20px;
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 55%;
+    }
+
+    .navbar-toggler {
+      border: none;
+      box-shadow: none !important;
+    }
+
+    /* Hero */
+    .hero-img {
+      position: relative;
+      min-height: 360px;
+      background:
+        linear-gradient(rgba(7, 37, 78, 0.35), rgba(7, 37, 78, 0.35)),
+        url('img/Mezzi.jpeg') center center/cover no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-img::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(241,196,15,0.35), rgba(11,78,162,0.18));
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 20px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: rgba(255,255,255,0.15);
+      border: 1px solid rgba(255,255,255,0.25);
+      color: #fff;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      backdrop-filter: blur(5px);
+    }
+
+    .hero-img h1 {
+      margin: 0;
+      font-size: clamp(2.3rem, 5vw, 4rem);
+      line-height: 1.05;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #ffffff;
+      text-shadow: 0 4px 18px rgba(0,0,0,0.35);
+    }
+
+    .hero-img p {
+      margin: 14px auto 0;
+      max-width: 760px;
+      color: #fff;
+      font-size: 1.05rem;
+      font-weight: 500;
+      text-shadow: 0 2px 10px rgba(0,0,0,0.25);
+    }
+
+    /* Intro */
+    .section-intro {
+      text-align: center;
+      margin-top: 50px;
+      margin-bottom: 20px;
+    }
+
+    .section-intro h2 {
+      color: var(--pc-blue);
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .section-intro p {
+      color: #5b5b5b;
+      max-width: 780px;
+      margin: 0 auto;
+    }
+
+    /* Cards */
+    .mezzo-card {
+      height: 100%;
+      background: var(--pc-white);
+      border: none;
+      border-radius: 22px;
+      overflow: hidden;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.08);
+      transition: transform 0.28s ease, box-shadow 0.28s ease;
+      cursor: pointer;
+      position: relative;
+    }
+
+    .mezzo-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 16px 34px rgba(0,0,0,0.14);
+    }
+
+    .mezzo-image-wrap {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+      background: #e9eef5;
+    }
+
+    .mezzo-image-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+
+    .mezzo-card:hover .mezzo-image-wrap img {
+      transform: scale(1.06);
+    }
+
+    .mezzo-image-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      background: rgba(11, 78, 162, 0.92);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 700;
+      padding: 7px 12px;
+      border-radius: 999px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+    }
+
+    .mezzo-card-body {
+      padding: 20px 18px 18px;
+    }
+
+    .mezzo-card-body h5 {
+      margin-bottom: 8px;
+      font-weight: 800;
+      color: var(--pc-blue);
+      font-size: 1.22rem;
+    }
+
+    .mezzo-card-body p {
+      margin-bottom: 14px;
+      color: #5f5f5f;
+      font-size: 0.97rem;
+    }
+
+    .mezzo-card-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      border-top: 1px solid #eef1f5;
+      padding-top: 12px;
+    }
+
+    .mezzo-short-tag {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #d35400;
+      background: #fff3e8;
+      padding: 6px 10px;
+      border-radius: 999px;
+    }
+
+    .mezzo-open {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--pc-blue);
+    }
+
+    /* Fade in */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeInUp 0.8s forwards;
+    }
+
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Modal */
+    .modal-content {
+      border: none;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 25px 60px rgba(0,0,0,0.22);
+    }
+
+    .modal-header-custom {
+      background: linear-gradient(135deg, var(--pc-blue), #145fc2);
+      color: white;
+      padding: 22px 24px;
+      position: relative;
+    }
+
+    .modal-header-custom h3 {
+      margin: 0;
+      font-weight: 800;
+      font-size: 1.55rem;
+    }
+
+    .modal-subtitle {
+      margin-top: 6px;
+      font-size: 0.95rem;
+      opacity: 0.92;
+    }
+
+    .btn-close-custom {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      background: rgba(255,255,255,0.18);
+      border: none;
+      color: white;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      font-size: 1.1rem;
+      transition: 0.25s ease;
+    }
+
+    .btn-close-custom:hover {
+      background: rgba(255,255,255,0.28);
+      transform: rotate(90deg);
+    }
+
+    .modal-body-custom {
+      padding: 24px;
+      background: #fffef9;
+    }
+
+    .modal-main-image {
+      width: 100%;
+      height: 320px;
+      object-fit: cover;
+      border-radius: 18px;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.12);
+      margin-bottom: 20px;
+      background: #f2f2f2;
+    }
+
+    .detail-box {
+      background: #ffffff;
+      border: 1px solid #f0f0f0;
+      border-left: 5px solid var(--pc-yellow);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.05);
+    }
+
+    .detail-box h4 {
+      color: var(--pc-blue);
+      font-weight: 800;
+      margin-bottom: 12px;
+      font-size: 1.15rem;
+    }
+
+    .detail-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .detail-list li {
+      margin-bottom: 10px;
+      font-size: 0.98rem;
+      color: #444;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .detail-list li i {
+      color: #d35400;
+      min-width: 18px;
+      margin-top: 3px;
+    }
+
+    .modal-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .btn-gallery,
+    .btn-secondary-custom {
+      border: none;
+      border-radius: 999px;
+      padding: 11px 18px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.25s ease;
+    }
+
+    .btn-gallery {
+      background: var(--pc-yellow);
+      color: var(--pc-blue-dark);
+    }
+
+    .btn-gallery:hover {
+      background: var(--pc-yellow-dark);
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary-custom {
+      background: #edf3fb;
+      color: var(--pc-blue);
+    }
+
+    .btn-secondary-custom:hover {
+      background: #dfeaf8;
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--pc-yellow);
+      color: var(--pc-blue);
+      padding: 24px 0;
+      text-align: center;
+      font-weight: 700;
+      margin-top: 40px;
+      box-shadow: 0 -4px 14px rgba(0,0,0,0.06);
+    }
+
+    /* Responsive */
+    @media (max-width: 991px) {
+      .nav-link {
+        margin: 8px 0;
+      }
+
+      .hero-img {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .mezzo-image-wrap {
+        height: 210px;
+      }
+
+      .modal-main-image {
+        height: 230px;
+      }
+
+      .hero-img h1 {
+        letter-spacing: 1px;
+      }
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar navbar-expand-lg sticky-top">
-  <div class="container">
-    <alapse" data-bs-target="#menu">
-      <span class="navbar-toggler-icon"></span>
-    </button>
+  <header class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo Protezione Civile Grottammare">
+      </a>
 
-    <div class="collapse navbar-collapse justify-content-center" id="menu">
-      <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link active" href="mezzi.html">Mezzi</a></li>
-        <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
-        <li class="nav-item"><a class="nav-link" href="volontari.html">Volontari</a></li>
-        <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Apri menu">
+        <i class="fas fa-bars" style="color:#0b4ea2; font-size:1.4rem;"></i>
+      </button>
 
-<!-- HERO -->
-<div class="hero">
-  <h1>Mezzi</h1>
-</div>
-
-<!-- CARD LISTA MEZZI -->
-<main class="container my-5">
-  <div class="row g-4">
-
-    <!-- TEMPLATE CARD (ripetuta per ogni mezzo) -->
-    <!-- FIAT 16 -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m1">
-        <img src="img/16_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Fiat 16</h5>
-          <p>Interventi rapidi</p>
-        </div>
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link active" href="mezzi.html">Mezzi</a></li>
+          <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
+          <li class="nav-item"><a class="nav-link" href="volontari.html">Volontari</a></li>
+          <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
+        </ul>
       </div>
     </div>
+  </header>
 
-    <!-- DEFENDER -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m2">
-        <img src="img/Defender_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Defender</h5>
-          <p>Fuoristrada</p>
-        </div>
+  <!-- Hero -->
+  <section class="hero-img">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <i class="fas fa-truck-front me-2"></i>Parco mezzi operativo
       </div>
+      <h1>Mezzi</h1>
+      <p>I veicoli impiegati nelle attività di supporto, monitoraggio, emergenza e assistenza sul territorio.</p>
+    </div>
+  </section>
+
+  <main class="container mb-5">
+    <div class="section-intro">
+      <h2>I nostri mezzi</h2>
+      <p>
+        Ogni mezzo svolge un ruolo importante nelle attività operative della Protezione Civile:
+        dalla mobilità rapida al supporto logistico, fino agli interventi in contesti più complessi.
+      </p>
     </div>
 
-    <!-- DUCATO -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m3">
-        <img src="img/Ducato_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Ducato</h5>
-          <p>Sala operativa mobile</p>
-        </div>
-      </div>
-    </div>
+    <div class="row g-4 mt-2">
 
-    <!-- BREMACH -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m4">
-        <img src="img/Bremach_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Bremach</h5>
-          <p>Robusto e affidabile</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- SCUDO -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m5">
-        <img src="img/Scudo_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Scudo</h5>
-          <p>Trasporto leggero</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PANDA -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m6">
-        <img src="img/Panda_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Panda 4x4</h5>
-          <p>Terreni impervi</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- AUTOBOTTE -->
-    <div class="col-md-4">
-      <div class="mezzo-card" data-bs-toggle="modal" data-bs-target="#m7">
-        <img src="img/Autobotte_1.jpeg" loading="lazy">
-        <div class="mezzo-card-body">
-          <h5>Autobotte</h5>
-          <p>Trasporto acqua</p>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</main>
-
-<!-- MODALI GENERATE AUTOMATICAMENTE -->
-<!-- Per velocità, ogni mezzo ha il suo carosello e descrizione -->
-<!-- FIAT 16 -->
-<div class="modal fade" id="m1">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header"><h5>Fiat 16</h5><button class="btn-close" data-bs-dismiss="modal"></button></div>
-      <div class="modal-body">
-        <div id="c1" class="carousel slide">
-          <div class="carousel-inner">
-            <div class="carousel-item active"><img src="img/16_1.jpeg"></div>
-            <div class="carousel-item"><img src="img/16_2.jpeg"></div>
-            <div class="carousel-item"><img src="img/16_3.jpeg"></div>
-            <div class="carousel-item"><img src="img/16_4.jpeg"></div>
+      <!-- Fiat 16 -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Fiat 16"
+             data-short="Interventi rapidi e versatili"
+             data-image="img/16_1.jpeg"
+             data-gallery="mezzo1"
+             data-detail1="🚨 Mezzo agile per sopralluoghi e interventi rapidi"
+             data-detail2="🛣️ Adatto a spostamenti veloci su strada e strade secondarie"
+             data-detail3="👥 Ideale per trasporto squadra e piccola attrezzatura">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">Operativo</span>
+            <img src="img/16_1.jpeg" alt="Fiat 16">
           </div>
-          <button class="carousel-control-prev" type="button" data-bs-target="#c1" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
-          </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#c1" data-bs-slide="next">
-            <span class="carousel-control-next-icon"></span>
+          <div class="mezzo-card-body">
+            <h5>Fiat 16</h5>
+            <p>Interventi rapidi e versatili</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Mobilità veloce</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/16_1.jpeg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
+        <a href="img/16_2.jpeg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
+        <a href="img/16_3.jpeg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
+        <a href="img/16_4.jpeg" data-lightbox="mezzo1" data-title="Fiat 16"></a>
+      </div>
+
+      <!-- Defender -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.1s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Land Rover Defender"
+             data-short="Fuoristrada e sicurezza"
+             data-image="img/Defender_1.jpeg"
+             data-gallery="mezzo2"
+             data-detail1="🛻 Mezzo robusto per terreni difficili e zone impervie"
+             data-detail2="🌧️ Ottimo in condizioni meteo avverse"
+             data-detail3="⛰️ Utilizzato per supporto operativo e monitoraggio del territorio">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">Fuoristrada</span>
+            <img src="img/Defender_1.jpeg" alt="Land Rover Defender">
+          </div>
+          <div class="mezzo-card-body">
+            <h5>Land Rover Defender</h5>
+            <p>Fuoristrada e sicurezza</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Terreni difficili</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/Defender_1.jpeg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+        <a href="img/Defender_2.jpeg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+        <a href="img/Defender_3.jpeg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+        <a href="img/Defender_4.jpeg" data-lightbox="mezzo2" data-title="Land Rover Defender"></a>
+      </div>
+
+      <!-- Ducato -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.2s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Ducato"
+             data-short="Sala operativa mobile"
+             data-image="img/Ducato_1.jpeg"
+             data-gallery="mezzo3"
+             data-detail1="📡 Utilizzato come sala operativa mobile sul territorio"
+             data-detail2="🧭 Supporta coordinamento, comunicazioni e gestione attività"
+             data-detail3="🛠️ Ideale nei servizi complessi e negli eventi">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">Sala mobile</span>
+            <img src="img/Ducato_1.jpeg" alt="Ducato">
+          </div>
+          <div class="mezzo-card-body">
+            <h5>Ducato</h5>
+            <p>Sala operativa mobile</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Coordinamento</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/Ducato_1.jpeg" data-lightbox="mezzo3" data-title="Ducato"></a>
+        <a href="img/Ducato_2.jpeg" data-lightbox="mezzo3" data-title="Ducato"></a>
+        <a href="img/Ducato_3.jpeg" data-lightbox="mezzo3" data-title="Ducato"></a>
+        <a href="img/Ducato_4.jpeg" data-lightbox="mezzo3" data-title="Ducato"></a>
+      </div>
+
+      <!-- Bremach -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.3s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Bremach"
+             data-short="Robusto e affidabile"
+             data-image="img/Bremach_1.jpeg"
+             data-gallery="mezzo4"
+             data-detail1="💪 Mezzo pensato per impieghi impegnativi"
+             data-detail2="🚧 Utile in contesti logistici e operativi complessi"
+             data-detail3="🔧 Affidabilità e resistenza nelle attività sul campo">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">Logistica</span>
+            <img src="img/Bremach_1.jpeg" alt="Bremach">
+          </div>
+          <div class="mezzo-card-body">
+            <h5>Bremach</h5>
+            <p>Robusto e affidabile</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Supporto pesante</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/Bremach_1.jpeg" data-lightbox="mezzo4" data-title="Bremach"></a>
+        <a href="img/Bremach_2.jpeg" data-lightbox="mezzo4" data-title="Bremach"></a>
+        <a href="img/Bremach_3.jpeg" data-lightbox="mezzo4" data-title="Bremach"></a>
+        <a href="img/Bremach_4.jpeg" data-lightbox="mezzo4" data-title="Bremach"></a>
+      </div>
+
+      <!-- Scudo -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.4s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Scudo"
+             data-short="Trasporto leggero e veloce"
+             data-image="img/Scudo_1.jpeg"
+             data-gallery="mezzo5"
+             data-detail1="📦 Ideale per trasporto materiali e piccole squadre"
+             data-detail2="⚡ Veloce negli spostamenti sul territorio"
+             data-detail3="🧰 Perfetto per supporto logistico leggero">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">Trasporto</span>
+            <img src="img/Scudo_1.jpeg" alt="Scudo">
+          </div>
+          <div class="mezzo-card-body">
+            <h5>Scudo</h5>
+            <p>Trasporto leggero e veloce</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Logistica agile</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/Scudo_1.jpeg" data-lightbox="mezzo5" data-title="Scudo"></a>
+        <a href="img/Scudo_2.jpeg" data-lightbox="mezzo5" data-title="Scudo"></a>
+        <a href="img/Scudo_3.jpeg" data-lightbox="mezzo5" data-title="Scudo"></a>
+        <a href="img/Scudo_4.jpeg" data-lightbox="mezzo5" data-title="Scudo"></a>
+      </div>
+
+      <!-- Panda 4x4 -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.5s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Panda 4x4"
+             data-short="Ideale per terreni impervi"
+             data-image="img/Panda_1.jpeg"
+             data-gallery="mezzo6"
+             data-detail1="🌲 Mezzo compatto e versatile per zone difficili"
+             data-detail2="🛞 Ottimo su strade strette o fondi sconnessi"
+             data-detail3="🚑 Utilissimo per sopralluoghi e assistenza rapida">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">4x4</span>
+            <img src="img/Panda_1.jpeg" alt="Panda 4x4">
+          </div>
+          <div class="mezzo-card-body">
+            <h5>Panda 4x4</h5>
+            <p>Ideale per terreni impervi</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Territorio difficile</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/Panda_1.jpeg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+        <a href="img/Panda_2.jpeg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+        <a href="img/Panda_3.jpeg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+        <a href="img/Panda_4.jpeg" data-lightbox="mezzo6" data-title="Panda 4x4"></a>
+      </div>
+
+      <!-- Autobotte -->
+      <div class="col-md-6 col-lg-4 fade-in" style="animation-delay: 0.6s;">
+        <div class="mezzo-card"
+             data-bs-toggle="modal"
+             data-bs-target="#mezzoModal"
+             data-name="Autobotte"
+             data-short="Trasporto acqua per emergenze"
+             data-image="img/Autobotte_1.jpeg"
+             data-gallery="mezzo7"
+             data-detail1="💧 Utilizzata per trasporto acqua e supporto operativo"
+             data-detail2="🔥 Importante nelle situazioni di emergenza e assistenza"
+             data-detail3="🚒 Mezzo strategico per interventi di supporto sul territorio">
+          <div class="mezzo-image-wrap">
+            <span class="mezzo-image-badge">Emergenza</span>
+            <img src="img/Autobotte_1.jpeg" alt="Autobotte">
+          </div>
+          <div class="mezzo-card-body">
+            <h5>Autobotte</h5>
+            <p>Trasporto acqua per emergenze</p>
+            <div class="mezzo-card-bottom">
+              <span class="mezzo-short-tag">Supporto idrico</span>
+              <span class="mezzo-open">Apri scheda <i class="fas fa-arrow-right ms-1"></i></span>
+            </div>
+          </div>
+        </div>
+
+        <a href="img/Autobotte_1.jpeg" data-lightbox="mezzo7" data-title="Autobotte"></a>
+        <a href="img/Autobotte_2.jpeg" data-lightbox="mezzo7" data-title="Autobotte"></a>
+        <a href="img/Autobotte_3.jpeg" data-lightbox="mezzo7" data-title="Autobotte"></a>
+        <a href="img/Autobotte_4.jpeg" data-lightbox="mezzo7" data-title="Autobotte"></a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- Modal Mezzo -->
+  <div class="modal fade" id="mezzoModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header-custom">
+          <h3 id="modalMezzoTitle">Nome mezzo</h3>
+          <div class="modal-subtitle" id="modalMezzoSubtitle">Descrizione breve</div>
+          <button type="button" class="btn-close-custom" data-bs-dismiss="modal" aria-label="Chiudi">
+            <i class="fas fa-times"></i>
           </button>
         </div>
-        <p class="mt-3">🚗 SUV – 👨‍🚒 5 operatori – 📡 Monitoraggio emergenze</p>
+
+        <div class="modal-body-custom">
+          <img id="modalMezzoImage" class="modal-main-image" src="" alt="Immagine mezzo">
+
+          <div class="detail-box">
+            <h4><i class="fas fa-circle-info me-2"></i>Dettagli operativi</h4>
+            <ul class="detail-list">
+              <li><i class="fas fa-check-circle"></i><span id="modalDetail1"></span></li>
+              <li><i class="fas fa-check-circle"></i><span id="modalDetail2"></span></li>
+              <li><i class="fas fa-check-circle"></i><span id="modalDetail3"></span></li>
+            </ul>
+
+            <div class="modal-actions">
+              <button type="button" class="btn-gallery" id="openGalleryBtn">
+                <i class="fas fa-images"></i>Apri galleria foto
+              </button>
+
+              <button type="button" class="btn-secondary-custom" data-bs-dismiss="modal">
+                <i class="fas fa-arrow-left"></i>Torna ai mezzi
+              </button>
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
   </div>
-</div>
 
-<!-- LE ALTRE MODALI LE COMPLETO IDENTICHE A QUESTA MA ADATTATE A OGNI MEZZO -->
-<!-- (Dimmi se vuoi aggiungere testo personalizzato per ciascun mezzo!) -->
+  <footer>
+    © 2025 Protezione Civile Grottammare
+  </footer>
 
-<footer>
-  © 2025 Protezione Civile Grottammare
-</footer>
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox.min.js"></script>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Config Lightbox
+    lightbox.option({
+      resizeDuration: 200,
+      wrapAround: true,
+      fadeDuration: 200,
+      imageFadeDuration: 200,
+      albumLabel: "Immagine %1 di %2"
+    });
+
+    const mezzoModal = document.getElementById('mezzoModal');
+    const modalTitle = document.getElementById('modalMezzoTitle');
+    const modalSubtitle = document.getElementById('modalMezzoSubtitle');
+    const modalImage = document.getElementById('modalMezzoImage');
+    const modalDetail1 = document.getElementById('modalDetail1');
+    const modalDetail2 = document.getElementById('modalDetail2');
+    const modalDetail3 = document.getElementById('modalDetail3');
+    const openGalleryBtn = document.getElementById('openGalleryBtn');
+
+    let currentGallery = "";
+
+    document.querySelectorAll('.mezzo-card').forEach(card => {
+      card.addEventListener('click', function () {
+        const name = this.getAttribute('data-name');
+        const short = this.getAttribute('data-short');
+        const image = this.getAttribute('data-image');
+        const gallery = this.getAttribute('data-gallery');
+        const detail1 = this.getAttribute('data-detail1');
+        const detail2 = this.getAttribute('data-detail2');
+        const detail3 = this.getAttribute('data-detail3');
+
+        modalTitle.textContent = name;
+        modalSubtitle.textContent = short;
+        modalImage.src = image;
+        modalImage.alt = name;
+        modalDetail1.textContent = detail1;
+        modalDetail2.textContent = detail2;
+        modalDetail3.textContent = detail3;
+        currentGallery = gallery;
+      });
+    });
+
+    openGalleryBtn.addEventListener('click', function () {
+      if (!currentGallery) return;
+
+      const firstGalleryLink = document.querySelector(`a[data-lightbox="${currentGallery}"]`);
+      if (firstGalleryLink) {
+        firstGalleryLink.click();
+      }
+    });
+  </script>
+
 </body>
 </html>
