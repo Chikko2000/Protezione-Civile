@@ -24,7 +24,6 @@
       --bg: #f5f7fb;
       --card: #ffffff;
       --border: #e5e7eb;
-      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       --radius: 20px;
 
       --yellow: #f4c400;
@@ -32,7 +31,6 @@
       --red: #dc2626;
       --green: #16a34a;
       --gray: #6b7280;
-      --blue-soft: #eef5ff;
     }
 
     * {
@@ -40,21 +38,24 @@
     }
 
     html, body {
-      height: 100%;
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
     }
 
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
       background: var(--bg);
       color: var(--text);
       display: flex;
       flex-direction: column;
       min-height: 100vh;
+      overflow-x: hidden;
     }
 
     main {
       flex: 1;
+      width: 100%;
     }
 
     .navbar {
@@ -62,6 +63,7 @@
       border-bottom: 1px solid var(--border);
       box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
       padding: 0.95rem 1rem;
+      z-index: 1000;
     }
 
     .navbar-brand img {
@@ -147,7 +149,7 @@
     }
 
     .cards-section {
-      padding: 52px 0 20px;
+      padding: 52px 0 0;
     }
 
     .content-card {
@@ -157,6 +159,7 @@
       box-shadow: 0 6px 20px rgba(0,0,0,0.05);
       padding: 28px;
       height: 100%;
+      margin-bottom: 28px;
     }
 
     .section-title {
@@ -177,80 +180,73 @@
 
     .map-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 480px) 1fr;
+      grid-template-columns: minmax(280px, 420px) 1fr;
       gap: 28px;
-      align-items: stretch;
+      align-items: center;
     }
 
-    .map-visual {
-      position: relative;
+    .region-box {
       background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
       border: 1px solid #dbe8fb;
       border-radius: 22px;
-      padding: 18px;
-      min-height: 430px;
+      padding: 24px;
+      min-height: 380px;
       display: flex;
       align-items: center;
       justify-content: center;
-      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      position: relative;
       overflow: hidden;
     }
 
-    .map-visual::before {
+    .region-box::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.7), transparent 35%),
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.75), transparent 35%),
         radial-gradient(circle at 80% 30%, rgba(255,255,255,0.5), transparent 30%);
       pointer-events: none;
     }
 
-    .map-panel {
+    .region-wrap {
       position: relative;
+      z-index: 2;
+      text-align: center;
       width: 100%;
-      max-width: 360px;
-      margin: 0 auto;
     }
 
-    .map-svg {
+    .region-map {
       width: 100%;
+      max-width: 260px;
       height: auto;
       display: block;
-      filter: drop-shadow(0 12px 22px rgba(0,0,0,0.10));
+      margin: 0 auto 16px;
+      filter: drop-shadow(0 14px 20px rgba(0,0,0,0.12));
+      transition: filter 0.3s ease, transform 0.3s ease;
     }
 
-    .map-svg .province {
-      stroke: #ffffff;
-      stroke-width: 3.5;
-      cursor: pointer;
-      transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
-      transform-origin: center;
-    }
-
-    .map-svg .province:hover {
+    .region-map:hover {
       transform: scale(1.02);
-      filter: brightness(1.06);
     }
 
-    .map-svg.nessuna .province { fill: var(--gray); }
-    .map-svg.verde .province { fill: var(--green); }
-    .map-svg.gialla .province { fill: var(--yellow); }
-    .map-svg.arancione .province { fill: var(--orange); }
-    .map-svg.rossa .province { fill: var(--red); }
+    .region-label {
+      font-size: 1rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
 
-    .map-tooltip {
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-      background: rgba(17, 24, 39, 0.92);
-      color: #fff;
-      padding: 10px 12px;
-      border-radius: 12px;
+    .region-status {
+      margin-top: 10px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 14px;
       font-size: 0.92rem;
-      line-height: 1.4;
-      box-shadow: 0 10px 18px rgba(0,0,0,0.16);
-      max-width: 220px;
+      font-weight: 800;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      color: var(--text);
     }
 
     .map-side {
@@ -418,10 +414,14 @@
     }
 
     footer {
-      margin-top: 55px;
+      width: 100%;
+      margin-top: 16px;
       background: #ffffff;
       border-top: 1px solid var(--border);
-      padding: 24px 20px;
+      padding: 28px 20px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
     }
 
     .footer-inner {
@@ -439,6 +439,7 @@
     .social-links {
       display: flex;
       justify-content: center;
+      align-items: center;
       gap: 14px;
       margin-bottom: 14px;
       flex-wrap: wrap;
@@ -476,6 +477,26 @@
       margin: 0;
     }
 
+    .livello-nessuna {
+      filter: grayscale(1) brightness(0.72);
+    }
+
+    .livello-verde {
+      filter: brightness(0) saturate(100%) invert(41%) sepia(99%) saturate(640%) hue-rotate(88deg) brightness(92%) contrast(90%);
+    }
+
+    .livello-gialla {
+      filter: brightness(0) saturate(100%) invert(79%) sepia(69%) saturate(822%) hue-rotate(359deg) brightness(99%) contrast(94%);
+    }
+
+    .livello-arancione {
+      filter: brightness(0) saturate(100%) invert(67%) sepia(86%) saturate(1502%) hue-rotate(360deg) brightness(98%) contrast(93%);
+    }
+
+    .livello-rossa {
+      filter: brightness(0) saturate(100%) invert(20%) sepia(86%) saturate(2895%) hue-rotate(347deg) brightness(91%) contrast(93%);
+    }
+
     @media (max-width: 991px) {
       .nav-link {
         margin: 8px 0;
@@ -485,8 +506,8 @@
         grid-template-columns: 1fr;
       }
 
-      .map-visual {
-        min-height: 340px;
+      .region-box {
+        min-height: 300px;
       }
     }
 
@@ -503,22 +524,12 @@
         padding: 22px;
       }
 
-      .map-visual {
-        min-height: 300px;
-      }
-
-      .map-panel {
-        max-width: 290px;
-      }
-
       .alert-title {
         font-size: 1.2rem;
       }
 
-      .map-tooltip {
-        position: static;
-        margin-top: 14px;
-        max-width: 100%;
+      .region-map {
+        max-width: 210px;
       }
     }
   </style>
@@ -556,80 +567,25 @@
 
   <main class="container cards-section">
 
-    <div class="content-card mb-4">
+    <div class="content-card">
       <div class="section-title">
         <i class="fas fa-map-location-dot"></i>
         <span>Situazione Regione Marche</span>
       </div>
 
       <div class="map-layout">
-        <div class="map-visual">
-          <div class="map-panel">
-            <svg id="mappaMarche" class="map-svg nessuna" viewBox="0 0 320 520" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa interattiva Marche">
-              <!-- Pesaro e Urbino -->
-              <path class="province province-pu"
-                data-provincia="Pesaro e Urbino"
-                d="M166 22
-                   C197 30, 219 47, 230 72
-                   C236 88, 231 106, 219 120
-                   C205 136, 187 143, 173 150
-                   C154 160, 130 168, 114 164
-                   C98 159, 84 145, 78 128
-                   C70 106, 74 86, 87 67
-                   C104 42, 134 16, 166 22 Z" />
-
-              <!-- Ancona -->
-              <path class="province province-an"
-                data-provincia="Ancona"
-                d="M114 164
-                   C130 168, 154 160, 173 150
-                   C189 145, 207 144, 220 154
-                   C234 165, 242 182, 239 202
-                   C235 228, 216 244, 198 252
-                   C177 262, 150 264, 129 255
-                   C111 247, 96 232, 92 212
-                   C87 190, 94 173, 114 164 Z" />
-
-              <!-- Macerata -->
-              <path class="province province-mc"
-                data-provincia="Macerata"
-                d="M129 255
-                   C150 264, 177 262, 198 252
-                   C214 253, 229 264, 236 281
-                   C244 299, 241 320, 228 337
-                   C214 355, 195 365, 173 366
-                   C151 367, 128 357, 114 340
-                   C101 324, 96 302, 102 284
-                   C108 269, 116 260, 129 255 Z" />
-
-              <!-- Fermo -->
-              <path class="province province-fm"
-                data-provincia="Fermo"
-                d="M114 340
-                   C128 357, 151 367, 173 366
-                   C191 369, 205 380, 210 397
-                   C214 412, 210 429, 198 443
-                   C184 458, 165 465, 147 461
-                   C129 456, 114 443, 106 427
-                   C99 412, 100 394, 104 380
-                   C107 366, 108 352, 114 340 Z" />
-
-              <!-- Ascoli Piceno -->
-              <path class="province province-ap"
-                data-provincia="Ascoli Piceno"
-                d="M104 380
-                   C100 394, 99 412, 106 427
-                   C114 443, 129 456, 147 461
-                   C165 465, 184 458, 198 443
-                   C204 452, 205 468, 197 482
-                   C188 497, 172 507, 154 509
-                   C134 511, 115 503, 102 489
-                   C87 473, 79 452, 82 431
-                   C85 410, 92 392, 104 380 Z" />
-            </svg>
-
-            <div class="map-tooltip" id="mapTooltip">
-              Passa o clicca su una provincia per visualizzarne il nome.
+        <div class="region-box">
+          <div class="region-wrap">
+            <img
+              id="regioneImg"
+              class="region-map livello-nessuna"
+              src="img/marche.png"
+              alt="Regione Marche"
+            >
+            <div class="region-label">Regione Marche</div>
+            <div class="region-status" id="regionStatus">
+              <i class="fas fa-circle"></i>
+              <span>Nessuna allerta</span>
             </div>
           </div>
         </div>
@@ -641,8 +597,8 @@
           </div>
 
           <p class="section-subtitle">
-            La mappa evidenzia in modo semplice il livello di allerta impostato per la Regione Marche.
-            Passando con il mouse sulle province puoi visualizzarne il nome, mentre il pulsante qui sotto ti porta direttamente alla mappa ufficiale regionale.
+            In questa sezione puoi mostrare in modo semplice il livello di allerta attuale per la Regione Marche.
+            Il colore della regione cambia in base allo stato selezionato, mentre il pulsante qui sotto porta direttamente alla mappa ufficiale regionale.
           </p>
 
           <div class="legend">
@@ -708,80 +664,86 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 
   <script>
-    // Valori disponibili: nessuna, verde, gialla, arancione, rossa
+    // Cambia qui il livello:
+    // nessuna, verde, gialla, arancione, rossa
     const livello = "nessuna";
 
-    const mappa = document.getElementById("mappaMarche");
     const chip = document.getElementById("statusChip");
     const alertBox = document.getElementById("alertBox");
     const alertTitle = document.getElementById("alertTitle");
     const alertBadge = document.getElementById("alertBadge");
     const alertText = document.getElementById("alertText");
-    const tooltip = document.getElementById("mapTooltip");
+    const regioneImg = document.getElementById("regioneImg");
+    const regionStatus = document.getElementById("regionStatus");
 
     const colori = {
       nessuna: {
         label: "Nessuna",
         text: "Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente.",
-        chip: "Stato attuale: nessuna allerta"
+        chip: "Stato attuale: nessuna allerta",
+        title: "Nessuna allerta",
+        imgClass: "livello-nessuna"
       },
       verde: {
         label: "Verde",
         text: "Situazione sotto controllo. Si consiglia comunque di seguire eventuali aggiornamenti ufficiali.",
-        chip: "Stato attuale: allerta verde"
+        chip: "Stato attuale: allerta verde",
+        title: "Allerta VERDE",
+        imgClass: "livello-verde"
       },
       gialla: {
         label: "Gialla",
         text: "Prestare attenzione alle condizioni meteo e seguire con prudenza eventuali aggiornamenti e indicazioni di protezione civile.",
-        chip: "Stato attuale: allerta gialla"
+        chip: "Stato attuale: allerta gialla",
+        title: "Allerta GIALLA",
+        imgClass: "livello-gialla"
       },
       arancione: {
         label: "Arancione",
         text: "Condizioni meteo critiche. Si raccomanda particolare attenzione negli spostamenti e nelle aree più esposte.",
-        chip: "Stato attuale: allerta arancione"
+        chip: "Stato attuale: allerta arancione",
+        title: "Allerta ARANCIONE",
+        imgClass: "livello-arancione"
       },
       rossa: {
         label: "Rossa",
         text: "Situazione di elevata criticità. Seguire con la massima attenzione le indicazioni ufficiali delle autorità competenti.",
-        chip: "Stato attuale: allerta rossa"
+        chip: "Stato attuale: allerta rossa",
+        title: "Allerta ROSSA",
+        imgClass: "livello-rossa"
       }
     };
 
     const stato = colori[livello] || colori.nessuna;
 
-    mappa.classList.remove("nessuna", "verde", "gialla", "arancione", "rossa");
-    mappa.classList.add(livello);
-
     alertBox.classList.remove("nessuna", "verde", "gialla", "arancione", "rossa");
     alertBox.classList.add(livello);
+
+    regioneImg.classList.remove(
+      "livello-nessuna",
+      "livello-verde",
+      "livello-gialla",
+      "livello-arancione",
+      "livello-rossa"
+    );
+    regioneImg.classList.add(stato.imgClass);
 
     chip.innerHTML = `
       <i class="fas fa-circle-info"></i>
       <span>${stato.chip}</span>
     `;
 
-    alertTitle.textContent = livello === "nessuna" ? "Nessuna allerta" : `Allerta ${stato.label.toUpperCase()}`;
+    regionStatus.innerHTML = `
+      <i class="fas fa-circle"></i>
+      <span>${stato.label === "Nessuna" ? "Nessuna allerta" : "Allerta " + stato.label}</span>
+    `;
+
+    alertTitle.textContent = stato.title;
     alertBadge.innerHTML = `
       <i class="fas fa-circle"></i>
       <span>${stato.label}</span>
     `;
     alertText.textContent = stato.text;
-
-    document.querySelectorAll(".province").forEach((province) => {
-      const nome = province.getAttribute("data-provincia");
-
-      province.addEventListener("mouseenter", () => {
-        tooltip.textContent = nome;
-      });
-
-      province.addEventListener("mouseleave", () => {
-        tooltip.textContent = "Passa o clicca su una provincia per visualizzarne il nome.";
-      });
-
-      province.addEventListener("click", () => {
-        tooltip.textContent = `${nome} · livello attuale: ${stato.label.toLowerCase()}`;
-      });
-    });
   </script>
 
 </body>
