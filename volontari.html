@@ -1,191 +1,764 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Diventa Volontario - Protezione Civile Grottammare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Diventa Volontario - Protezione Civile Grottammare</title>
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="icon" type="image/png" href="img/logo.png" />
 
-<!-- Bootstrap -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<!-- FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-<!-- Custom Style -->
-<style>
-body {
-  font-family: 'Poppins', sans-serif;
-  background: #f5f6fa;
-  color: #333;
-  scroll-behavior: smooth;
-}
+  <style>
+    :root {
+      --primary: #0059b3;
+      --primary-dark: #003f80;
+      --accent: #f4c400;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --radius: 20px;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --blue-soft: #eef5ff;
+    }
 
-/* Navbar */
-.navbar {
-  background: #ffea00; /* giallo Protezione Civile */
-  padding: 1rem 2rem;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
-.navbar-brand img { height: 60px; transition: transform 0.3s; }
-.navbar-brand img:hover { transform: scale(1.1); }
-.nav-link {
-  font-size: 1.2rem;
-  margin: 0 12px;
-  font-weight: 600;
-  color: #004a99 !important; /* blu */
-  position: relative;
-  transition: 0.3s;
-}
-.nav-link:hover { color: #e67e22 !important; transform: translateY(-3px); }
-.nav-link::after {
-  content: "";
-  position: absolute;
-  width: 0;
-  height: 3px;
-  background: #e67e22; /* arancione/giallo scuro */
-  bottom: -4px;
-  left: 50%;
-  transform: translateX(-50%);
-  transition: 0.3s;
-}
-.nav-link:hover::after { width: 50%; }
+    * {
+      box-sizing: border-box;
+    }
 
-/* Page Title */
-.page-title {
-  font-size: 2.7rem;
-  font-weight: 900;
-  color: #004a99;
-  text-align: center;
-  margin-top: 30px;
-  text-transform: uppercase;
-}
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+    }
 
-/* Card Custom */
-.card-custom {
-  border-radius: 14px;
-  border: 2px solid #ffea00; /* bordo giallo */
-  background: #fff;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s, border-color 0.3s;
-}
-.card-custom:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-  border-color: #004a99; /* bordo blu al hover */
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
 
-/* Fade-in Animazione */
-.fade-in { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.8s forwards; }
-@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    main {
+      flex: 1;
+      width: 100%;
+    }
 
-/* Pulsante Contatti */
-.btn-custom {
-  background: #004a99;
-  color: #fff;
-  font-size: 1.2rem;
-  padding: 10px 18px;
-  border-radius: 8px;
-  transition: 0.3s;
-}
-.btn-custom:hover {
-  background: #003976;
-  transform: translateY(-3px);
-}
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+      padding: 0.95rem 1rem;
+      z-index: 1000;
+    }
 
-/* Responsive Cards */
-@media (min-width: 768px) {
-  .card-col { display: flex; flex-wrap: wrap; gap: 20px; }
-  .card-col .card-custom { flex: 1 1 calc(50% - 20px); }
-}
-@media (min-width: 1200px) {
-  .card-col .card-custom { flex: 1 1 calc(33.33% - 20px); }
-}
-</style>
+    .navbar-brand img {
+      height: 62px;
+      transition: transform 0.25s ease;
+    }
+
+    .navbar-brand img:hover {
+      transform: scale(1.04);
+    }
+
+    .nav-link {
+      font-size: 1.12rem;
+      margin: 0 12px;
+      font-weight: 800;
+      color: var(--primary) !important;
+      position: relative;
+      transition: 0.25s ease;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-dark) !important;
+    }
+
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 0;
+      height: 3px;
+      border-radius: 30px;
+      background: var(--accent);
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 60%;
+    }
+
+    .navbar-toggler {
+      border: none;
+      box-shadow: none !important;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(0, 48, 98, 0.58), rgba(0, 48, 98, 0.50)),
+        url('img/volontari-hero.jpg') center center/cover no-repeat;
+      color: white;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 36px 20px;
+      max-width: 950px;
+    }
+
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+    }
+
+    .hero p {
+      margin: 16px auto 0;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.97);
+      max-width: 780px;
+      line-height: 1.7;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+
+    .btn-hero,
+    .btn-hero-outline {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 13px 20px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 800;
+      transition: 0.25s ease;
+    }
+
+    .btn-hero {
+      background: var(--accent);
+      color: #1f2937;
+      box-shadow: 0 10px 22px rgba(244, 196, 0, 0.26);
+    }
+
+    .btn-hero:hover {
+      transform: translateY(-2px);
+      color: #111827;
+    }
+
+    .btn-hero-outline {
+      border: 1px solid rgba(255,255,255,0.38);
+      color: white;
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(6px);
+    }
+
+    .btn-hero-outline:hover {
+      transform: translateY(-2px);
+      color: white;
+      background: rgba(255,255,255,0.14);
+    }
+
+    .cards-section {
+      padding: 52px 0 24px;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      padding: 30px;
+      margin-bottom: 28px;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .intro-grid,
+    .steps-grid,
+    .docs-grid,
+    .actions-grid {
+      display: grid;
+      gap: 18px;
+    }
+
+    .intro-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      margin-top: 22px;
+    }
+
+    .steps-grid,
+    .docs-grid,
+    .actions-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+
+    .info-card,
+    .step-card,
+    .doc-card,
+    .action-card {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
+      height: 100%;
+    }
+
+    .info-card:hover,
+    .step-card:hover,
+    .doc-card:hover,
+    .action-card:hover {
+      transform: translateY(-3px);
+      transition: 0.25s ease;
+      box-shadow: 0 12px 26px rgba(0,0,0,0.07);
+    }
+
+    .card-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--blue-soft);
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      font-size: 1.12rem;
+      font-weight: 800;
+      color: var(--text);
+      margin-bottom: 10px;
+    }
+
+    .card-text {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.97rem;
+      margin: 0;
+    }
+
+    .card-list {
+      padding-left: 18px;
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 0.97rem;
+    }
+
+    .step-number {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: #1f2937;
+      font-weight: 900;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+
+    .doc-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      text-decoration: none;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .doc-link:hover {
+      color: var(--primary-dark);
+    }
+
+    .note-box {
+      margin-top: 22px;
+      background: #f8fbff;
+      border: 1px solid #dbe8fb;
+      border-radius: 18px;
+      padding: 18px;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 0.97rem;
+    }
+
+    .contact-box {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+      border: 1px solid #dbe8fb;
+      border-radius: 22px;
+      padding: 28px;
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .contact-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      background: rgba(255,255,255,0.76);
+      border: 1px solid rgba(219, 232, 251, 0.85);
+      border-radius: 16px;
+      padding: 16px;
+    }
+
+    .contact-item i {
+      color: var(--primary);
+      margin-top: 3px;
+    }
+
+    .contact-item strong {
+      display: block;
+      color: var(--text);
+      margin-bottom: 4px;
+    }
+
+    .contact-item span,
+    .contact-item a {
+      color: var(--muted);
+      text-decoration: none;
+      word-break: break-word;
+    }
+
+    .contact-item a:hover {
+      color: var(--primary);
+    }
+
+    footer {
+      width: 100%;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 28px 20px;
+      position: relative;
+      z-index: 1;
+      flex-shrink: 0;
+      margin-top: auto;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-text {
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1.15rem;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      opacity: 0.92;
+    }
+
+    .social-facebook {
+      background: #1877f2;
+    }
+
+    .social-instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .footer-copy {
+      font-size: 0.94rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      .nav-link {
+        margin: 8px 0;
+      }
+
+      .intro-grid,
+      .steps-grid,
+      .docs-grid,
+      .actions-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        min-height: 320px;
+      }
+
+      .nav-link {
+        font-size: 1.05rem;
+      }
+
+      .content-card {
+        padding: 22px;
+      }
+
+      .section-title {
+        font-size: 1.35rem;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn-hero,
+      .btn-hero-outline {
+        width: 100%;
+        justify-content: center;
+        max-width: 320px;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<header class="navbar navbar-expand-lg sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html"><img src="img/logo.png" alt="Logo Protezione Civile Grottammare"></a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"><span class="navbar-toggler-icon"></span></button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
-        <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
-        <li class="nav-item"><a class="nav-link active" href="volontari.html">Volontari</a></li>
-        <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
-      </ul>
+  <header class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo Protezione Civile Grottammare">
+      </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Apri menu">
+        <i class="fas fa-bars" style="color:#0059b3; font-size:1.4rem;"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
+          <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
+          <li class="nav-item"><a class="nav-link active" href="volontari.html">Volontari</a></li>
+          <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<h1 class="page-title">Diventa volontario</h1>
-
-<div class="container mt-4">
-
-  <div class="card-col">
-    <!-- Chi può diventare volontario -->
-    <div class="card-custom fade-in" style="animation-delay:0s">
-      <h3><i class="fas fa-users me-2"></i>Chi può diventare volontario?</h3>
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Diventa volontario</h1>
       <p>
-        Chiunque abbia compiuto i 18 anni e voglia aiutare la comunità può entrare a far parte del 
-        <strong>Gruppo Comunale di Protezione Civile di Grottammare</strong>.  
-        Non è richiesta esperienza: la formazione viene fornita gratuitamente.
+        Entrare nel Gruppo Comunale di Protezione Civile significa mettere tempo, energie e disponibilità
+        al servizio della comunità. Se vuoi dare una mano in attività di prevenzione, supporto ed emergenza,
+        qui trovi tutto quello che ti serve per iniziare.
       </p>
-    </div>
 
-    <!-- Cosa fanno i volontari -->
-    <div class="card-custom fade-in" style="animation-delay:0.2s">
-      <h3><i class="fas fa-handshake-angle me-2"></i>Cosa fanno i volontari?</h3>
-      <ul>
-        <li>Supporto in caso di emergenze o calamità</li>
-        <li>Attività di prevenzione sul territorio</li>
-        <li>Assistenza durante eventi e manifestazioni</li>
-        <li>Monitoraggi ambientali e meteo</li>
-        <li>Formazione continua e esercitazioni</li>
-      </ul>
+      <div class="hero-actions">
+        <a href="#documenti" class="btn-hero">
+          <i class="fas fa-file-arrow-down"></i>
+          Scarica i documenti
+        </a>
+        <a href="contatti.html" class="btn-hero-outline">
+          <i class="fas fa-envelope"></i>
+          Contattaci
+        </a>
+      </div>
     </div>
+  </section>
 
-    <!-- Documenti -->
-    <div class="card-custom fade-in" style="animation-delay:0.4s">
-      <h3><i class="fas fa-file-arrow-down me-2"></i>Documenti da scaricare</h3>
-      <p>Compila questi moduli e consegnali presso la sede della Protezione Civile:</p>
-      <a href="doc/domanda_iscrizione.pdf" class="download-link" download>📄 Domanda di iscrizione volontario</a>
-      <a href="doc/regolamento_gruppo.pdf" class="download-link" download>📘 Regolamento del gruppo comunale</a>
-    </div>
+  <main class="container cards-section">
 
-    <!-- Quando e come presentare la richiesta -->
-    <div class="card-custom fade-in" style="animation-delay:0.6s">
-      <h3><i class="fas fa-file-signature me-2"></i>Quando e come presentare la richiesta</h3>
-      <p>
-        La domanda di iscrizione al gruppo comunale di Protezione Civile può essere presentata al Comune di Grottammare:
+    <div class="content-card">
+      <div class="section-title">
+        <i class="fas fa-users"></i>
+        <span>Chi può partecipare</span>
+      </div>
+
+      <p class="section-subtitle">
+        Il gruppo comunale è aperto a chi ha compiuto 18 anni e vuole dare un contributo concreto.
+        L’impostazione ufficiale del Comune richiede la maggiore età e fa riferimento a persone residenti
+        o domiciliate a Grottammare o nei comuni limitrofi. :contentReference[oaicite:1]{index=1}
       </p>
-      <ul>
-        <li><strong>Di persona:</strong> presso l’Ufficio Protocollo</li>
-        <li><strong>PEC:</strong> comune.grottammare.protocollo@emarche.it</li>
-        <li><strong>Email:</strong> protocollo@comune.grottammare.ap.it</li>
-      </ul>
+
+      <div class="intro-grid">
+        <div class="info-card">
+          <div class="card-icon"><i class="fas fa-id-card"></i></div>
+          <div class="card-title">Requisiti principali</div>
+          <ul class="card-list">
+            <li>avere almeno 18 anni;</li>
+            <li>essere residenti o domiciliati a Grottammare o nei comuni limitrofi;</li>
+            <li>voler svolgere l’attività in modo volontario e gratuito.</li>
+          </ul>
+        </div>
+
+        <div class="info-card">
+          <div class="card-icon"><i class="fas fa-heart-pulse"></i></div>
+          <div class="card-title">Disponibilità richiesta</div>
+          <ul class="card-list">
+            <li>idoneità fisica alle attività del gruppo;</li>
+            <li>impegno, collaborazione e senso di responsabilità;</li>
+            <li>disponibilità alla formazione e alle esercitazioni.</li>
+          </ul>
+        </div>
+      </div>
     </div>
-  </div>
 
-  <!-- Pulsante contatti -->
-  <div class="text-center mt-4">
-    <a href="contatti.html" class="btn btn-custom"><i class="fas fa-envelope me-2"></i>Contattaci per informazioni</a>
-  </div>
+    <div class="content-card">
+      <div class="section-title">
+        <i class="fas fa-handshake-angle"></i>
+        <span>Cosa fa un volontario</span>
+      </div>
 
-</div>
+      <div class="actions-grid">
+        <div class="action-card">
+          <div class="card-icon"><i class="fas fa-shield-halved"></i></div>
+          <div class="card-title">Prevenzione</div>
+          <p class="card-text">
+            Attività di supporto e presenza sul territorio per contribuire alla sicurezza e alla preparazione della comunità.
+          </p>
+        </div>
 
-<footer class="bg-primary text-white text-center p-3 mt-4">
-  © 2025 Protezione Civile Grottammare
-</footer>
+        <div class="action-card">
+          <div class="card-icon"><i class="fas fa-truck-medical"></i></div>
+          <div class="card-title">Supporto in emergenza</div>
+          <p class="card-text">
+            Collaborazione nelle attività di protezione civile quando si verificano criticità o situazioni emergenziali.
+          </p>
+        </div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="action-card">
+          <div class="card-icon"><i class="fas fa-people-group"></i></div>
+          <div class="card-title">Assistenza alla comunità</div>
+          <p class="card-text">
+            Presenza durante eventi, attività informative, esercitazioni e iniziative a favore del territorio.
+          </p>
+        </div>
+      </div>
+
+      <div class="note-box">
+        La pagina del Comune descrive il servizio nell’ambito del gruppo comunale di protezione civile e collega la procedura di adesione alla modulistica e al regolamento ufficiale. :contentReference[oaicite:2]{index=2}
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="section-title">
+        <i class="fas fa-list-check"></i>
+        <span>Come fare domanda</span>
+      </div>
+
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <div class="card-title">Scarica e compila il modulo</div>
+          <p class="card-text">
+            Compila la domanda di iscrizione al gruppo comunale di protezione civile.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <div class="card-title">Prepara gli allegati</div>
+          <p class="card-text">
+            Tieni pronti i documenti richiesti e verifica che la domanda sia completa in tutte le sue parti.
+          </p>
+        </div>
+
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <div class="card-title">Invia o consegna la richiesta</div>
+          <p class="card-text">
+            Puoi presentarla di persona, per posta, via PEC o via email agli indirizzi del Comune.
+          </p>
+        </div>
+      </div>
+
+      <div class="note-box">
+        Il Comune di Grottammare indica queste modalità di presentazione: Ufficio Protocollo, posta ordinaria o raccomandata in Via Marconi 50, PEC all’indirizzo comune.grottammare.protocollo@emarche.it ed email a protocollo@comune.grottammare.ap.it. :contentReference[oaicite:3]{index=3}
+      </div>
+    </div>
+
+    <div class="content-card" id="documenti">
+      <div class="section-title">
+        <i class="fas fa-file-arrow-down"></i>
+        <span>Documenti utili</span>
+      </div>
+
+      <div class="docs-grid">
+        <div class="doc-card">
+          <div class="card-icon"><i class="fas fa-file-signature"></i></div>
+          <div class="card-title">Domanda di iscrizione</div>
+          <p class="card-text">
+            È il modulo principale da compilare per richiedere l’ingresso nel gruppo comunale.
+          </p>
+          <a href="doc/domanda_iscrizione_volontario.pdf" class="doc-link" download>
+            <i class="fas fa-download"></i> Scarica il modulo
+          </a>
+        </div>
+
+        <div class="doc-card">
+          <div class="card-icon"><i class="fas fa-book"></i></div>
+          <div class="card-title">Regolamento del gruppo</div>
+          <p class="card-text">
+            Utile per capire funzionamento, impegni, regole e organizzazione del gruppo comunale.
+          </p>
+          <a href="doc/regolamento_gruppo_comunale.pdf" class="doc-link" download>
+            <i class="fas fa-download"></i> Scarica il regolamento
+          </a>
+        </div>
+
+        <div class="doc-card">
+          <div class="card-icon"><i class="fas fa-id-card-clip"></i></div>
+          <div class="card-title">Documento di identità</div>
+          <p class="card-text">
+            Ti conviene avere pronta anche una copia del documento da allegare insieme alla domanda.
+          </p>
+        </div>
+      </div>
+
+      <div class="note-box">
+        Nella documentazione ufficiale del Comune compaiono la domanda di iscrizione e il regolamento del gruppo comunale; la pagina di servizio rimanda alla modulistica e alle condizioni del servizio. :contentReference[oaicite:4]{index=4}
+      </div>
+    </div>
+
+    <div class="content-card">
+      <div class="section-title">
+        <i class="fas fa-paper-plane"></i>
+        <span>Dove presentare la richiesta</span>
+      </div>
+
+      <div class="contact-box">
+        <p class="section-subtitle">
+          La domanda va presentata al Comune di Grottammare attraverso uno dei canali indicati nella pagina ufficiale del servizio.
+        </p>
+
+        <div class="contact-list">
+          <div class="contact-item">
+            <i class="fas fa-building"></i>
+            <div>
+              <strong>Consegna a mano</strong>
+              <span>Ufficio Protocollo del Comune di Grottammare</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-location-dot"></i>
+            <div>
+              <strong>Posta ordinaria o raccomandata</strong>
+              <span>Comune di Grottammare, Via Marconi 50, 63066 Grottammare (AP)</span>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-envelope-circle-check"></i>
+            <div>
+              <strong>PEC</strong>
+              <a href="mailto:comune.grottammare.protocollo@emarche.it">comune.grottammare.protocollo@emarche.it</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <strong>Email</strong>
+              <a href="mailto:protocollo@comune.grottammare.ap.it">protocollo@comune.grottammare.ap.it</a>
+            </div>
+          </div>
+
+          <div class="contact-item">
+            <i class="fas fa-hourglass-half"></i>
+            <div>
+              <strong>Tempi del procedimento</strong>
+              <span>30 giorni</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-text">Seguici anche sui nostri canali social</div>
+
+      <div class="social-links">
+        <a class="social-facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="social-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+
+      <p class="footer-copy">© 2025 Protezione Civile Grottammare</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
