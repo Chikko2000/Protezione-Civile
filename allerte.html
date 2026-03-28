@@ -26,11 +26,13 @@
       --border: #e5e7eb;
       --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
       --radius: 20px;
+
       --yellow: #f4c400;
       --orange: #f59e0b;
       --red: #dc2626;
       --green: #16a34a;
       --gray: #6b7280;
+      --blue-soft: #eef5ff;
     }
 
     * {
@@ -48,6 +50,7 @@
       color: var(--text);
       display: flex;
       flex-direction: column;
+      min-height: 100vh;
     }
 
     main {
@@ -174,52 +177,87 @@
 
     .map-layout {
       display: grid;
-      grid-template-columns: minmax(250px, 380px) 1fr;
+      grid-template-columns: minmax(280px, 480px) 1fr;
       gap: 28px;
-      align-items: center;
+      align-items: stretch;
     }
 
     .map-visual {
+      position: relative;
       background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
       border: 1px solid #dbe8fb;
       border-radius: 22px;
       padding: 18px;
-      min-height: 360px;
+      min-height: 430px;
       display: flex;
       align-items: center;
       justify-content: center;
       box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+      overflow: hidden;
+    }
+
+    .map-visual::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255,255,255,0.7), transparent 35%),
+        radial-gradient(circle at 80% 30%, rgba(255,255,255,0.5), transparent 30%);
+      pointer-events: none;
+    }
+
+    .map-panel {
+      position: relative;
+      width: 100%;
+      max-width: 360px;
+      margin: 0 auto;
     }
 
     .map-svg {
       width: 100%;
-      max-width: 260px;
       height: auto;
-      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.08));
+      display: block;
+      filter: drop-shadow(0 12px 22px rgba(0,0,0,0.10));
     }
 
-    .map-svg path.region-fill {
-      fill: var(--gray);
-      transition: fill 0.25s ease;
-    }
-
-    .map-svg path.region-outline {
-      fill: none;
+    .map-svg .province {
       stroke: #ffffff;
-      stroke-width: 4;
-      opacity: 0.95;
+      stroke-width: 3.5;
+      cursor: pointer;
+      transition: transform 0.2s ease, opacity 0.2s ease, filter 0.2s ease;
+      transform-origin: center;
     }
 
-    .map-svg.nessuna path.region-fill { fill: var(--gray); }
-    .map-svg.gialla path.region-fill { fill: var(--yellow); }
-    .map-svg.arancione path.region-fill { fill: var(--orange); }
-    .map-svg.rossa path.region-fill { fill: var(--red); }
-    .map-svg.verde path.region-fill { fill: var(--green); }
+    .map-svg .province:hover {
+      transform: scale(1.02);
+      filter: brightness(1.06);
+    }
+
+    .map-svg.nessuna .province { fill: var(--gray); }
+    .map-svg.verde .province { fill: var(--green); }
+    .map-svg.gialla .province { fill: var(--yellow); }
+    .map-svg.arancione .province { fill: var(--orange); }
+    .map-svg.rossa .province { fill: var(--red); }
+
+    .map-tooltip {
+      position: absolute;
+      left: 12px;
+      bottom: 12px;
+      background: rgba(17, 24, 39, 0.92);
+      color: #fff;
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      line-height: 1.4;
+      box-shadow: 0 10px 18px rgba(0,0,0,0.16);
+      max-width: 220px;
+    }
 
     .map-side {
       display: flex;
       flex-direction: column;
       gap: 16px;
+      justify-content: center;
     }
 
     .status-chip {
@@ -300,10 +338,10 @@
     }
 
     .alert-box.nessuna { border-left-color: var(--gray); }
+    .alert-box.verde { border-left-color: var(--green); }
     .alert-box.gialla { border-left-color: var(--yellow); }
     .alert-box.arancione { border-left-color: var(--orange); }
     .alert-box.rossa { border-left-color: var(--red); }
-    .alert-box.verde { border-left-color: var(--green); }
 
     .alert-top {
       display: flex;
@@ -448,7 +486,7 @@
       }
 
       .map-visual {
-        min-height: 300px;
+        min-height: 340px;
       }
     }
 
@@ -466,15 +504,21 @@
       }
 
       .map-visual {
-        min-height: 260px;
+        min-height: 300px;
       }
 
-      .map-svg {
-        max-width: 220px;
+      .map-panel {
+        max-width: 290px;
       }
 
       .alert-title {
         font-size: 1.2rem;
+      }
+
+      .map-tooltip {
+        position: static;
+        margin-top: 14px;
+        max-width: 100%;
       }
     }
   </style>
@@ -520,38 +564,74 @@
 
       <div class="map-layout">
         <div class="map-visual">
-          <svg id="mappaMarche" class="map-svg nessuna" viewBox="0 0 260 420" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa Regione Marche">
-            <path class="region-fill" d="M146 16
-              C165 18, 182 31, 188 52
-              C194 72, 190 94, 198 112
-              C205 128, 220 143, 222 165
-              C224 191, 213 208, 212 231
-              C211 253, 224 278, 220 301
-              C216 324, 199 343, 192 362
-              C185 381, 170 398, 151 404
-              C132 410, 112 402, 101 387
-              C89 370, 84 351, 70 333
-              C55 313, 34 292, 34 267
-              C34 241, 48 221, 48 197
-              C47 173, 32 151, 35 125
-              C38 97, 57 76, 76 55
-              C94 36, 117 14, 146 16 Z"/>
-            <path class="region-outline" d="M146 16
-              C165 18, 182 31, 188 52
-              C194 72, 190 94, 198 112
-              C205 128, 220 143, 222 165
-              C224 191, 213 208, 212 231
-              C211 253, 224 278, 220 301
-              C216 324, 199 343, 192 362
-              C185 381, 170 398, 151 404
-              C132 410, 112 402, 101 387
-              C89 370, 84 351, 70 333
-              C55 313, 34 292, 34 267
-              C34 241, 48 221, 48 197
-              C47 173, 32 151, 35 125
-              C38 97, 57 76, 76 55
-              C94 36, 117 14, 146 16 Z"/>
-          </svg>
+          <div class="map-panel">
+            <svg id="mappaMarche" class="map-svg nessuna" viewBox="0 0 320 520" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa interattiva Marche">
+              <!-- Pesaro e Urbino -->
+              <path class="province province-pu"
+                data-provincia="Pesaro e Urbino"
+                d="M166 22
+                   C197 30, 219 47, 230 72
+                   C236 88, 231 106, 219 120
+                   C205 136, 187 143, 173 150
+                   C154 160, 130 168, 114 164
+                   C98 159, 84 145, 78 128
+                   C70 106, 74 86, 87 67
+                   C104 42, 134 16, 166 22 Z" />
+
+              <!-- Ancona -->
+              <path class="province province-an"
+                data-provincia="Ancona"
+                d="M114 164
+                   C130 168, 154 160, 173 150
+                   C189 145, 207 144, 220 154
+                   C234 165, 242 182, 239 202
+                   C235 228, 216 244, 198 252
+                   C177 262, 150 264, 129 255
+                   C111 247, 96 232, 92 212
+                   C87 190, 94 173, 114 164 Z" />
+
+              <!-- Macerata -->
+              <path class="province province-mc"
+                data-provincia="Macerata"
+                d="M129 255
+                   C150 264, 177 262, 198 252
+                   C214 253, 229 264, 236 281
+                   C244 299, 241 320, 228 337
+                   C214 355, 195 365, 173 366
+                   C151 367, 128 357, 114 340
+                   C101 324, 96 302, 102 284
+                   C108 269, 116 260, 129 255 Z" />
+
+              <!-- Fermo -->
+              <path class="province province-fm"
+                data-provincia="Fermo"
+                d="M114 340
+                   C128 357, 151 367, 173 366
+                   C191 369, 205 380, 210 397
+                   C214 412, 210 429, 198 443
+                   C184 458, 165 465, 147 461
+                   C129 456, 114 443, 106 427
+                   C99 412, 100 394, 104 380
+                   C107 366, 108 352, 114 340 Z" />
+
+              <!-- Ascoli Piceno -->
+              <path class="province province-ap"
+                data-provincia="Ascoli Piceno"
+                d="M104 380
+                   C100 394, 99 412, 106 427
+                   C114 443, 129 456, 147 461
+                   C165 465, 184 458, 198 443
+                   C204 452, 205 468, 197 482
+                   C188 497, 172 507, 154 509
+                   C134 511, 115 503, 102 489
+                   C87 473, 79 452, 82 431
+                   C85 410, 92 392, 104 380 Z" />
+            </svg>
+
+            <div class="map-tooltip" id="mapTooltip">
+              Passa o clicca su una provincia per visualizzarne il nome.
+            </div>
+          </div>
         </div>
 
         <div class="map-side">
@@ -561,8 +641,8 @@
           </div>
 
           <p class="section-subtitle">
-            Questa sezione mostra in modo semplice e immediato il livello di allerta attualmente impostato per la Regione Marche.
-            Per una consultazione completa e sempre aggiornata, puoi aprire direttamente la mappa ufficiale regionale.
+            La mappa evidenzia in modo semplice il livello di allerta impostato per la Regione Marche.
+            Passando con il mouse sulle province puoi visualizzarne il nome, mentre il pulsante qui sotto ti porta direttamente alla mappa ufficiale regionale.
           </p>
 
           <div class="legend">
@@ -637,6 +717,7 @@
     const alertTitle = document.getElementById("alertTitle");
     const alertBadge = document.getElementById("alertBadge");
     const alertText = document.getElementById("alertText");
+    const tooltip = document.getElementById("mapTooltip");
 
     const colori = {
       nessuna: {
@@ -685,6 +766,22 @@
       <span>${stato.label}</span>
     `;
     alertText.textContent = stato.text;
+
+    document.querySelectorAll(".province").forEach((province) => {
+      const nome = province.getAttribute("data-provincia");
+
+      province.addEventListener("mouseenter", () => {
+        tooltip.textContent = nome;
+      });
+
+      province.addEventListener("mouseleave", () => {
+        tooltip.textContent = "Passa o clicca su una provincia per visualizzarne il nome.";
+      });
+
+      province.addEventListener("click", () => {
+        tooltip.textContent = `${nome} · livello attuale: ${stato.label.toLowerCase()}`;
+      });
+    });
   </script>
 
 </body>
