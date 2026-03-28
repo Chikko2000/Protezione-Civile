@@ -149,7 +149,7 @@
     }
 
     .cards-section {
-      padding: 52px 0 0;
+      padding: 52px 0 24px;
     }
 
     .content-card {
@@ -157,7 +157,7 @@
       border: 1px solid var(--border);
       border-radius: var(--radius);
       box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-      padding: 28px;
+      padding: 32px;
       margin-bottom: 28px;
     }
 
@@ -165,31 +165,32 @@
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 1.5rem;
+      font-size: 1.55rem;
       font-weight: 800;
       color: var(--primary);
-      margin-bottom: 18px;
+      margin-bottom: 22px;
     }
 
     .section-subtitle {
       margin: 0 0 20px;
       color: var(--muted);
-      line-height: 1.7;
+      line-height: 1.75;
+      font-size: 1rem;
     }
 
     .status-layout {
       display: grid;
-      grid-template-columns: minmax(280px, 420px) 1fr;
-      gap: 28px;
+      grid-template-columns: minmax(320px, 470px) 1fr;
+      gap: 32px;
       align-items: stretch;
     }
 
     .status-visual {
       background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
       border: 1px solid #dbe8fb;
-      border-radius: 22px;
-      padding: 28px 24px;
-      min-height: 360px;
+      border-radius: 24px;
+      padding: 34px 28px;
+      min-height: 420px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -215,35 +216,38 @@
     }
 
     .status-icon-wrap {
-      width: 120px;
-      height: 120px;
+      width: 132px;
+      height: 132px;
       border-radius: 50%;
-      margin: 0 auto 18px;
+      margin: 0 auto 22px;
       display: flex;
       align-items: center;
       justify-content: center;
       background: #ffffff;
       border: 1px solid var(--border);
-      box-shadow: 0 12px 24px rgba(0, 89, 179, 0.08);
+      box-shadow: 0 14px 28px rgba(0, 89, 179, 0.08);
     }
 
     .status-icon {
-      font-size: 3rem;
+      font-size: 3.2rem;
       color: var(--primary);
     }
 
     .status-place {
-      font-size: 1.6rem;
+      font-size: 1.8rem;
       font-weight: 900;
       color: var(--primary);
-      margin-bottom: 8px;
+      margin-bottom: 10px;
     }
 
     .status-desc {
       font-size: 1rem;
       color: var(--muted);
       margin-bottom: 18px;
-      line-height: 1.6;
+      line-height: 1.7;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .status-badge-big {
@@ -251,18 +255,29 @@
       align-items: center;
       gap: 8px;
       border-radius: 999px;
-      padding: 10px 16px;
-      font-size: 0.96rem;
+      padding: 12px 20px;
+      font-size: 1.05rem;
       font-weight: 800;
       background: #ffffff;
       border: 1px solid var(--border);
       color: var(--text);
+      box-shadow: 0 8px 16px rgba(0,0,0,0.04);
+    }
+
+    .status-note {
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 0.98rem;
+      line-height: 1.7;
+      max-width: 360px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .status-side {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
       justify-content: center;
     }
 
@@ -272,8 +287,8 @@
       gap: 8px;
       width: fit-content;
       border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.92rem;
+      padding: 9px 15px;
+      font-size: 0.94rem;
       font-weight: 800;
       background: #eef5ff;
       color: var(--primary);
@@ -319,7 +334,7 @@
       width: fit-content;
       background: var(--primary);
       color: white;
-      padding: 12px 18px;
+      padding: 13px 20px;
       border-radius: 12px;
       text-decoration: none;
       font-weight: 700;
@@ -333,94 +348,14 @@
       color: white;
     }
 
-    .alert-box {
-      background: #ffffff;
-      border: 1px solid var(--border);
-      border-left: 8px solid var(--gray);
+    .info-box {
+      background: #f8fbff;
+      border: 1px solid #dbe8fb;
       border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
-      transition: border-color 0.25s ease;
-    }
-
-    .alert-box.nessuna { border-left-color: var(--gray); }
-    .alert-box.verde { border-left-color: var(--green); }
-    .alert-box.gialla { border-left-color: var(--yellow); }
-    .alert-box.arancione { border-left-color: var(--orange); }
-    .alert-box.rossa { border-left-color: var(--red); }
-
-    .alert-top {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      flex-wrap: wrap;
-      margin-bottom: 12px;
-    }
-
-    .alert-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.92rem;
-      font-weight: 800;
-      background: #f8fafc;
-      border: 1px solid var(--border);
-      color: var(--text);
-    }
-
-    .alert-box.gialla .alert-badge {
-      background: rgba(244, 196, 0, 0.14);
-      color: #8a6a00;
-      border-color: rgba(244, 196, 0, 0.3);
-    }
-
-    .alert-box.arancione .alert-badge {
-      background: rgba(245, 158, 11, 0.14);
-      color: #9a5200;
-      border-color: rgba(245, 158, 11, 0.3);
-    }
-
-    .alert-box.rossa .alert-badge {
-      background: rgba(220, 38, 38, 0.12);
-      color: #991b1b;
-      border-color: rgba(220, 38, 38, 0.25);
-    }
-
-    .alert-box.verde .alert-badge {
-      background: rgba(22, 163, 74, 0.12);
-      color: #166534;
-      border-color: rgba(22, 163, 74, 0.25);
-    }
-
-    .alert-box.nessuna .alert-badge {
-      background: rgba(107, 114, 128, 0.12);
-      color: #4b5563;
-      border-color: rgba(107, 114, 128, 0.22);
-    }
-
-    .alert-title {
-      margin: 0;
-      font-size: 1.4rem;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .alert-text {
-      margin: 0;
+      padding: 18px 18px;
       color: var(--muted);
       line-height: 1.7;
-      font-size: 1rem;
-    }
-
-    .alert-note {
-      margin-top: 16px;
-      padding-top: 16px;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.97rem;
     }
 
     .stato-nessuna .status-icon-wrap {
@@ -475,13 +410,13 @@
 
     footer {
       width: 100%;
-      margin-top: 16px;
       background: #ffffff;
       border-top: 1px solid var(--border);
       padding: 28px 20px;
       position: relative;
       z-index: 1;
       flex-shrink: 0;
+      margin-top: auto;
     }
 
     .footer-inner {
@@ -547,7 +482,7 @@
       }
 
       .status-visual {
-        min-height: 300px;
+        min-height: 340px;
       }
     }
 
@@ -564,21 +499,22 @@
         padding: 22px;
       }
 
-      .alert-title {
-        font-size: 1.2rem;
-      }
-
       .status-place {
-        font-size: 1.35rem;
+        font-size: 1.45rem;
       }
 
       .status-icon-wrap {
-        width: 98px;
-        height: 98px;
+        width: 106px;
+        height: 106px;
       }
 
       .status-icon {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
+      }
+
+      .status-badge-big {
+        font-size: 0.98rem;
+        padding: 11px 16px;
       }
     }
   </style>
@@ -628,14 +564,23 @@
             <div class="status-icon-wrap">
               <i class="fas fa-triangle-exclamation status-icon"></i>
             </div>
+
             <div class="status-place">Grottammare</div>
+
             <div class="status-desc">
-              Monitoraggio locale con riferimento alle allerte e agli aggiornamenti ufficiali della Regione Marche.
+              Situazione attuale per il territorio di Grottammare.<br>
+              Consulta sempre gli aggiornamenti ufficiali in caso di variazioni meteo.
             </div>
+
             <div class="status-badge-big">
               <i class="fas fa-circle"></i>
-              <span>Nessuna allerta</span>
+              <span>Nessuna allerta attiva</span>
             </div>
+
+            <p class="status-note">
+              Non sono previste criticità nelle prossime ore.
+              Il sistema di monitoraggio resta attivo.
+            </p>
           </div>
         </div>
 
@@ -658,35 +603,14 @@
             <div class="legend-item"><span class="legend-color legend-red"></span>Rossa</div>
           </div>
 
+          <div class="info-box">
+            In caso di allerta, puoi aggiornare rapidamente il livello visibile nella pagina e rimandare gli utenti alla mappa ufficiale regionale per tutte le informazioni di dettaglio.
+          </div>
+
           <a href="https://allertameteo.regione.marche.it/" target="_blank" rel="noopener noreferrer" class="btn-meteo">
             <i class="fas fa-up-right-from-square"></i>
             Apri mappa ufficiale
           </a>
-        </div>
-      </div>
-    </div>
-
-    <div class="content-card">
-      <div class="section-title">
-        <i class="fas fa-triangle-exclamation"></i>
-        <span>Allerta in corso</span>
-      </div>
-
-      <div class="alert-box nessuna">
-        <div class="alert-top">
-          <h3 class="alert-title">Nessuna allerta</h3>
-          <div class="alert-badge">
-            <i class="fas fa-circle"></i>
-            <span>Nessuna</span>
-          </div>
-        </div>
-
-        <p class="alert-text">
-          Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente con il nuovo livello di attenzione e le eventuali indicazioni utili per la cittadinanza.
-        </p>
-
-        <div class="alert-note">
-          Fonte di riferimento: Protezione Civile / Regione Marche.
         </div>
       </div>
     </div>
