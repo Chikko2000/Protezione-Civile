@@ -1,229 +1,691 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Allerte - Protezione Civile Grottammare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Allerte - Protezione Civile Grottammare</title>
 
-<link rel="icon" type="image/png" href="img/logo.png">
+  <link rel="icon" type="image/png" href="img/logo.png" />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --primary: #0059b3;
-  --accent: #f4c400;
-  --bg: #f5f7fb;
-  --card: #ffffff;
-  --border: #e5e7eb;
-}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-/* BASE */
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  margin: 0;
-}
+  <style>
+    :root {
+      --primary: #0059b3;
+      --primary-dark: #003f80;
+      --accent: #f4c400;
+      --text: #1f2937;
+      --muted: #6b7280;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      --radius: 20px;
+      --yellow: #f4c400;
+      --orange: #f59e0b;
+      --red: #dc2626;
+      --green: #16a34a;
+      --gray: #6b7280;
+    }
 
-/* NAVBAR (UGUALE A MEZZI) */
-.navbar {
-  background: #ffffff;
-  border-bottom: 1px solid var(--border);
-  padding: 1rem;
-}
+    * {
+      box-sizing: border-box;
+    }
 
-.navbar-brand img {
-  height: 60px;
-}
+    html, body {
+      height: 100%;
+    }
 
-.nav-link {
-  font-size: 1.1rem;
-  font-weight: 800;
-  color: var(--primary) !important;
-  margin: 0 10px;
-}
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+    }
 
-.nav-link.active {
-  border-bottom: 3px solid var(--accent);
-}
+    main {
+      flex: 1;
+    }
 
-/* HERO */
-.hero {
-  position: relative;
-  height: 350px;
-  background:
-    linear-gradient(rgba(0,48,98,0.6), rgba(0,48,98,0.6)),
-    url('img/Meteo.jpeg') center/cover no-repeat;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-}
+    .navbar {
+      background: #ffffff;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.04);
+      padding: 0.95rem 1rem;
+    }
 
-.hero h1 {
-  font-size: 3rem;
-  font-weight: 900;
-}
+    .navbar-brand img {
+      height: 62px;
+      transition: transform 0.25s ease;
+    }
 
-/* BOX ALLERTA */
-.alert-box {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  border-left: 8px solid #ccc;
-  transition: 0.3s;
-}
+    .navbar-brand img:hover {
+      transform: scale(1.04);
+    }
 
-/* COLORI ALLERTE */
-.gialla { border-color: #f4c400; }
-.arancione { border-color: orange; }
-.rossa { border-color: red; }
-.verde { border-color: green; }
+    .nav-link {
+      font-size: 1.12rem;
+      margin: 0 12px;
+      font-weight: 800;
+      color: var(--primary) !important;
+      position: relative;
+      transition: 0.25s ease;
+    }
 
-/* MAP BOX */
-.map-box {
-  background: white;
-  padding: 25px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
-  text-align: center;
-}
+    .nav-link:hover,
+    .nav-link.active {
+      color: var(--primary-dark) !important;
+    }
 
-/* BOTTONE */
-.btn-meteo {
-  background: var(--primary);
-  color: white;
-  padding: 12px 25px;
-  border-radius: 10px;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 15px;
-  font-weight: 600;
-}
+    .nav-link::after {
+      content: "";
+      position: absolute;
+      left: 50%;
+      bottom: -6px;
+      width: 0;
+      height: 3px;
+      border-radius: 30px;
+      background: var(--accent);
+      transform: translateX(-50%);
+      transition: width 0.25s ease;
+    }
 
-.btn-meteo:hover {
-  background: #003f80;
-}
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 60%;
+    }
 
-/* FOOTER */
-footer {
-  background: #ffffff;
-  border-top: 1px solid var(--border);
-  padding: 25px;
-  text-align: center;
-}
+    .navbar-toggler {
+      border: none;
+      box-shadow: none !important;
+    }
 
-.social-links {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  margin-bottom: 10px;
-}
+    .hero {
+      position: relative;
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background:
+        linear-gradient(rgba(0, 48, 98, 0.58), rgba(0, 48, 98, 0.50)),
+        url('img/Meteo.jpeg') center center/cover no-repeat;
+      color: white;
+    }
 
-.social-links a {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  font-size: 18px;
-  text-decoration: none;
-}
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding: 30px 20px;
+      max-width: 900px;
+    }
 
-.social-facebook { background: #1877f2; }
-.social-instagram { background: linear-gradient(45deg,#833ab4,#fd1d1d,#fcb045); }
+    .hero h1 {
+      margin: 0;
+      font-size: clamp(2.4rem, 5vw, 4rem);
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+    }
 
-</style>
+    .hero p {
+      margin: 14px auto 0;
+      font-size: 1.08rem;
+      color: rgba(255,255,255,0.96);
+      max-width: 760px;
+    }
+
+    .cards-section {
+      padding: 52px 0 20px;
+    }
+
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+      padding: 28px;
+      height: 100%;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 18px;
+    }
+
+    .section-subtitle {
+      margin: 0 0 20px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .map-layout {
+      display: grid;
+      grid-template-columns: minmax(250px, 380px) 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .map-visual {
+      background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
+      border: 1px solid #dbe8fb;
+      border-radius: 22px;
+      padding: 18px;
+      min-height: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: inset 0 1px 0 rgba(255,255,255,0.6);
+    }
+
+    .map-svg {
+      width: 100%;
+      max-width: 260px;
+      height: auto;
+      filter: drop-shadow(0 10px 18px rgba(0,0,0,0.08));
+    }
+
+    .map-svg path.region-fill {
+      fill: var(--gray);
+      transition: fill 0.25s ease;
+    }
+
+    .map-svg path.region-outline {
+      fill: none;
+      stroke: #ffffff;
+      stroke-width: 4;
+      opacity: 0.95;
+    }
+
+    .map-svg.nessuna path.region-fill { fill: var(--gray); }
+    .map-svg.gialla path.region-fill { fill: var(--yellow); }
+    .map-svg.arancione path.region-fill { fill: var(--orange); }
+    .map-svg.rossa path.region-fill { fill: var(--red); }
+    .map-svg.verde path.region-fill { fill: var(--green); }
+
+    .map-side {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      width: fit-content;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      background: #eef5ff;
+      color: var(--primary);
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .legend-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.92rem;
+      color: var(--muted);
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      padding: 7px 12px;
+    }
+
+    .legend-color {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .legend-yellow { background: var(--yellow); }
+    .legend-orange { background: var(--orange); }
+    .legend-red { background: var(--red); }
+    .legend-green { background: var(--green); }
+    .legend-gray { background: var(--gray); }
+
+    .btn-meteo {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      width: fit-content;
+      background: var(--primary);
+      color: white;
+      padding: 12px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      transition: 0.25s ease;
+      box-shadow: 0 10px 20px rgba(0, 89, 179, 0.16);
+    }
+
+    .btn-meteo:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      color: white;
+    }
+
+    .alert-box {
+      background: #ffffff;
+      border: 1px solid var(--border);
+      border-left: 8px solid var(--gray);
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 22px rgba(0,0,0,0.05);
+      transition: border-color 0.25s ease;
+    }
+
+    .alert-box.nessuna { border-left-color: var(--gray); }
+    .alert-box.gialla { border-left-color: var(--yellow); }
+    .alert-box.arancione { border-left-color: var(--orange); }
+    .alert-box.rossa { border-left-color: var(--red); }
+    .alert-box.verde { border-left-color: var(--green); }
+
+    .alert-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      margin-bottom: 12px;
+    }
+
+    .alert-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border-radius: 999px;
+      padding: 8px 14px;
+      font-size: 0.92rem;
+      font-weight: 800;
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      color: var(--text);
+    }
+
+    .alert-box.gialla .alert-badge {
+      background: rgba(244, 196, 0, 0.14);
+      color: #8a6a00;
+      border-color: rgba(244, 196, 0, 0.3);
+    }
+
+    .alert-box.arancione .alert-badge {
+      background: rgba(245, 158, 11, 0.14);
+      color: #9a5200;
+      border-color: rgba(245, 158, 11, 0.3);
+    }
+
+    .alert-box.rossa .alert-badge {
+      background: rgba(220, 38, 38, 0.12);
+      color: #991b1b;
+      border-color: rgba(220, 38, 38, 0.25);
+    }
+
+    .alert-box.verde .alert-badge {
+      background: rgba(22, 163, 74, 0.12);
+      color: #166534;
+      border-color: rgba(22, 163, 74, 0.25);
+    }
+
+    .alert-box.nessuna .alert-badge {
+      background: rgba(107, 114, 128, 0.12);
+      color: #4b5563;
+      border-color: rgba(107, 114, 128, 0.22);
+    }
+
+    .alert-title {
+      margin: 0;
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .alert-text {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 1rem;
+    }
+
+    .alert-note {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    footer {
+      margin-top: 55px;
+      background: #ffffff;
+      border-top: 1px solid var(--border);
+      padding: 24px 20px;
+    }
+
+    .footer-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .footer-text {
+      color: var(--muted);
+      margin-bottom: 14px;
+      font-size: 1rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: white;
+      font-size: 1.15rem;
+      transition: transform 0.2s ease, opacity 0.2s ease;
+    }
+
+    .social-links a:hover {
+      transform: translateY(-3px);
+      opacity: 0.92;
+    }
+
+    .social-facebook {
+      background: #1877f2;
+    }
+
+    .social-instagram {
+      background: linear-gradient(135deg, #833ab4, #fd1d1d, #fcb045);
+    }
+
+    .footer-copy {
+      font-size: 0.94rem;
+      color: #6b7280;
+      margin: 0;
+    }
+
+    @media (max-width: 991px) {
+      .nav-link {
+        margin: 8px 0;
+      }
+
+      .map-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .map-visual {
+        min-height: 300px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        min-height: 260px;
+      }
+
+      .nav-link {
+        font-size: 1.05rem;
+      }
+
+      .content-card {
+        padding: 22px;
+      }
+
+      .map-visual {
+        min-height: 260px;
+      }
+
+      .map-svg {
+        max-width: 220px;
+      }
+
+      .alert-title {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- NAVBAR -->
-<header class="navbar navbar-expand-lg sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <img src="img/logo.png">
-    </a>
-
-    <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#nav">
-      <i class="fas fa-bars"></i>
-    </button>
-
-    <div class="collapse navbar-collapse justify-content-center" id="nav">
-      <ul class="navbar-nav">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
-        <li class="nav-item"><a class="nav-link active" href="allerte.html">Allerte</a></li>
-        <li class="nav-item"><a class="nav-link" href="volontari.html">Volontari</a></li>
-        <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
-      </ul>
-    </div>
-  </div>
-</header>
-
-<!-- HERO -->
-<section class="hero">
-  <h1>Allerte Meteo</h1>
-</section>
-
-<main class="container py-5">
-
-  <!-- MAPPA (LINK UFFICIALE) -->
-  <section class="mb-5">
-    <div class="map-box">
-      <h4 class="fw-bold mb-3">
-        <i class="fas fa-map me-2 text-primary"></i>
-        Mappa ufficiale Regione Marche
-      </h4>
-
-      <p class="text-muted">
-        Consulta la situazione aggiornata in tempo reale direttamente dal sito ufficiale.
-      </p>
-
-      <a href="https://allertameteo.regione.marche.it/" target="_blank" class="btn-meteo">
-        Apri mappa ufficiale
+  <header class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html">
+        <img src="img/logo.png" alt="Logo Protezione Civile Grottammare">
       </a>
+
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-label="Apri menu">
+        <i class="fas fa-bars" style="color:#0059b3; font-size:1.4rem;"></i>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
+        <ul class="navbar-nav align-items-center">
+          <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
+          <li class="nav-item"><a class="nav-link active" href="allerte.html">Allerte</a></li>
+          <li class="nav-item"><a class="nav-link" href="volontari.html">Volontari</a></li>
+          <li class="nav-item"><a class="nav-link" href="contatti.html">Contatti</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Allerte</h1>
+      <p>Situazione meteo regionale, livello di attenzione attuale e accesso rapido alla mappa ufficiale della Regione Marche.</p>
     </div>
   </section>
 
-  <!-- ALLERTA IN CORSO -->
-  <section>
-    <h3 class="fw-bold mb-4">
-      <i class="fas fa-triangle-exclamation text-warning me-2"></i>
-      Allerta in corso
-    </h3>
+  <main class="container cards-section">
 
-    <!-- CAMBIA SOLO CLASSE -->
-    <div class="alert-box gialla">
-      <h5>Allerta GIALLA</h5>
-      <p>Rischio temporali e vento. Prestare attenzione negli spostamenti.</p>
+    <div class="content-card mb-4">
+      <div class="section-title">
+        <i class="fas fa-map-location-dot"></i>
+        <span>Situazione Regione Marche</span>
+      </div>
+
+      <div class="map-layout">
+        <div class="map-visual">
+          <svg id="mappaMarche" class="map-svg nessuna" viewBox="0 0 260 420" xmlns="http://www.w3.org/2000/svg" aria-label="Mappa Regione Marche">
+            <path class="region-fill" d="M146 16
+              C165 18, 182 31, 188 52
+              C194 72, 190 94, 198 112
+              C205 128, 220 143, 222 165
+              C224 191, 213 208, 212 231
+              C211 253, 224 278, 220 301
+              C216 324, 199 343, 192 362
+              C185 381, 170 398, 151 404
+              C132 410, 112 402, 101 387
+              C89 370, 84 351, 70 333
+              C55 313, 34 292, 34 267
+              C34 241, 48 221, 48 197
+              C47 173, 32 151, 35 125
+              C38 97, 57 76, 76 55
+              C94 36, 117 14, 146 16 Z"/>
+            <path class="region-outline" d="M146 16
+              C165 18, 182 31, 188 52
+              C194 72, 190 94, 198 112
+              C205 128, 220 143, 222 165
+              C224 191, 213 208, 212 231
+              C211 253, 224 278, 220 301
+              C216 324, 199 343, 192 362
+              C185 381, 170 398, 151 404
+              C132 410, 112 402, 101 387
+              C89 370, 84 351, 70 333
+              C55 313, 34 292, 34 267
+              C34 241, 48 221, 48 197
+              C47 173, 32 151, 35 125
+              C38 97, 57 76, 76 55
+              C94 36, 117 14, 146 16 Z"/>
+          </svg>
+        </div>
+
+        <div class="map-side">
+          <div id="statusChip" class="status-chip">
+            <i class="fas fa-circle-info"></i>
+            <span>Stato attuale: nessuna allerta</span>
+          </div>
+
+          <p class="section-subtitle">
+            Questa sezione mostra in modo semplice e immediato il livello di allerta attualmente impostato per la Regione Marche.
+            Per una consultazione completa e sempre aggiornata, puoi aprire direttamente la mappa ufficiale regionale.
+          </p>
+
+          <div class="legend">
+            <div class="legend-item"><span class="legend-color legend-gray"></span>Nessuna</div>
+            <div class="legend-item"><span class="legend-color legend-green"></span>Verde</div>
+            <div class="legend-item"><span class="legend-color legend-yellow"></span>Gialla</div>
+            <div class="legend-item"><span class="legend-color legend-orange"></span>Arancione</div>
+            <div class="legend-item"><span class="legend-color legend-red"></span>Rossa</div>
+          </div>
+
+          <a href="https://allertameteo.regione.marche.it/" target="_blank" rel="noopener noreferrer" class="btn-meteo">
+            <i class="fas fa-up-right-from-square"></i>
+            Apri mappa ufficiale
+          </a>
+        </div>
+      </div>
     </div>
 
-  </section>
+    <div class="content-card">
+      <div class="section-title">
+        <i class="fas fa-triangle-exclamation"></i>
+        <span>Allerta in corso</span>
+      </div>
 
-</main>
+      <div id="alertBox" class="alert-box nessuna">
+        <div class="alert-top">
+          <h3 class="alert-title" id="alertTitle">Nessuna allerta</h3>
+          <div class="alert-badge" id="alertBadge">
+            <i class="fas fa-circle"></i>
+            <span>Nessuna</span>
+          </div>
+        </div>
 
-<!-- FOOTER -->
-<footer>
+        <p class="alert-text" id="alertText">
+          Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente.
+        </p>
 
-  <div class="social-links">
-    <a class="social-facebook" href="https://www.facebook.com/" target="_blank">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a class="social-instagram" href="https://www.instagram.com/" target="_blank">
-      <i class="fab fa-instagram"></i>
-    </a>
-  </div>
+        <div class="alert-note">
+          Fonte di riferimento: Protezione Civile / Regione Marche.
+        </div>
+      </div>
+    </div>
 
-  <p>© 2025 Protezione Civile Grottammare</p>
+  </main>
 
-</footer>
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-text">Seguici anche sui nostri canali social</div>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+      <div class="social-links">
+        <a class="social-facebook" href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+        <a class="social-instagram" href="https://www.instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </div>
+
+      <p class="footer-copy">© 2025 Protezione Civile Grottammare</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    // Valori disponibili: nessuna, verde, gialla, arancione, rossa
+    const livello = "nessuna";
+
+    const mappa = document.getElementById("mappaMarche");
+    const chip = document.getElementById("statusChip");
+    const alertBox = document.getElementById("alertBox");
+    const alertTitle = document.getElementById("alertTitle");
+    const alertBadge = document.getElementById("alertBadge");
+    const alertText = document.getElementById("alertText");
+
+    const colori = {
+      nessuna: {
+        label: "Nessuna",
+        text: "Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente.",
+        chip: "Stato attuale: nessuna allerta"
+      },
+      verde: {
+        label: "Verde",
+        text: "Situazione sotto controllo. Si consiglia comunque di seguire eventuali aggiornamenti ufficiali.",
+        chip: "Stato attuale: allerta verde"
+      },
+      gialla: {
+        label: "Gialla",
+        text: "Prestare attenzione alle condizioni meteo e seguire con prudenza eventuali aggiornamenti e indicazioni di protezione civile.",
+        chip: "Stato attuale: allerta gialla"
+      },
+      arancione: {
+        label: "Arancione",
+        text: "Condizioni meteo critiche. Si raccomanda particolare attenzione negli spostamenti e nelle aree più esposte.",
+        chip: "Stato attuale: allerta arancione"
+      },
+      rossa: {
+        label: "Rossa",
+        text: "Situazione di elevata criticità. Seguire con la massima attenzione le indicazioni ufficiali delle autorità competenti.",
+        chip: "Stato attuale: allerta rossa"
+      }
+    };
+
+    const stato = colori[livello] || colori.nessuna;
+
+    mappa.classList.remove("nessuna", "verde", "gialla", "arancione", "rossa");
+    mappa.classList.add(livello);
+
+    alertBox.classList.remove("nessuna", "verde", "gialla", "arancione", "rossa");
+    alertBox.classList.add(livello);
+
+    chip.innerHTML = `
+      <i class="fas fa-circle-info"></i>
+      <span>${stato.chip}</span>
+    `;
+
+    alertTitle.textContent = livello === "nessuna" ? "Nessuna allerta" : `Allerta ${stato.label.toUpperCase()}`;
+    alertBadge.innerHTML = `
+      <i class="fas fa-circle"></i>
+      <span>${stato.label}</span>
+    `;
+    alertText.textContent = stato.text;
+  </script>
 
 </body>
 </html>
