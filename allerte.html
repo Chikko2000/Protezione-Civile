@@ -158,7 +158,6 @@
       border-radius: var(--radius);
       box-shadow: 0 6px 20px rgba(0,0,0,0.05);
       padding: 28px;
-      height: 100%;
       margin-bottom: 28px;
     }
 
@@ -175,30 +174,31 @@
     .section-subtitle {
       margin: 0 0 20px;
       color: var(--muted);
-      line-height: 1.6;
+      line-height: 1.7;
     }
 
-    .map-layout {
+    .status-layout {
       display: grid;
       grid-template-columns: minmax(280px, 420px) 1fr;
       gap: 28px;
-      align-items: center;
+      align-items: stretch;
     }
 
-    .region-box {
+    .status-visual {
       background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
       border: 1px solid #dbe8fb;
       border-radius: 22px;
-      padding: 24px;
-      min-height: 380px;
+      padding: 28px 24px;
+      min-height: 360px;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
       overflow: hidden;
+      text-align: center;
     }
 
-    .region-box::before {
+    .status-visual::before {
       content: "";
       position: absolute;
       inset: 0;
@@ -208,48 +208,58 @@
       pointer-events: none;
     }
 
-    .region-wrap {
+    .status-visual-inner {
       position: relative;
       z-index: 2;
-      text-align: center;
       width: 100%;
     }
 
-    .region-map {
-      width: 100%;
-      max-width: 260px;
-      height: auto;
-      display: block;
-      margin: 0 auto 16px;
-      filter: drop-shadow(0 14px 20px rgba(0,0,0,0.12));
-      transition: filter 0.3s ease, transform 0.3s ease;
+    .status-icon-wrap {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      margin: 0 auto 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #ffffff;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 24px rgba(0, 89, 179, 0.08);
     }
 
-    .region-map:hover {
-      transform: scale(1.02);
-    }
-
-    .region-label {
-      font-size: 1rem;
-      font-weight: 800;
+    .status-icon {
+      font-size: 3rem;
       color: var(--primary);
     }
 
-    .region-status {
-      margin-top: 10px;
+    .status-place {
+      font-size: 1.6rem;
+      font-weight: 900;
+      color: var(--primary);
+      margin-bottom: 8px;
+    }
+
+    .status-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .status-badge-big {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       border-radius: 999px;
-      padding: 8px 14px;
-      font-size: 0.92rem;
+      padding: 10px 16px;
+      font-size: 0.96rem;
       font-weight: 800;
       background: #ffffff;
       border: 1px solid var(--border);
       color: var(--text);
     }
 
-    .map-side {
+    .status-side {
       display: flex;
       flex-direction: column;
       gap: 16px;
@@ -413,6 +423,56 @@
       font-size: 0.95rem;
     }
 
+    .stato-nessuna .status-icon-wrap {
+      background: rgba(107, 114, 128, 0.10);
+      border-color: rgba(107, 114, 128, 0.20);
+    }
+
+    .stato-nessuna .status-icon,
+    .stato-nessuna .status-badge-big i {
+      color: var(--gray);
+    }
+
+    .stato-verde .status-icon-wrap {
+      background: rgba(22, 163, 74, 0.10);
+      border-color: rgba(22, 163, 74, 0.20);
+    }
+
+    .stato-verde .status-icon,
+    .stato-verde .status-badge-big i {
+      color: var(--green);
+    }
+
+    .stato-gialla .status-icon-wrap {
+      background: rgba(244, 196, 0, 0.12);
+      border-color: rgba(244, 196, 0, 0.28);
+    }
+
+    .stato-gialla .status-icon,
+    .stato-gialla .status-badge-big i {
+      color: #c99700;
+    }
+
+    .stato-arancione .status-icon-wrap {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: rgba(245, 158, 11, 0.24);
+    }
+
+    .stato-arancione .status-icon,
+    .stato-arancione .status-badge-big i {
+      color: var(--orange);
+    }
+
+    .stato-rossa .status-icon-wrap {
+      background: rgba(220, 38, 38, 0.12);
+      border-color: rgba(220, 38, 38, 0.22);
+    }
+
+    .stato-rossa .status-icon,
+    .stato-rossa .status-badge-big i {
+      color: var(--red);
+    }
+
     footer {
       width: 100%;
       margin-top: 16px;
@@ -477,36 +537,16 @@
       margin: 0;
     }
 
-    .livello-nessuna {
-      filter: grayscale(1) brightness(0.72);
-    }
-
-    .livello-verde {
-      filter: brightness(0) saturate(100%) invert(41%) sepia(99%) saturate(640%) hue-rotate(88deg) brightness(92%) contrast(90%);
-    }
-
-    .livello-gialla {
-      filter: brightness(0) saturate(100%) invert(79%) sepia(69%) saturate(822%) hue-rotate(359deg) brightness(99%) contrast(94%);
-    }
-
-    .livello-arancione {
-      filter: brightness(0) saturate(100%) invert(67%) sepia(86%) saturate(1502%) hue-rotate(360deg) brightness(98%) contrast(93%);
-    }
-
-    .livello-rossa {
-      filter: brightness(0) saturate(100%) invert(20%) sepia(86%) saturate(2895%) hue-rotate(347deg) brightness(91%) contrast(93%);
-    }
-
     @media (max-width: 991px) {
       .nav-link {
         margin: 8px 0;
       }
 
-      .map-layout {
+      .status-layout {
         grid-template-columns: 1fr;
       }
 
-      .region-box {
+      .status-visual {
         min-height: 300px;
       }
     }
@@ -528,8 +568,17 @@
         font-size: 1.2rem;
       }
 
-      .region-map {
-        max-width: 210px;
+      .status-place {
+        font-size: 1.35rem;
+      }
+
+      .status-icon-wrap {
+        width: 98px;
+        height: 98px;
+      }
+
+      .status-icon {
+        font-size: 2.5rem;
       }
     }
   </style>
@@ -561,7 +610,7 @@
   <section class="hero">
     <div class="hero-content">
       <h1>Allerte</h1>
-      <p>Situazione meteo regionale, livello di attenzione attuale e accesso rapido alla mappa ufficiale della Regione Marche.</p>
+      <p>Situazione meteo e stato di attenzione per il territorio di Grottammare, con accesso rapido alla mappa ufficiale della Regione Marche.</p>
     </div>
   </section>
 
@@ -569,36 +618,36 @@
 
     <div class="content-card">
       <div class="section-title">
-        <i class="fas fa-map-location-dot"></i>
-        <span>Situazione Regione Marche</span>
+        <i class="fas fa-shield-halved"></i>
+        <span>Situazione Grottammare</span>
       </div>
 
-      <div class="map-layout">
-        <div class="region-box">
-          <div class="region-wrap">
-            <img
-              id="regioneImg"
-              class="region-map livello-nessuna"
-              src="img/marche.png"
-              alt="Regione Marche"
-            >
-            <div class="region-label">Regione Marche</div>
-            <div class="region-status" id="regionStatus">
+      <div class="status-layout">
+        <div class="status-visual stato-nessuna">
+          <div class="status-visual-inner">
+            <div class="status-icon-wrap">
+              <i class="fas fa-triangle-exclamation status-icon"></i>
+            </div>
+            <div class="status-place">Grottammare</div>
+            <div class="status-desc">
+              Monitoraggio locale con riferimento alle allerte e agli aggiornamenti ufficiali della Regione Marche.
+            </div>
+            <div class="status-badge-big">
               <i class="fas fa-circle"></i>
               <span>Nessuna allerta</span>
             </div>
           </div>
         </div>
 
-        <div class="map-side">
-          <div id="statusChip" class="status-chip">
+        <div class="status-side">
+          <div class="status-chip">
             <i class="fas fa-circle-info"></i>
             <span>Stato attuale: nessuna allerta</span>
           </div>
 
           <p class="section-subtitle">
-            In questa sezione puoi mostrare in modo semplice il livello di allerta attuale per la Regione Marche.
-            Il colore della regione cambia in base allo stato selezionato, mentre il pulsante qui sotto porta direttamente alla mappa ufficiale regionale.
+            Questa sezione mostra in modo semplice e immediato il livello di attenzione attuale per Grottammare.
+            Per verificare dettagli, mappe e aggiornamenti completi, puoi consultare direttamente il portale ufficiale della Regione Marche.
           </p>
 
           <div class="legend">
@@ -623,17 +672,17 @@
         <span>Allerta in corso</span>
       </div>
 
-      <div id="alertBox" class="alert-box nessuna">
+      <div class="alert-box nessuna">
         <div class="alert-top">
-          <h3 class="alert-title" id="alertTitle">Nessuna allerta</h3>
-          <div class="alert-badge" id="alertBadge">
+          <h3 class="alert-title">Nessuna allerta</h3>
+          <div class="alert-badge">
             <i class="fas fa-circle"></i>
             <span>Nessuna</span>
           </div>
         </div>
 
-        <p class="alert-text" id="alertText">
-          Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente.
+        <p class="alert-text">
+          Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente con il nuovo livello di attenzione e le eventuali indicazioni utili per la cittadinanza.
         </p>
 
         <div class="alert-note">
@@ -662,89 +711,6 @@
   </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-
-  <script>
-    // Cambia qui il livello:
-    // nessuna, verde, gialla, arancione, rossa
-    const livello = "nessuna";
-
-    const chip = document.getElementById("statusChip");
-    const alertBox = document.getElementById("alertBox");
-    const alertTitle = document.getElementById("alertTitle");
-    const alertBadge = document.getElementById("alertBadge");
-    const alertText = document.getElementById("alertText");
-    const regioneImg = document.getElementById("regioneImg");
-    const regionStatus = document.getElementById("regionStatus");
-
-    const colori = {
-      nessuna: {
-        label: "Nessuna",
-        text: "Al momento non sono presenti allerte attive. In caso di aggiornamenti, questa sezione può essere modificata rapidamente.",
-        chip: "Stato attuale: nessuna allerta",
-        title: "Nessuna allerta",
-        imgClass: "livello-nessuna"
-      },
-      verde: {
-        label: "Verde",
-        text: "Situazione sotto controllo. Si consiglia comunque di seguire eventuali aggiornamenti ufficiali.",
-        chip: "Stato attuale: allerta verde",
-        title: "Allerta VERDE",
-        imgClass: "livello-verde"
-      },
-      gialla: {
-        label: "Gialla",
-        text: "Prestare attenzione alle condizioni meteo e seguire con prudenza eventuali aggiornamenti e indicazioni di protezione civile.",
-        chip: "Stato attuale: allerta gialla",
-        title: "Allerta GIALLA",
-        imgClass: "livello-gialla"
-      },
-      arancione: {
-        label: "Arancione",
-        text: "Condizioni meteo critiche. Si raccomanda particolare attenzione negli spostamenti e nelle aree più esposte.",
-        chip: "Stato attuale: allerta arancione",
-        title: "Allerta ARANCIONE",
-        imgClass: "livello-arancione"
-      },
-      rossa: {
-        label: "Rossa",
-        text: "Situazione di elevata criticità. Seguire con la massima attenzione le indicazioni ufficiali delle autorità competenti.",
-        chip: "Stato attuale: allerta rossa",
-        title: "Allerta ROSSA",
-        imgClass: "livello-rossa"
-      }
-    };
-
-    const stato = colori[livello] || colori.nessuna;
-
-    alertBox.classList.remove("nessuna", "verde", "gialla", "arancione", "rossa");
-    alertBox.classList.add(livello);
-
-    regioneImg.classList.remove(
-      "livello-nessuna",
-      "livello-verde",
-      "livello-gialla",
-      "livello-arancione",
-      "livello-rossa"
-    );
-    regioneImg.classList.add(stato.imgClass);
-
-    chip.innerHTML = `
-      <i class="fas fa-circle-info"></i>
-      <span>${stato.chip}</span>
-    `;
-
-    regionStatus.innerHTML = `
-      <i class="fas fa-circle"></i>
-      <span>${stato.label === "Nessuna" ? "Nessuna allerta" : "Allerta " + stato.label}</span>
-    `;
-
-    alertTitle.textContent = stato.title;
-    alertBadge.innerHTML = `
-      <i class="fas fa-circle"></i>
-      <span>${stato.label}</span>
-    `;
-    alertText.textContent = stato.text;
-  </script>
 
 </body>
 </html>
