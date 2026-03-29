@@ -157,7 +157,7 @@
     }
 
     .btn-hero,
-    .btn-hero-outline {
+    .btn-whatsapp-hero {
       display: inline-flex;
       align-items: center;
       gap: 9px;
@@ -177,19 +177,6 @@
     .btn-hero:hover {
       transform: translateY(-2px);
       color: #111827;
-    }
-
-    .btn-hero-outline {
-      border: 1px solid rgba(255,255,255,0.38);
-      color: white;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(6px);
-    }
-
-    .btn-hero-outline:hover {
-      transform: translateY(-2px);
-      color: white;
-      background: rgba(255,255,255,0.14);
     }
 
     .btn-whatsapp-hero {
@@ -250,7 +237,6 @@
     }
 
     .info-card,
-    .map-card,
     .form-card {
       background: #ffffff;
       border: 1px solid var(--border);
@@ -262,7 +248,6 @@
     }
 
     .info-card:hover,
-    .map-card:hover,
     .form-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 26px rgba(0,0,0,0.07);
@@ -331,34 +316,6 @@
       transform: translateY(-2px);
     }
 
-    .map-wrapper {
-      margin-top: 18px;
-      border-radius: 18px;
-      overflow: hidden;
-      border: 1px solid var(--border);
-    }
-
-    .map-wrapper iframe {
-      width: 100%;
-      height: 390px;
-      border: 0;
-      display: block;
-    }
-
-    .map-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      margin-top: 14px;
-      text-decoration: none;
-      font-weight: 800;
-      color: var(--primary);
-    }
-
-    .map-link:hover {
-      color: var(--primary-dark);
-    }
-
     .contact-box {
       background: linear-gradient(180deg, #f8fbff 0%, #eef5ff 100%);
       border: 1px solid #dbe8fb;
@@ -404,11 +361,39 @@
       color: var(--primary);
     }
 
+    .map-wrapper {
+      margin-top: 0;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+
+    .map-wrapper iframe {
+      width: 100%;
+      height: 390px;
+      border: 0;
+      display: block;
+    }
+
+    .map-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 14px;
+      text-decoration: none;
+      font-weight: 800;
+      color: var(--primary);
+    }
+
+    .map-link:hover {
+      color: var(--primary-dark);
+    }
+
     .form-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
-      margin-top: 18px;
+      margin-top: 0;
     }
 
     .form-group.full {
@@ -492,13 +477,6 @@
     .error-message {
       color: #991b1b;
       background: #fee2e2;
-    }
-
-    .form-note {
-      margin-top: 16px;
-      color: var(--muted);
-      line-height: 1.7;
-      font-size: 0.95rem;
     }
 
     footer {
@@ -597,7 +575,6 @@
       }
 
       .btn-hero,
-      .btn-hero-outline,
       .btn-whatsapp-hero {
         width: 100%;
         justify-content: center;
@@ -656,7 +633,7 @@
           <i class="fas fa-paper-plane"></i>
           Scrivici subito
         </a>
-        <a href="https://wa.me/393295396305" class="btn-hero btn-whatsapp-hero" target="_blank" rel="noopener noreferrer">
+        <a href="https://wa.me/393295396305" class="btn-whatsapp-hero" target="_blank" rel="noopener noreferrer">
           <i class="fab fa-whatsapp"></i>
           Contattaci su WhatsApp
         </a>
@@ -697,7 +674,7 @@
           <div class="card-icon"><i class="fas fa-location-dot"></i></div>
           <div class="card-title">Sede</div>
           <p class="card-text">
-            <a href="https://www.google.com/maps?q=Piazza+Stazione+6,+63066+Grottammare+AP" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.google.com/maps?q=Piazza+Stazione,+12,+63066+Grottammare+AP" target="_blank" rel="noopener noreferrer">
               Piazza Stazione 6<br>
               63066 Grottammare (AP)
             </a>
@@ -740,20 +717,16 @@
         <span>Dove siamo</span>
       </div>
 
-      <p class="section-subtitle">
-        La sede si trova in Piazza Stazione 6 a Grottammare, in provincia di Ascoli Piceno.
-      </p>
-
       <div class="map-wrapper">
         <iframe
-          src="https://www.google.com/maps?q=Piazza+Stazione+6,+63066+Grottammare+AP&output=embed"
+          src="https://www.google.com/maps?q=Piazza+Stazione,+12,+63066+Grottammare+AP&output=embed"
           allowfullscreen=""
           loading="lazy"
           referrerpolicy="no-referrer-when-downgrade">
         </iframe>
       </div>
 
-      <a class="map-link" href="https://www.google.com/maps?q=Piazza+Stazione+6,+63066+Grottammare+AP" target="_blank" rel="noopener noreferrer">
+      <a class="map-link" href="https://www.google.com/maps?q=Piazza+Stazione,+12,+63066+Grottammare+AP" target="_blank" rel="noopener noreferrer">
         <i class="fas fa-up-right-from-square"></i>
         Apri la posizione su Google Maps
       </a>
@@ -764,10 +737,6 @@
         <i class="fas fa-paper-plane"></i>
         <span>Scrivici un messaggio</span>
       </div>
-
-      <p class="section-subtitle">
-        Compila il form qui sotto per inviarci un messaggio diretto. Ti risponderemo appena possibile.
-      </p>
 
       <div class="form-card">
         <form id="contactForm" action="https://formspree.io/f/yourformid" method="POST">
@@ -809,10 +778,6 @@
             </div>
           </div>
         </form>
-
-        <div class="form-note">
-          Per far funzionare il modulo, sostituisci <strong>yourformid</strong> con l’ID reale del tuo modulo Formspree.
-        </div>
       </div>
     </div>
 
