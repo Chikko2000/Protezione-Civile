@@ -1,230 +1,299 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Contatti - Protezione Civile Grottammare</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Contatti - Protezione Civile Grottammare</title>
 
-<link rel="icon" type="image/png" href="img/favicon.png">
+  <link rel="icon" type="image/png" href="img/logo.png" />
 
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 
-<style>
-:root {
-  --primary: #0059b3;
-  --primary-dark: #003f80;
-  --accent: #25D366;
-  --bg: #f5f7fb;
-  --border: #e5e7eb;
-}
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-}
+  <style>
+    :root {
+      --primary: #0059b3;
+      --primary-dark: #003f80;
+      --accent: #25D366;
+      --bg: #f5f7fb;
+      --card: #ffffff;
+      --border: #e5e7eb;
+      --radius: 20px;
+    }
 
-/* HERO */
-.hero {
-  height: 320px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: linear-gradient(rgba(0,48,98,0.6), rgba(0,48,98,0.6)), url('img/contatti.jpg') center/cover;
-  color: white;
-  text-align: center;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-/* CARD */
-.card-box {
-  background: white;
-  border-radius: 18px;
-  padding: 25px;
-  border: 1px solid var(--border);
-  text-align: center;
-  transition: 0.3s;
-  height: 100%;
-}
+    main { flex: 1; }
 
-.card-box:hover {
-  transform: translateY(-5px);
-}
+    /* NAVBAR */
+    .navbar {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      box-shadow: 0 4px 18px rgba(0,0,0,0.04);
+    }
 
-.icon {
-  font-size: 1.8rem;
-  color: var(--primary);
-}
+    .navbar-brand img { height: 62px; }
 
-/* MAPPA */
-.map-box {
-  margin-top: 40px;
-  border-radius: 20px;
-  overflow: hidden;
-}
+    .nav-link {
+      font-weight: 800;
+      color: var(--primary) !important;
+    }
 
-/* FORM */
-.form-control {
-  border-radius: 10px;
-  padding: 12px;
-}
+    .nav-link.active { color: var(--primary-dark) !important; }
 
-.btn-main {
-  background: var(--primary);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  border: none;
-  font-weight: 700;
-}
+    /* HERO */
+    .hero {
+      min-height: 320px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: linear-gradient(rgba(0,48,98,0.6), rgba(0,48,98,0.5)), url('img/contatti.jpg') center/cover;
+      color: white;
+    }
 
-.btn-whatsapp {
-  background: var(--accent);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 10px;
-  text-decoration: none;
-  display: inline-block;
-  margin-top: 15px;
-}
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
 
-/* LOADING */
-.loader {
-  display: none;
-  margin-top: 10px;
-}
+    /* CARD */
+    .content-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 28px;
+      margin-bottom: 28px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    }
 
-/* SUCCESS */
-.success-message {
-  display: none;
-  margin-top: 15px;
-  padding: 10px;
-  background: #d1fae5;
-  border-radius: 8px;
-  color: #065f46;
-  font-weight: 600;
-}
+    .section-title {
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
 
-footer {
-  text-align: center;
-  padding: 20px;
-  margin-top: 40px;
-  background: white;
-}
-</style>
+    /* GRID CONTATTI */
+    .contacts-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .contact-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 20px;
+      text-align: center;
+      transition: .2s;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .contact-card i {
+      font-size: 1.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    .contact-card a {
+      text-decoration: none;
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    /* MAPPA */
+    .map-box {
+      border-radius: 20px;
+      overflow: hidden;
+      margin-top: 20px;
+    }
+
+    iframe {
+      width: 100%;
+      height: 400px;
+      border: none;
+    }
+
+    /* FORM */
+    .form-control {
+      border-radius: 12px;
+      padding: 12px;
+    }
+
+    .btn-main {
+      background: var(--primary);
+      color: #fff;
+      border-radius: 10px;
+      padding: 12px;
+      font-weight: 700;
+    }
+
+    .btn-whatsapp {
+      background: var(--accent);
+      color: white;
+      padding: 10px 16px;
+      border-radius: 10px;
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+    }
+
+    .loader, .success {
+      display: none;
+      margin-top: 10px;
+      font-weight: 600;
+    }
+
+    .success {
+      color: green;
+    }
+
+    footer {
+      background: #fff;
+      border-top: 1px solid var(--border);
+      padding: 20px;
+      text-align: center;
+    }
+
+    @media(max-width: 900px){
+      .contacts-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 
 <body>
 
-<div class="hero">
+<header class="navbar navbar-expand-lg sticky-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="index.html">
+      <img src="img/logo.png">
+    </a>
+    <div class="collapse navbar-collapse justify-content-center">
+      <ul class="navbar-nav">
+        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
+        <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
+        <li class="nav-item"><a class="nav-link" href="volontari.html">Volontari</a></li>
+        <li class="nav-item"><a class="nav-link active" href="contatti.html">Contatti</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
   <div>
     <h1>Contatti</h1>
     <p>Scrivici o vieni a trovarci</p>
   </div>
-</div>
+</section>
 
-<div class="container mt-5">
+<main class="container mt-5">
 
   <!-- CONTATTI -->
-  <div class="row g-4">
+  <div class="content-card">
+    <h3 class="section-title">Riferimenti</h3>
 
-    <div class="col-md-3">
-      <div class="card-box">
-        <div class="icon"><i class="fas fa-phone"></i></div>
-        <h5>Telefono</h5>
-        <p><a href="tel:+393295396305">329 5396305</a></p>
+    <div class="contacts-grid">
+
+      <div class="contact-card">
+        <i class="fas fa-phone"></i>
+        <div>Telefono</div>
+        <a href="tel:+393295396305">329 5396305</a>
       </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card-box">
-        <div class="icon"><i class="fas fa-envelope"></i></div>
-        <h5>Email</h5>
-        <p><a href="mailto:protezionecivile@comune.grottammare.ap.it">
-        protezionecivile@comune.grottammare.ap.it</a></p>
+      <div class="contact-card">
+        <i class="fas fa-envelope"></i>
+        <div>Email</div>
+        <a href="mailto:protezionecivile@comune.grottammare.ap.it">
+          protezionecivile@comune.grottammare.ap.it
+        </a>
       </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card-box">
-        <div class="icon"><i class="fas fa-location-dot"></i></div>
-        <h5>Sede</h5>
-        <p><a href="https://www.google.com/maps?q=Piazza+Stazione+6,+Grottammare" target="_blank">
-        Piazza Stazione 6<br>Grottammare (AP)</a></p>
+      <div class="contact-card">
+        <i class="fas fa-location-dot"></i>
+        <div>Sede</div>
+        <a href="https://www.google.com/maps?q=Piazza+Stazione+6,+Grottammare" target="_blank">
+          Piazza Stazione 6<br>Grottammare
+        </a>
       </div>
-    </div>
 
-    <div class="col-md-3">
-      <div class="card-box">
-        <div class="icon"><i class="fab fa-whatsapp"></i></div>
-        <h5>WhatsApp</h5>
-        <a href="https://wa.me/393295396305" class="btn-whatsapp" target="_blank">
+      <div class="contact-card">
+        <i class="fab fa-whatsapp"></i>
+        <div>WhatsApp</div>
+        <a href="https://wa.me/393295396305" target="_blank" class="btn-whatsapp">
           Scrivici
         </a>
       </div>
-    </div>
 
+    </div>
   </div>
 
   <!-- MAPPA -->
-  <div class="map-box">
-    <iframe src="https://www.google.com/maps?q=Piazza+Stazione+6,+Grottammare&output=embed"
-      width="100%" height="350"></iframe>
+  <div class="content-card">
+    <h3 class="section-title">Dove siamo</h3>
+
+    <div class="map-box">
+      <iframe src="https://www.google.com/maps?q=Piazza+Stazione+6,+Grottammare&output=embed"></iframe>
+    </div>
   </div>
 
   <!-- FORM -->
-  <div class="mt-5">
-    <h3>Contattaci</h3>
+  <div class="content-card">
+    <h3 class="section-title">Contattaci</h3>
 
-    <form id="contactForm" action="https://formspree.io/f/yourformid" method="POST">
-
-      <input type="hidden" name="_subject" value="Nuovo messaggio dal sito">
+    <form id="form" action="https://formspree.io/f/yourformid" method="POST">
 
       <input type="text" class="form-control mb-3" name="name" placeholder="Nome" required>
       <input type="email" class="form-control mb-3" name="email" placeholder="Email" required>
       <textarea class="form-control mb-3" name="message" placeholder="Messaggio" required></textarea>
 
-      <button type="submit" class="btn-main">
-        <i class="fas fa-paper-plane"></i> Invia
-      </button>
+      <button class="btn-main w-100">Invia messaggio</button>
 
-      <div class="loader" id="loader">
-        ⏳ Invio in corso...
-      </div>
-
-      <div class="success-message" id="successMessage">
-        ✅ Messaggio inviato con successo!
-      </div>
+      <div class="loader" id="loader">Invio...</div>
+      <div class="success" id="success">Messaggio inviato!</div>
 
     </form>
   </div>
 
-</div>
+</main>
 
 <footer>
 © 2025 Protezione Civile Grottammare
 </footer>
 
 <script>
-const form = document.getElementById("contactForm");
+const f = document.getElementById("form");
 const loader = document.getElementById("loader");
-const success = document.getElementById("successMessage");
+const success = document.getElementById("success");
 
-form.addEventListener("submit", async function(e) {
+f.addEventListener("submit", async e => {
   e.preventDefault();
+  loader.style.display="block";
 
-  loader.style.display = "block";
-
-  const data = new FormData(form);
-
-  await fetch(form.action, {
-    method: form.method,
-    body: data,
-    headers: { 'Accept': 'application/json' }
+  await fetch(f.action, {
+    method:"POST",
+    body:new FormData(f),
+    headers:{'Accept':'application/json'}
   });
 
-  loader.style.display = "none";
-  success.style.display = "block";
-  form.reset();
+  loader.style.display="none";
+  success.style.display="block";
+  f.reset();
 });
 </script>
 
