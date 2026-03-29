@@ -5,165 +5,228 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Contatti - Protezione Civile Grottammare</title>
 
-<!-- Favicon -->
-<link rel="icon" type="image/png" sizes="32x32" href="img/favicon.png">
-<link rel="apple-touch-icon" sizes="180x180" href="img/favicon.png">
+<link rel="icon" type="image/png" href="img/favicon.png">
 
-<!-- Bootstrap -->
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-
-<!-- FontAwesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-<!-- Custom Style -->
 <style>
-  body {
-    background: #f5f6fa;
-    font-family: 'Poppins', sans-serif;
-  }
+:root {
+  --primary: #0059b3;
+  --primary-dark: #003f80;
+  --accent: #25D366;
+  --bg: #f5f7fb;
+  --border: #e5e7eb;
+}
 
-  header.navbar {
-    background: #004a99 !important;
-    padding: 1rem;
-  }
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--bg);
+}
 
-  .navbar-brand img {
-    height: 60px;
-    transition: .3s;
-  }
-  .navbar-brand img:hover { transform: scale(1.1); }
+/* HERO */
+.hero {
+  height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(rgba(0,48,98,0.6), rgba(0,48,98,0.6)), url('img/contatti.jpg') center/cover;
+  color: white;
+  text-align: center;
+}
 
-  .nav-link {
-    font-size: 1.2rem;
-    margin: 0 10px;
-    color: #fff !important;
-    font-weight: 500;
-    transition: 0.3s;
-    position: relative;
-  }
-  .nav-link:hover { color: #ffea00 !important; transform: translateY(-3px); }
-  .nav-link::after {
-    content: "";
-    position: absolute;
-    width: 0;
-    height: 3px;
-    background: #ffea00;
-    bottom: -4px;
-    left: 50%;
-    transform: translateX(-50%);
-    transition: 0.3s;
-  }
-  .nav-link:hover::after { width: 50%; }
+/* CARD */
+.card-box {
+  background: white;
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid var(--border);
+  text-align: center;
+  transition: 0.3s;
+  height: 100%;
+}
 
-  h2, h3 {
-    color: #004a99;
-    font-weight: 800;
-    margin-top: 30px;
-    margin-bottom: 20px;
-  }
+.card-box:hover {
+  transform: translateY(-5px);
+}
 
-  .contact-info {
-    font-size: 1.1rem;
-    line-height: 1.7;
-  }
-  .contact-info i {
-    color: #004a99;
-    margin-right: 8px;
-  }
+.icon {
+  font-size: 1.8rem;
+  color: var(--primary);
+}
 
-  /* Form moderno */
-  form .form-control {
-    border-radius: 8px;
-    transition: 0.3s;
-  }
-  form .form-control:focus {
-    border-color: #004a99;
-    box-shadow: 0 0 5px rgba(0,74,153,0.5);
-  }
-  .btn-custom {
-    background: #004a99;
-    color: #fff;
-    font-weight: 600;
-    transition: 0.3s;
-    border-radius: 8px;
-  }
-  .btn-custom:hover {
-    background: #003976;
-    transform: translateY(-2px);
-  }
+/* MAPPA */
+.map-box {
+  margin-top: 40px;
+  border-radius: 20px;
+  overflow: hidden;
+}
 
-  iframe {
-    border-radius: 12px;
-    box-shadow: 0 4px 14px rgba(0,0,0,0.1);
-  }
+/* FORM */
+.form-control {
+  border-radius: 10px;
+  padding: 12px;
+}
 
+.btn-main {
+  background: var(--primary);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  border: none;
+  font-weight: 700;
+}
+
+.btn-whatsapp {
+  background: var(--accent);
+  color: white;
+  padding: 12px 20px;
+  border-radius: 10px;
+  text-decoration: none;
+  display: inline-block;
+  margin-top: 15px;
+}
+
+/* LOADING */
+.loader {
+  display: none;
+  margin-top: 10px;
+}
+
+/* SUCCESS */
+.success-message {
+  display: none;
+  margin-top: 15px;
+  padding: 10px;
+  background: #d1fae5;
+  border-radius: 8px;
+  color: #065f46;
+  font-weight: 600;
+}
+
+footer {
+  text-align: center;
+  padding: 20px;
+  margin-top: 40px;
+  background: white;
+}
 </style>
 </head>
+
 <body>
 
-<header class="navbar navbar-expand-lg navbar-dark sticky-top">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.html">
-      <img src="img/logo.png" alt="Logo Protezione Civile Grottammare">
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse justify-content-center" id="navbarNav">
-      <ul class="navbar-nav align-items-center">
-        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="mezzi.html">Mezzi</a></li>
-        <li class="nav-item"><a class="nav-link" href="allerte.html">Allerte</a></li>
-        <li class="nav-item"><a class="nav-link" href="volontari.html">Volontari</a></li>
-        <li class="nav-item"><a class="nav-link active" href="contatti.html">Contatti</a></li>
-      </ul>
-    </div>
+<div class="hero">
+  <div>
+    <h1>Contatti</h1>
+    <p>Scrivici o vieni a trovarci</p>
   </div>
-</header>
-
-<main class="container mt-4">
-
-  <h2>Contatti</h2>
-  <div class="contact-info mb-4">
-    <p><i class="fas fa-phone"></i> Telefono: 329 5396305</p>
-    <p><i class="fas fa-envelope"></i> Email: <a href="mailto:info@protezionecivilegrt.it">info@protezionecivilegrt.it</a></p>
-  </div>
-
-  <h3>Centro Operativo Comunale (COC)</h3>
-<div class="mb-4">
-  <iframe 
-    src="https://www.google.com/maps?q=Piazza+Stazione,+6,+63066+Grottammare+AP&output=embed" 
-    width="100%" 
-    height="400" 
-    allowfullscreen="" 
-    loading="lazy">
-  </iframe>
 </div>
 
-  <h3>Contattaci</h3>
-  <form action="https://formspree.io/f/yourformid" method="POST">
-    <div class="mb-3">
-      <label for="name" class="form-label">Nome</label>
-      <input type="text" class="form-control" name="name" required>
-    </div>
-    <div class="mb-3">
-      <label for="email" class="form-label">Email</label>
-      <input type="email" class="form-control" name="email" required>
-    </div>
-    <div class="mb-3">
-      <label for="message" class="form-label">Messaggio</label>
-      <textarea class="form-control" name="message" rows="4" required></textarea>
-    </div>
-    <button type="submit" class="btn btn-custom">Invia</button>
-  </form>
+<div class="container mt-5">
 
-</main>
+  <!-- CONTATTI -->
+  <div class="row g-4">
 
-<footer class="bg-dark text-white text-center p-3 mt-4">
-  © 2025 Protezione Civile Grottammare
+    <div class="col-md-3">
+      <div class="card-box">
+        <div class="icon"><i class="fas fa-phone"></i></div>
+        <h5>Telefono</h5>
+        <p><a href="tel:+393295396305">329 5396305</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-box">
+        <div class="icon"><i class="fas fa-envelope"></i></div>
+        <h5>Email</h5>
+        <p><a href="mailto:protezionecivile@comune.grottammare.ap.it">
+        protezionecivile@comune.grottammare.ap.it</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-box">
+        <div class="icon"><i class="fas fa-location-dot"></i></div>
+        <h5>Sede</h5>
+        <p><a href="https://www.google.com/maps?q=Piazza+Stazione+6,+Grottammare" target="_blank">
+        Piazza Stazione 6<br>Grottammare (AP)</a></p>
+      </div>
+    </div>
+
+    <div class="col-md-3">
+      <div class="card-box">
+        <div class="icon"><i class="fab fa-whatsapp"></i></div>
+        <h5>WhatsApp</h5>
+        <a href="https://wa.me/393295396305" class="btn-whatsapp" target="_blank">
+          Scrivici
+        </a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- MAPPA -->
+  <div class="map-box">
+    <iframe src="https://www.google.com/maps?q=Piazza+Stazione+6,+Grottammare&output=embed"
+      width="100%" height="350"></iframe>
+  </div>
+
+  <!-- FORM -->
+  <div class="mt-5">
+    <h3>Contattaci</h3>
+
+    <form id="contactForm" action="https://formspree.io/f/yourformid" method="POST">
+
+      <input type="hidden" name="_subject" value="Nuovo messaggio dal sito">
+
+      <input type="text" class="form-control mb-3" name="name" placeholder="Nome" required>
+      <input type="email" class="form-control mb-3" name="email" placeholder="Email" required>
+      <textarea class="form-control mb-3" name="message" placeholder="Messaggio" required></textarea>
+
+      <button type="submit" class="btn-main">
+        <i class="fas fa-paper-plane"></i> Invia
+      </button>
+
+      <div class="loader" id="loader">
+        ⏳ Invio in corso...
+      </div>
+
+      <div class="success-message" id="successMessage">
+        ✅ Messaggio inviato con successo!
+      </div>
+
+    </form>
+  </div>
+
+</div>
+
+<footer>
+© 2025 Protezione Civile Grottammare
 </footer>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+const form = document.getElementById("contactForm");
+const loader = document.getElementById("loader");
+const success = document.getElementById("successMessage");
+
+form.addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  loader.style.display = "block";
+
+  const data = new FormData(form);
+
+  await fetch(form.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  });
+
+  loader.style.display = "none";
+  success.style.display = "block";
+  form.reset();
+});
+</script>
 
 </body>
 </html>
