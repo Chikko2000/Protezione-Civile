@@ -116,7 +116,7 @@
       position: relative;
       min-height: 92vh;
       display: flex;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       overflow: hidden;
       color: white;
@@ -134,92 +134,63 @@
     .hero-video-overlay {
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0, 48, 98, 0.58), rgba(0, 48, 98, 0.50));
+      background:
+        linear-gradient(
+          to top,
+          rgba(0, 0, 0, 0.22) 0%,
+          rgba(0, 0, 0, 0.08) 28%,
+          rgba(0, 0, 0, 0.03) 55%,
+          rgba(0, 0, 0, 0.00) 100%
+        );
       z-index: 2;
+      pointer-events: none;
     }
 
     .hero-content {
       position: relative;
       z-index: 3;
-      padding: 40px 20px;
-      max-width: 980px;
+      width: 100%;
+      padding: 40px 20px 54px;
+      display: flex;
+      justify-content: center;
       text-align: center;
+    }
+
+    .hero-inner {
+      max-width: 820px;
     }
 
     .hero-badge {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(255,255,255,0.12);
-      border: 1px solid rgba(255,255,255,0.22);
-      backdrop-filter: blur(6px);
+      background: rgba(255,255,255,0.10);
+      border: 1px solid rgba(255,255,255,0.18);
+      backdrop-filter: blur(4px);
       color: #fff;
-      padding: 9px 16px;
+      padding: 8px 14px;
       border-radius: 999px;
-      font-size: 0.95rem;
+      font-size: 0.88rem;
       font-weight: 800;
-      margin-bottom: 18px;
+      margin-bottom: 14px;
     }
 
     .hero-content h1 {
       margin: 0;
-      font-size: clamp(2.7rem, 6vw, 4.8rem);
+      font-size: clamp(2rem, 4.3vw, 3.4rem);
       font-weight: 900;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
-      text-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
+      text-shadow: 0 3px 10px rgba(0, 0, 0, 0.20);
     }
 
     .hero-content p {
-      margin: 18px auto 0;
-      font-size: 1.1rem;
-      color: rgba(255,255,255,0.97);
-      max-width: 760px;
-      line-height: 1.8;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      justify-content: center;
-      margin-top: 26px;
-    }
-
-    .btn-hero,
-    .btn-hero-outline {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-      padding: 13px 20px;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 800;
-      transition: 0.25s ease;
-    }
-
-    .btn-hero {
-      background: var(--accent);
-      color: #1f2937;
-      box-shadow: 0 10px 22px rgba(244, 196, 0, 0.26);
-    }
-
-    .btn-hero:hover {
-      transform: translateY(-2px);
-      color: #111827;
-    }
-
-    .btn-hero-outline {
-      border: 1px solid rgba(255,255,255,0.38);
-      color: white;
-      background: rgba(255,255,255,0.08);
-      backdrop-filter: blur(6px);
-    }
-
-    .btn-hero-outline:hover {
-      transform: translateY(-2px);
-      color: white;
-      background: rgba(255,255,255,0.14);
+      margin: 12px auto 0;
+      font-size: 0.98rem;
+      color: rgba(255,255,255,0.94);
+      max-width: 650px;
+      line-height: 1.7;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.16);
     }
 
     .cards-section {
@@ -255,13 +226,6 @@
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 18px;
-      margin-top: 22px;
-    }
-
-    .grid-2 {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
       gap: 18px;
       margin-top: 22px;
     }
@@ -646,7 +610,6 @@
       }
 
       .grid-3,
-      .grid-2,
       .quick-contact-grid {
         grid-template-columns: 1fr;
       }
@@ -662,25 +625,27 @@
 
     @media (max-width: 767px) {
       .hero-video {
-        min-height: 76vh;
+        min-height: 72vh;
+        align-items: flex-end;
+      }
+
+      .hero-content {
+        padding: 28px 16px 38px;
       }
 
       .hero-content h1 {
-        font-size: 2.35rem;
+        font-size: 2rem;
       }
 
       .hero-content p {
-        font-size: 1rem;
+        font-size: 0.94rem;
       }
 
-      .hero-actions,
       .cta-actions {
         flex-direction: column;
         align-items: center;
       }
 
-      .btn-hero,
-      .btn-hero-outline,
       .btn-cta-light,
       .btn-cta-outline {
         width: 100%;
@@ -732,27 +697,17 @@
     <div class="hero-video-overlay"></div>
 
     <div class="hero-content">
-      <div class="hero-badge">
-        <i class="fas fa-shield-halved"></i>
-        Protezione Civile Grottammare
-      </div>
+      <div class="hero-inner">
+        <div class="hero-badge">
+          <i class="fas fa-shield-halved"></i>
+          Protezione Civile Grottammare
+        </div>
 
-      <h1>Vicini al territorio, pronti ad agire</h1>
+        <h1>Protezione Civile Grottammare</h1>
 
-      <p>
-        Informazione, prevenzione, supporto ed emergenza: ogni giorno lavoriamo per essere un punto di riferimento
-        per la comunità di Grottammare.
-      </p>
-
-      <div class="hero-actions">
-        <a href="allerte.html" class="btn-hero">
-          <i class="fas fa-triangle-exclamation"></i>
-          Consulta le allerte
-        </a>
-        <a href="volontari.html" class="btn-hero-outline">
-          <i class="fas fa-users"></i>
-          Diventa volontario
-        </a>
+        <p>
+          Presenza sul territorio, supporto alla comunità, prevenzione e attività operative al servizio di Grottammare.
+        </p>
       </div>
     </div>
   </section>
