@@ -111,47 +111,39 @@
       box-shadow: none !important;
     }
 
-    .hero {
+    /* HERO VIDEO */
+    .hero-video {
       position: relative;
-      min-height: 620px;
+      min-height: 92vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       overflow: hidden;
       color: white;
     }
 
-    .hero-slider,
-    .hero-slider .carousel-inner,
-    .hero-slider .carousel-item {
-      min-height: 620px;
-    }
-
-    .hero-slide {
-      min-height: 620px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      position: relative;
-    }
-
-    .hero-slide::before {
-      content: "";
+    .hero-video-bg {
       position: absolute;
       inset: 0;
-      background: linear-gradient(rgba(0, 48, 98, 0.62), rgba(0, 48, 98, 0.48));
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-video-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 48, 98, 0.58), rgba(0, 48, 98, 0.50));
+      z-index: 2;
     }
 
     .hero-content {
-      position: absolute;
-      inset: 0;
+      position: relative;
       z-index: 3;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
       padding: 40px 20px;
-    }
-
-    .hero-inner {
       max-width: 980px;
+      text-align: center;
     }
 
     .hero-badge {
@@ -169,16 +161,16 @@
       margin-bottom: 18px;
     }
 
-    .hero h1 {
+    .hero-content h1 {
       margin: 0;
-      font-size: clamp(2.7rem, 6vw, 4.9rem);
+      font-size: clamp(2.7rem, 6vw, 4.8rem);
       font-weight: 900;
       letter-spacing: 1px;
       text-transform: uppercase;
       text-shadow: 0 4px 14px rgba(0, 0, 0, 0.28);
     }
 
-    .hero p {
+    .hero-content p {
       margin: 18px auto 0;
       font-size: 1.1rem;
       color: rgba(255,255,255,0.97);
@@ -230,22 +222,6 @@
       background: rgba(255,255,255,0.14);
     }
 
-    .hero .carousel-control-prev,
-    .hero .carousel-control-next {
-      z-index: 4;
-      width: 8%;
-    }
-
-    .hero .carousel-control-prev-icon,
-    .hero .carousel-control-next-icon {
-      background-size: 65% 65%;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      background-color: rgba(255,255,255,0.18);
-      backdrop-filter: blur(4px);
-    }
-
     .cards-section {
       padding: 52px 0 24px;
     }
@@ -276,25 +252,24 @@
       font-size: 1rem;
     }
 
-    .grid-3,
-    .grid-2 {
+    .grid-3 {
       display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 18px;
       margin-top: 22px;
     }
 
-    .grid-3 {
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-
     .grid-2 {
+      display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 22px;
     }
 
     .info-card,
     .preview-card,
-    .alert-home-card,
-    .contact-quick-card {
+    .contact-quick-card,
+    .dynamic-card {
       background: #ffffff;
       border: 1px solid var(--border);
       border-radius: 18px;
@@ -306,8 +281,8 @@
 
     .info-card:hover,
     .preview-card:hover,
-    .alert-home-card:hover,
-    .contact-quick-card:hover {
+    .contact-quick-card:hover,
+    .dynamic-card:hover {
       transform: translateY(-4px);
       box-shadow: 0 12px 26px rgba(0,0,0,0.07);
     }
@@ -337,6 +312,19 @@
       line-height: 1.7;
       font-size: 0.97rem;
       margin: 0;
+      word-break: break-word;
+    }
+
+    .card-text a,
+    .contact-quick-card a {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 700;
+    }
+
+    .card-text a:hover,
+    .contact-quick-card a:hover {
+      color: var(--primary-dark);
     }
 
     .alert-strip {
@@ -577,33 +565,10 @@
       gap: 14px;
     }
 
-    .contact-quick-card a,
-    .contact-quick-card span {
-      color: var(--muted);
-      text-decoration: none;
-      font-weight: 600;
-      word-break: break-word;
-    }
-
-    .contact-quick-card a:hover {
-      color: var(--primary);
-    }
-
-    #comms,
-    #alerts-home {
+    #comms {
       margin-top: 22px;
       display: grid;
       gap: 14px;
-    }
-
-    .dynamic-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 18px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.04);
-      color: var(--muted);
-      line-height: 1.7;
     }
 
     .dynamic-card strong,
@@ -690,33 +655,26 @@
         align-items: flex-start;
       }
 
-      .hero,
-      .hero-slider,
-      .hero-slider .carousel-inner,
-      .hero-slider .carousel-item,
-      .hero-slide {
-        min-height: 560px;
+      .hero-video {
+        min-height: 78vh;
       }
     }
 
     @media (max-width: 767px) {
-      .hero,
-      .hero-slider,
-      .hero-slider .carousel-inner,
-      .hero-slider .carousel-item,
-      .hero-slide {
-        min-height: 560px;
+      .hero-video {
+        min-height: 76vh;
       }
 
-      .hero h1 {
+      .hero-content h1 {
         font-size: 2.35rem;
       }
 
-      .hero p {
+      .hero-content p {
         font-size: 1rem;
       }
 
-      .hero-actions {
+      .hero-actions,
+      .cta-actions {
         flex-direction: column;
         align-items: center;
       }
@@ -740,11 +698,6 @@
 
       .preview-image {
         height: 200px;
-      }
-
-      .hero .carousel-control-prev,
-      .hero .carousel-control-next {
-        width: 12%;
       }
     }
   </style>
@@ -771,58 +724,35 @@
     </div>
   </header>
 
-  <section class="hero">
-    <div id="carouselHome" class="carousel slide hero-slider" data-bs-ride="carousel" data-bs-interval="5000">
-      <div class="carousel-inner">
-        <div class="carousel-item active">
-          <div class="hero-slide" style="background-image: url('img/slide1.jpg');"></div>
-        </div>
-        <div class="carousel-item">
-          <div class="hero-slide" style="background-image: url('img/slide2.jpg');"></div>
-        </div>
-        <div class="carousel-item">
-          <div class="hero-slide" style="background-image: url('img/slide3.jpg');"></div>
-        </div>
-        <div class="carousel-item">
-          <div class="hero-slide" style="background-image: url('img/slide4.jpg');"></div>
-        </div>
-        <div class="carousel-item">
-          <div class="hero-slide" style="background-image: url('img/slide5.jpg');"></div>
-        </div>
-      </div>
+  <section class="hero-video">
+    <video class="hero-video-bg" autoplay muted loop playsinline>
+      <source src="img/home.mp4" type="video/mp4">
+    </video>
 
-      <button class="carousel-control-prev" type="button" data-bs-target="#carouselHome" data-bs-slide="prev" aria-label="Slide precedente">
-        <span class="carousel-control-prev-icon"></span>
-      </button>
-      <button class="carousel-control-next" type="button" data-bs-target="#carouselHome" data-bs-slide="next" aria-label="Slide successiva">
-        <span class="carousel-control-next-icon"></span>
-      </button>
-    </div>
+    <div class="hero-video-overlay"></div>
 
     <div class="hero-content">
-      <div class="hero-inner">
-        <div class="hero-badge">
-          <i class="fas fa-shield-halved"></i>
-          Protezione Civile Grottammare
-        </div>
+      <div class="hero-badge">
+        <i class="fas fa-shield-halved"></i>
+        Protezione Civile Grottammare
+      </div>
 
-        <h1>Vicini al territorio, pronti ad agire</h1>
+      <h1>Vicini al territorio, pronti ad agire</h1>
 
-        <p>
-          Informazione, prevenzione, supporto ed emergenza: ogni giorno lavoriamo per essere un punto di riferimento
-          per la comunità di Grottammare.
-        </p>
+      <p>
+        Informazione, prevenzione, supporto ed emergenza: ogni giorno lavoriamo per essere un punto di riferimento
+        per la comunità di Grottammare.
+      </p>
 
-        <div class="hero-actions">
-          <a href="allerte.html" class="btn-hero">
-            <i class="fas fa-triangle-exclamation"></i>
-            Consulta le allerte
-          </a>
-          <a href="volontari.html" class="btn-hero-outline">
-            <i class="fas fa-users"></i>
-            Diventa volontario
-          </a>
-        </div>
+      <div class="hero-actions">
+        <a href="allerte.html" class="btn-hero">
+          <i class="fas fa-triangle-exclamation"></i>
+          Consulta le allerte
+        </a>
+        <a href="volontari.html" class="btn-hero-outline">
+          <i class="fas fa-users"></i>
+          Diventa volontario
+        </a>
       </div>
     </div>
   </section>
@@ -1043,8 +973,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/comms.js"></script>
-  <script src="js/alerts.js"></script>
-
   <script>
     const livelloHome = "nessuna";
 
@@ -1102,20 +1030,6 @@
           <div>${item.message || ""}</div>
         `;
         commsContainer.appendChild(div);
-      });
-    }
-
-    const alertsHomeContainer = document.getElementById("alerts-home");
-    if (alertsHomeContainer && typeof alertsData !== "undefined" && Array.isArray(alertsData) && alertsData.length > 0) {
-      alertsHomeContainer.innerHTML = "";
-      alertsData.slice(0, 3).forEach(alert => {
-        const div = document.createElement("div");
-        div.className = "dynamic-card";
-        div.innerHTML = `
-          <strong>${alert.title || "Allerta"}</strong>
-          <div>${alert.message || ""}</div>
-        `;
-        alertsHomeContainer.appendChild(div);
       });
     }
   </script>
